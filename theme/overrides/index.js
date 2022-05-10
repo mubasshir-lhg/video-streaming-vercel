@@ -1,14 +1,16 @@
-import { merge } from 'lodash';
-import Card from './Card';
-import Lists from './Lists';
-import Paper from './Paper';
-import Input from './Input';
-import Button from './Button';
-import Tooltip from './Tooltip';
-import Backdrop from './Backdrop';
-import Typography from './Typography';
-import IconButton from './IconButton';
-import Autocomplete from './Autocomplete';
+import { merge } from "lodash";
+import Card from "./Card";
+import Lists from "./Lists";
+import Paper from "./Paper";
+import Input from "./Input";
+import Button from "./Button";
+import Tooltip from "./Tooltip";
+import Backdrop from "./Backdrop";
+import Typography from "./Typography";
+import IconButton from "./IconButton";
+import Autocomplete from "./Autocomplete";
+import Drawer from "./Drawer";
+import AppBar from "./AppBar";
 
 // ----------------------------------------------------------------------
 
@@ -23,6 +25,8 @@ export default function ComponentsOverrides(theme) {
     Backdrop(theme),
     Typography(theme),
     IconButton(theme),
-    Autocomplete(theme)
+    Autocomplete(theme),
+    Drawer(theme),
+    AppBar(theme)
   );
 }

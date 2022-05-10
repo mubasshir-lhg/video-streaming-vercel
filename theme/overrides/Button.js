@@ -2,6 +2,13 @@
 
 export default function Button(theme) {
   return {
+    MuiIconButton:{
+      styleOverrides:{
+        root:{
+          color:'#fff'
+        }
+      }
+    },
     MuiButton: {
       styleOverrides: {
         root: {
@@ -13,14 +20,21 @@ export default function Button(theme) {
           height: 48
         },
         containedInherit: {
+          backgroundColor: theme.palette.grey[100],
           color: theme.palette.grey[800],
-          boxShadow: theme.customShadows.z8,
+          boxShadow:'none',
           '&:hover': {
-            backgroundColor: theme.palette.grey[400]
+            backgroundColor: theme.palette.grey[500_16]
           }
         },
         containedPrimary: {
-          boxShadow: theme.customShadows.primary
+          color: theme.palette.common.black,
+          backgroundColor: theme.palette.common.white,
+          boxShadow: theme.customShadows.z8,
+          '&:hover': {
+          boxShadow: theme.customShadows.z1,
+          backgroundColor: theme.palette.grey[50]
+          }
         },
         containedSecondary: {
           boxShadow: theme.customShadows.secondary

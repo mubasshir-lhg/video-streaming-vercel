@@ -1,20 +1,31 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import React from "react";
+import { Box, Grid } from "@mui/material";
+import BasicSelect from "../components/Select/Select";
 
-export default function Home() {
+const options = ["Now", "Since published"];
+const Home = () => {
+  const doSomething = () => {};
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Alex Lai Streaming</title>
-        <meta name="description" content="Live Streaming Web App" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <Box>
+      <Box sx={{ my: 3, typography: "subtitle1" }}>
+        <Grid container>
+          <Grid item xs={8}>
+            Dashboard
+          </Grid>
+          <Grid item xs={3} ml="auto">
+            <BasicSelect
+              placeholder="select any"
+              options={options}
+              onClick={doSomething}
+            />
+          </Grid>
+        </Grid>
+      </Box>
+      <Box sx={{ p: 5, backgroundColor: "primary.main",borderRadius:'shape.borderRadius' }}>
+        Latest Video performance
+      </Box>
+    </Box>
+  );
+};
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome
-        </h1>
-      </main>
-    </div>
-  )
-}
+export default Home;

@@ -78,9 +78,8 @@ const ERROR = {
 };
 const PURPLE = {
   lighter: '#8900c3',
-  light: '#8900e1',
-  main: '#D034Dc',
-  mainG: 'linear-gradient(to right, #8900e1, #D034Dc)',
+  light: '#D034Dc',
+  main: '#8900e1',
   dark: '#7B1FA2',
   darker: '#6A1B9A',
   contrastText: '#fff'

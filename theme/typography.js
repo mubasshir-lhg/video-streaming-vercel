@@ -106,15 +106,15 @@ const typography = {
   subtitle2: {
     fontWeight: 400,
     lineHeight: 22 / 14,
-    fontSize: pxToRem(14)
+    fontSize: pxToRem(15)
   },
   body1: {
     lineHeight: 1.5,
-    fontSize: pxToRem(16)
+    fontSize: pxToRem(14)
   },
   body2: {
     lineHeight: 22 / 14,
-    fontSize: pxToRem(14)
+    fontSize: pxToRem(11)
   },
   caption: {
     lineHeight: 1.5,

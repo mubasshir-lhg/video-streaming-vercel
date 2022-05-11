@@ -39,6 +39,9 @@ export default function Button(theme) {
         containedSecondary: {
           boxShadow: theme.customShadows.secondary
         },
+        containedInfo: {
+          backgroundColor: theme.palette.grey[50]
+        },
         outlinedInherit: {
           border: `1px solid ${theme.palette.grey[500_32]}`,
           '&:hover': {

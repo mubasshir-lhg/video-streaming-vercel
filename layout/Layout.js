@@ -25,7 +25,7 @@ import VideoCallOutlinedIcon from "@mui/icons-material/VideoCallOutlined";
 import VideocamOutlinedIcon from "@mui/icons-material/VideocamOutlined";
 import MicNoneOutlinedIcon from "@mui/icons-material/MicNoneOutlined";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
-import dp from "../Images/user2.jpg";
+import dp from "../assets/Images/user1.jpg";
 import Image from "next/image";
 import SearchField from "../components/SearchField/SearchField";
 const drawerWidth = 220;
@@ -179,7 +179,9 @@ export default function Layout({ children }) {
               src={dp}
               width={30}
               height={30}
-              layout="fixed"
+              quality={100}
+              objectFit='cover'
+              layout="intrinsic"
               className="bar-img"
             />
           </Box>
@@ -199,7 +201,9 @@ export default function Layout({ children }) {
               src={dp}
               width={100}
               height={100}
-              layout="fixed"
+              quality={100}
+              objectFit='cover'
+              layout="intrinsic"
               className="dp-img"
             />
           </Box>
@@ -238,7 +242,6 @@ export default function Layout({ children }) {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-
         {children}
       </Box>
     </Box>

@@ -2,7 +2,8 @@ import React from "react";
 import { Box, Grid, Typography, Divider } from "@mui/material";
 import BasicSelect from "../components/Select/Select";
 import Video from "../components/Video/Video";
-import { useTheme, styled } from "@mui/styles";
+import { useTheme } from "@mui/styles";
+import { styled } from '@mui/system';
 import InfoContainer from "../components/InfoContainer/InfoContainer";
 //iccon
 import VisibilityIcon from "@mui/icons-material/Visibility";

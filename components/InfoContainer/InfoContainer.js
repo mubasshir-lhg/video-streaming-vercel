@@ -1,6 +1,6 @@
 import React from "react";
 import { Typography, Box, IconButton } from "@mui/material";
-import { styled } from "@mui/styles";
+import { styled } from '@mui/system';
 
 const StyledInfo = styled(Box)(({ theme, background }) => ({
   borderRadius: theme.shape.borderRadiusMd,

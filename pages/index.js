@@ -1,13 +1,15 @@
 import React from "react";
 import { Box, Grid, Typography, Divider } from "@mui/material";
-import BasicSelect from "../components/Select/Select";
 import Video from "../components/Video/Video";
 import { useTheme } from "@mui/styles";
-import { styled } from '@mui/system';
+import { styled } from "@mui/system";
 import InfoContainer from "../components/InfoContainer/InfoContainer";
-//iccon
+import BoxContainer from "../components/BoxContainer/BoxContainer";
+//icon
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
+import SubscriptionsIcon from "@mui/icons-material/Subscriptions";
+import PageHeader from "../components/PageHeader/PageHeader";
 
 const StyledBox = styled(Box)({
   marginBottom: "10px",
@@ -29,37 +31,14 @@ const StyledGrid = (props) => (
   </Grid>
 );
 
-const options = ["Now", "Since published"];
 const Home = () => {
-  const doSomething = () => {};
-  const { palette, shape, customShadows } = useTheme();
+  const { palette } = useTheme();
   const { gradients } = palette;
 
   return (
     <Box>
-      <Box sx={{ my: 3, typography: "subtitle1" }}>
-        <Grid container>
-          <Grid item xs={8}>
-            Dashboard
-          </Grid>
-          <Grid item xs={3} ml="auto">
-            <BasicSelect
-              placeholder="select any"
-              options={options}
-              onClick={doSomething}
-            />
-          </Grid>
-        </Grid>
-      </Box>
-      <Box
-        sx={{
-          py: 5,
-          px: 4,
-          backgroundColor: "primary.main",
-          borderRadius: shape.borderRadius,
-          boxShadow: customShadows.z12,
-        }}
-      >
+      <PageHeader title='Dashboard'/>
+      <BoxContainer>
         <Grid
           container
           spacing={2}
@@ -107,7 +86,7 @@ const Home = () => {
               number="10K"
             />
             <InfoContainer
-              icon={<ThumbUpAltIcon />}
+              icon={<SubscriptionsIcon />}
               tag="Subscriber"
               number="112"
             />
@@ -126,7 +105,7 @@ const Home = () => {
             </Grid>
           </Grid>
         </Grid>
-      </Box>
+      </BoxContainer>
     </Box>
   );
 };

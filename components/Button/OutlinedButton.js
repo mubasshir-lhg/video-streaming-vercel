@@ -1,10 +1,15 @@
-import React from 'react'
-import { Box } from "@mui/material";
 import Button from '@mui/material/Button';
-const OutlinedButton = () => {
+const OutlinedButton = ({text,width,color}) => {
   return (
-        <Button variant='outlined'   >
-            outlined one
+    <Button variant='outlined' color={color}
+      sx={{
+        px: 2,
+        color: 'white',
+        minWidth: "120px",
+        minHeight: "40px",
+        width:`${width}`,
+      }}  >
+            {text}
         </Button>
   )
 }

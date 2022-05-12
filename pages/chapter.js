@@ -12,9 +12,12 @@ const chapter = ({}) => {
         {chap.map((item, index) => { return (<ChapterCard key={index} chapterNum={item.chapter} chapterDuration={item.duration} />) })}
         <Grid item xs={12} > <AddChapter/> </Grid>
       </Grid>
-      <Grid container>
-        <Grid item > <OutlinedButton/> </Grid>
-        <Grid item > <ContainedButton/></Grid>
+      <Grid container  spacing={2.5} justifyContent="center" sx={{
+        p: 3,
+        flexGrow: 1
+      }}>
+        <Grid item > <OutlinedButton text='Cancel' width='220px' color='primary' /> </Grid>
+        <Grid item > <ContainedButton text='Save Chapters' width='220px' color='purple'/></Grid>
       </Grid>
     </Box>
   )

@@ -28,18 +28,50 @@ export default function Button(theme) {
           }
         },
         containedPrimary: {
-          boxShadow: theme.customShadows.z8,
-          // backgroundColor: theme.palette.gradients.purple,
-          '&:hover': {
-          boxShadow: theme.customShadows.z1,
-          background: theme.palette.grey[500]
-          }
+          boxShadow: theme.customShadows.purple,
         },
         containedSecondary: {
           boxShadow: theme.customShadows.secondary
         },
         containedInfo: {
           backgroundColor: theme.palette.grey[50]
+        },
+        containedPurple: {
+          background: theme.palette.gradients.purple,
+          "&:hover": {
+            background: "transparent",
+            border: `1px solid ${theme.palette.purple.main} ` 
+          }
+        },
+        outlinedPrimary: {
+          border: `1px solid ${theme.palette.purple.main} ` ,
+          "&:hover": {
+            background: theme.palette.gradients.purple, 
+          }
+        },
+        outlinedYellow: {
+          border: `1px solid ${theme.palette.yellow.main} ` ,
+          "&:hover": {
+            background: theme.palette.gradients.yellow, 
+          }
+        },
+        outlinedWarning: {
+          border: `1px solid ${theme.palette.warning.main} ` ,
+          "&:hover": {
+            background: theme.palette.gradients.warning, 
+          }
+        },
+        outlinedSuccess: {
+          border: `1px solid ${theme.palette.success.main} ` ,
+          "&:hover": {
+            background: theme.palette.gradients.success, 
+          }
+        },
+        outlinedInfo: {
+          border: `1px solid ${theme.palette.info.main} ` ,
+          "&:hover": {
+            background: theme.palette.gradients.info, 
+          }
         },
         outlinedInherit: {
           border: `1px solid ${theme.palette.grey[500_32]}`,

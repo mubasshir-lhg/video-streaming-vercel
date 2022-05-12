@@ -43,6 +43,13 @@ export default function Button(theme) {
             border: `1px solid ${theme.palette.purple.main} ` 
           }
         },
+        containedWarning: {
+          background: theme.palette.gradients.warning,
+          "&:hover": {
+            background: "transparent",
+            border: `1px solid ${theme.palette.warning.main} ` 
+          }
+        },
         outlinedPrimary: {
           border: `1px solid ${theme.palette.purple.main} ` ,
           "&:hover": {

@@ -28,12 +28,11 @@ export default function Button(theme) {
           }
         },
         containedPrimary: {
-          color: theme.palette.common.black,
-          backgroundColor: theme.palette.common.white,
           boxShadow: theme.customShadows.z8,
+          // backgroundColor: theme.palette.gradients.purple,
           '&:hover': {
           boxShadow: theme.customShadows.z1,
-          backgroundColor: theme.palette.grey[50]
+          background: theme.palette.grey[500]
           }
         },
         containedSecondary: {

@@ -5,6 +5,7 @@ import ListItemText from '@mui/material/ListItemText';
 import CloseIcon from '@mui/icons-material/Close';
 import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined';
 import IconButton from '@mui/material/IconButton';
+import CachedRoundedIcon from '@mui/icons-material/CachedRounded';
 import Button from '@mui/material/Button';
 import { useTheme } from "@mui/styles";
 const ChapterCard = ({chapterNum,chapterDuration}) => {
@@ -23,7 +24,10 @@ const ChapterCard = ({chapterNum,chapterDuration}) => {
                 <ListItem
                     disableGutters
                     secondaryAction={
-                    <ListItemIcon>
+                        <ListItemIcon>
+                        <IconButton aria-label="reload">
+                            <CachedRoundedIcon />
+                        </IconButton>
                         <IconButton aria-label="edit">
                             <ModeEditOutlinedIcon />
                         </IconButton>

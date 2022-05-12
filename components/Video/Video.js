@@ -4,7 +4,7 @@ import { useTheme } from "@mui/styles";
 const Video = ({ src }) => {
   const { shape, customShadows } = useTheme();
   return (
-    <Box sx={{ width: 240, height: 170, my: 2, mx: "auto" }}>
+    <Box sx={{ width: 240, height: 140, my: 2, }}>
       <video
         width="100%"
         controls

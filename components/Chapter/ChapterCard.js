@@ -13,13 +13,12 @@ const ChapterCard = ({chapterNum,chapterDuration}) => {
   return (
     <Grid item md={6} xs={12}>
         <Paper variant="outlined" sx={{
-            bgcolor: "primary.main",
-            borderRadius:"9px"
+              bgcolor: "primary.main",
+              overflow:'hidden',
+            borderRadius: shape.borderRadius  
         }} >
             <Box sx={{
-                backgroundColor:"secondary.main",
-                borderTopRightRadius:"9px !important",
-                borderTopLeftRadius:"9px !important",
+                  backgroundColor: "secondary.main",
                 }} >
                 <ListItem
                     disableGutters
@@ -48,7 +47,7 @@ const ChapterCard = ({chapterNum,chapterDuration}) => {
                         backgroundColor:"primary.dark",
                         textAlign: 'center',
                         p:3,
-                        borderRadius: shape.borderRadius,  
+                        borderRadius: shape.borderRadiusXs  
               }}>
                 <Typography variant ='subtitle1' 
                         sx={{

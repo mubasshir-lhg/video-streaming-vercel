@@ -146,9 +146,10 @@ export default function Layout({ children }) {
   const { breakpoints } = useTheme();
   const [open, setOpen] = useState(true);
   const [activeIndex, setActiveIndex] = useState(0);
-  const isSmDown = useMediaQuery(breakpoints.down("sm"));
   const [navbar, setNavbar] = useState(false);
   const [searchBar, setSearchBar] = useState(false);
+  const isSmDown = useMediaQuery(breakpoints.down("sm"));
+
   const handleDrawer = () => {
     setOpen((preState) => !preState);
   };
@@ -170,9 +171,14 @@ export default function Layout({ children }) {
   };
 
   useEffect(() => {
+    if(isSmDown){
+      setOpen(false)
+    }else{
+      setOpen(true)
+    }
     changeBackground();
     window.addEventListener("scroll", changeBackground);
-  });
+  },[isSmDown]);
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />

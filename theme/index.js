@@ -10,6 +10,7 @@ import {
 //
 import shape from './shape';
 import palette from './palette';
+import breakpoints from './breakpoints'
 import typography from './typography';
 import componentsOverride from './overrides';
 import shadows, { customShadows } from './shadows';
@@ -23,6 +24,7 @@ ThemeConfig.propTypes = {
 export default function ThemeConfig({ children }) {
   const themeOptions = useMemo(
     () => ({
+      breakpoints,
       palette,
       shape,
       typography,

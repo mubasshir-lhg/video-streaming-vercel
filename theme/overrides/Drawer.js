@@ -12,7 +12,7 @@ export default function Drawer(theme) {
           backgroundColor: theme.palette.secondary.main,
           color: "#fff",
           borderRadius: "0 40px 40px 0",
-          zIndex: 1205,
+          zIndex: 1200,
           border:'none',
           boxShadow:theme.customShadows.z8
         },

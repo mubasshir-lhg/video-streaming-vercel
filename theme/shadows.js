@@ -56,6 +56,7 @@ const createCustomShadow = (color) => {
     success: `0 8px 16px 0 ${alpha(palette.success.main, 0.24)}`,
     warning: `0 8px 16px 0 ${alpha(palette.warning.main, 0.24)}`,
     error: `0 8px 16px 0 ${alpha(palette.error.main, 0.24)}`,
+    purple: `0 8px 16px 0 ${alpha(palette.purple.main, 0.24)}`,
   };
 };
 

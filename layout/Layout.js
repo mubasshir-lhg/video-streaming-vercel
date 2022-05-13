@@ -1,20 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { styled, useTheme } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import MuiDrawer from "@mui/material/Drawer";
-import MuiAppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import List from "@mui/material/List";
-import CssBaseline from "@mui/material/CssBaseline";
-import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
 import { useRouter } from "next/router";
+import dp from "../assets/Images/user1.jpg";
+import Image from "next/image";
+//components
+import SearchField from "../components/SearchField/SearchField";
 //icons
 import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined";
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
@@ -25,9 +15,26 @@ import VideoCallOutlinedIcon from "@mui/icons-material/VideoCallOutlined";
 import VideocamOutlinedIcon from "@mui/icons-material/VideocamOutlined";
 import MicNoneOutlinedIcon from "@mui/icons-material/MicNoneOutlined";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
-import dp from "../assets/Images/user1.jpg";
-import Image from "next/image";
-import SearchField from "../components/SearchField/SearchField";
+import SearchIcon from "@mui/icons-material/Search";
+import MenuIcon from "@mui/icons-material/Menu";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+//mui
+import ClickAwayListener from "@mui/base/ClickAwayListener";
+import {
+  useMediaQuery,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  CssBaseline,
+  Typography,
+  IconButton,
+  MuiDrawer,
+  MuiAppBar,
+  Divider,
+  Toolbar,
+  List,
+  Box,
+} from "@mui/material";
 const drawerWidth = 220;
 const sideBarLink = [
   {
@@ -107,7 +114,7 @@ const AppBar = styled(MuiAppBar, {
   }),
   ...(open && {
     marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
+    width: `calc(100% - ${drawerWidth + 24}px)`,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
@@ -134,63 +141,121 @@ const Drawer = styled(MuiDrawer, {
 
 export default function Layout({ children }) {
   const router = useRouter();
-  const theme = useTheme();
+  const { breakpoints } = useTheme();
   const [open, setOpen] = useState(true);
   const [activeIndex, setActiveIndex] = useState(0);
-
+  const isSmDown = useMediaQuery(breakpoints.down("sm"));
+  const [navbar, setNavbar] = useState(false);
+  const [searchBar, setSearchBar] = useState(false);
   const handleDrawer = () => {
     setOpen((preState) => !preState);
+  };
+  const ShowSearchBar = () => {
+    setSearchBar((preState) => !preState);
   };
 
   const goToPage = (href, index) => {
     router.push(href);
     setActiveIndex(index);
   };
+
+  const changeBackground = () => {
+    if (window.scrollY >= 66) {
+      setNavbar(true);
+    } else {
+      setNavbar(false);
+    }
+  };
+
+  useEffect(() => {
+    changeBackground();
+    window.addEventListener("scroll", changeBackground);
+  });
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open} sx={{ py: 2}}>
+      <AppBar
+        position="fixed"
+        open={open}
+        sx={{
+          py: navbar ? 0.5 : 2,
+          backgroundColor: navbar && "secondary.main",
+        }}
+      >
         <Toolbar>
-          <Typography
-            variant="h5"
-            noWrap
-            component="div"
-            color="#fff"
-            sx={{ ml: !open && 10, flexGrow: 1 }}
-          >
-            Logo Here
-          </Typography>
-          <SearchField />
-          <IconButton>
-            <VideoCallOutlinedIcon />
-          </IconButton>
-          <IconButton>
-            <MicNoneOutlinedIcon />
-          </IconButton>
-          <IconButton>
-            <VideocamOutlinedIcon />
-          </IconButton>
-          <IconButton>
-            <NotificationsOutlinedIcon />
-          </IconButton>
-          <Box mt={1}>
-            <Image
-              alt="Dp"
-              src={dp}
-              width={30}
-              height={30}
-              quality={100}
-              objectFit='cover'
-              layout="intrinsic"
-              className="bar-img"
-            />
-          </Box>
+          <>
+            <IconButton
+              onClick={handleDrawer}
+              edge="start"
+              sx={{
+                marginRight: 5,
+                ...(open && { display: "none" }),
+              }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography
+              variant="h5"
+              noWrap
+              component="div"
+              color="#fff"
+              sx={{ ml: !open && 2, flexGrow: 1 }}
+            >
+              Logo Here
+            </Typography>
+            {searchBar ? (
+              <ClickAwayListener
+                onClickAway={() => {
+                  setSearchBar(false);
+                }}
+              >
+                <Box sx={{ flexGrow: 1 }}>
+                  <SearchField />
+                </Box>
+              </ClickAwayListener>
+            ) : (
+              <>
+                {isSmDown ? (
+                  <IconButton onClick={ShowSearchBar}>
+                    <SearchIcon />
+                  </IconButton>
+                ) : (
+                  <Box sx={{ flexGrow: 1 }}>
+                    <SearchField />
+                  </Box>
+                )}
+                <IconButton>
+                  <VideoCallOutlinedIcon />
+                </IconButton>
+                <IconButton>
+                  <MicNoneOutlinedIcon />
+                </IconButton>
+                <IconButton>
+                  <VideocamOutlinedIcon />
+                </IconButton>
+                <IconButton>
+                  <NotificationsOutlinedIcon />
+                </IconButton>
+                <Box mt={1} sx={{ minWidth: "25px" }}>
+                  <Image
+                    alt="Dp"
+                    src={dp}
+                    width={30}
+                    height={30}
+                    quality={100}
+                    objectFit="cover"
+                    className="bar-img"
+                  />
+                </Box>
+              </>
+            )}
+          </>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
-          <IconButton onClick={handleDrawer}>
-            {open === false ? <MenuIcon /> : <ChevronLeftIcon />}
+          <IconButton onClick={handleDrawer} sx={{ mt: 3 }}>
+            {open === false ? "" : <ChevronLeftIcon />}
           </IconButton>
         </DrawerHeader>
         <Divider />
@@ -202,7 +267,7 @@ export default function Layout({ children }) {
               width={100}
               height={100}
               quality={100}
-              objectFit='cover'
+              objectFit="cover"
               layout="intrinsic"
               className="dp-img"
             />

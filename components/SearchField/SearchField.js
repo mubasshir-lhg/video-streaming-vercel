@@ -4,7 +4,7 @@ import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 
-const SearchField = () => (
+const SearchField =() => (
   <Paper
     component="form"
     sx={{
@@ -13,7 +13,7 @@ const SearchField = () => (
       alignItems: "center",
       backgroundColor: "primary.main",
       boxShadow: "none",
-      width: "40%",
+      width: "100%",
     }}
     elevation={4}
   >
@@ -22,7 +22,7 @@ const SearchField = () => (
       placeholder="Search"
       inputProps={{ "aria-label": "search" }}
     />
-    <IconButton type="submit" sx={{ p: "10px" }} aria-label="search">
+    <IconButton sx={{ p: "10px" }}>
       <SearchIcon />
     </IconButton>
   </Paper>

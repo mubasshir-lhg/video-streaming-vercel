@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import { useRouter } from "next/router";
-import dp from "../assets/Images/user1.jpg";
+//images
 import Image from "next/image";
+import dp from "../assets/Images/user1.jpg";
+import logo from "../assets/Images/logo/Teachmetoo Brandmark Full Color .png";
 //components
 import SearchField from "../components/SearchField/SearchField";
 //icons
@@ -20,6 +22,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 //mui
 import ClickAwayListener from "@mui/base/ClickAwayListener";
+import MuiDrawer from "@mui/material/Drawer";
+import MuiAppBar from "@mui/material/AppBar";
 import {
   useMediaQuery,
   ListItemButton,
@@ -28,8 +32,6 @@ import {
   CssBaseline,
   Typography,
   IconButton,
-  MuiDrawer,
-  MuiAppBar,
   Divider,
   Toolbar,
   List,
@@ -188,21 +190,23 @@ export default function Layout({ children }) {
               onClick={handleDrawer}
               edge="start"
               sx={{
-                marginRight: 5,
+                mr: 3,
+                ml: 2,
                 ...(open && { display: "none" }),
               }}
             >
               <MenuIcon />
             </IconButton>
-            <Typography
-              variant="h5"
-              noWrap
-              component="div"
-              color="#fff"
-              sx={{ ml: !open && 2, flexGrow: 1 }}
-            >
-              Logo Here
-            </Typography>
+            <Box mt={1} sx={{ ml: !open && 2, flexGrow: 1, minWidth: "25px" }}>
+              <Image
+                alt="logo"
+                src={logo}
+                width={40}
+                height={40}
+                quality={100}
+                objectFit="cover"
+              />
+            </Box>
             {searchBar ? (
               <ClickAwayListener
                 onClickAway={() => {

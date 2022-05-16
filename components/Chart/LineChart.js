@@ -33,7 +33,7 @@ const options = {
       },
       grid: {
         display: true,
-        color: "#fff",
+        color: "#fafafa",
       },
     },
   },

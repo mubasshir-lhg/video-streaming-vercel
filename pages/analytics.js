@@ -10,7 +10,7 @@ import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import SubscriptionsIcon from "@mui/icons-material/Subscriptions";
 import PageHeader from "../components/PageHeader/PageHeader";
 //chart data
-import { userData } from "../components/Chart/data";
+import { datasets } from "../components/Chart/data";
 import LineChart from "../components/Chart/LineChart";
 import { makeStyles } from "@mui/styles";
 
@@ -36,28 +36,7 @@ const Analytics = () => {
   const { palette } = useTheme();
   const { gradients } = palette;
   const [activeIndex, setActiveIndex] = useState(0);
-  const [chartData, setChartData] = useState({
-    labels: userData.map((data) => data.date),
-    datasets: [
-      {
-        label: "views",
-        data: userData.map((data) => data.views),
-        backgroundColor: [
-          "rgba(75,192,192,1)",
-          "#ecf0f1",
-          "#50AF95",
-          "#f3ba2f",
-          "#2a71d0",
-        ],
-        borderColor: "#fff",
-        borderWidth: 1,
-        tension: 0.5,
-        title: {
-          display: false,
-        },
-      },
-    ],
-  });
+  const [chartData, setChartData] = useState(datasets);
 
   const handleClick = (ind) => {
     setActiveIndex(ind);

@@ -16,9 +16,9 @@ import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles({
   box: {
-   "& canvas":{
-     width:'98% !important'
-   }
+    "& canvas": {
+      width: "98% !important",
+    },
   },
 });
 
@@ -32,7 +32,7 @@ const LinksWrapper = styled(Box)({
 
 const subLinks = ["Overview", "Subscribers", "Views", "Most viewed Video"];
 const Analytics = () => {
-  const styles=useStyles()
+  const styles = useStyles();
   const { palette } = useTheme();
   const { gradients } = palette;
   const [activeIndex, setActiveIndex] = useState(0);
@@ -79,7 +79,7 @@ const Analytics = () => {
               </Grid>
               <Grid item xs={12}>
                 <Box className={styles.box}>
-                  <LineChart chartData={chartData}  />
+                  <LineChart chartData={chartData} />
                 </Box>
               </Grid>
             </Grid>
@@ -88,7 +88,28 @@ const Analytics = () => {
       case 1:
         return <BoxContainer>subscriber</BoxContainer>;
       case 2:
-        return <BoxContainer>views</BoxContainer>;
+        return (
+          <BoxContainer>
+            <Box sx={{ typography: "subtitle1" }}>
+              Your Channel got 153k views in the last 28 days
+            </Box>
+            <Grid container spacing={2} sx={{ flexWrap: "wrap" }}>
+              <Grid item xs={12} md={6} lg={5}>
+                <InfoContainer
+                  background={gradients.purple}
+                  tag="Views"
+                  number="153K"
+                  shape="horizontal"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <Box className={styles.box}>
+                  <LineChart chartData={chartData} />
+                </Box>
+              </Grid>
+            </Grid>
+          </BoxContainer>
+        );
       case 3:
         return <BoxContainer>most viewed videos</BoxContainer>;
       default:

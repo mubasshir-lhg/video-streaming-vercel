@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import { useRouter } from "next/router";
+//components
+import SearchField from "../components/SearchField/SearchField";
 //images
 import Image from "next/image";
 import dp from "../assets/Images/user1.jpg";
 import logo from "../assets/Images/logo/Teachmetoo Brandmark Full Color .png";
-//components
-import SearchField from "../components/SearchField/SearchField";
 //icons
 import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined";
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
@@ -30,13 +30,13 @@ import {
   ListItemIcon,
   ListItemText,
   CssBaseline,
-  Typography,
   IconButton,
   Divider,
   Toolbar,
   List,
   Box,
 } from "@mui/material";
+
 const drawerWidth = 220;
 const sideBarLink = [
   {

@@ -12,7 +12,8 @@ import Image from "next/image";
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
-const EditorCard = ({ value }) => {
+const EditorCard = ({ value, individualCheckHandler }) => {
+  
   return (
     <Grid
       container
@@ -23,7 +24,15 @@ const EditorCard = ({ value }) => {
     >
       <Grid item xs={1}>
         <FormGroup>
-          <FormControlLabel control={<Checkbox color="purple" />} />
+          <FormControlLabel
+            control={
+              <Checkbox
+                color="purple"
+                checked={value.check}
+                onClick={()=>individualCheckHandler(value.id)}
+              />
+            }
+          />
         </FormGroup>
       </Grid>
       <Grid item sm={4} md={4} lg={2}>

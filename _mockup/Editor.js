@@ -12,9 +12,10 @@ export const editorData = [
     comments: 20,
     likes: 135,
     dislikes: 2,
+    check:false,
   },
   {
-    id: 1,
+    id: 2,
     img: img,
     videoTitle:
       "Top 10 Travel for beginners Travel Thailand, Bail, Phuket,Maldives, Andamans and more",
@@ -24,9 +25,11 @@ export const editorData = [
     comments: 20,
     likes: 135,
     dislikes: 2,
+    check:false,
+
   },
   {
-    id: 1,
+    id: 3,
     img: img,
     videoTitle:
       "Top 10 Travel for beginners Travel Thailand, Bail, Phuket,Maldives, Andamans and more",
@@ -36,9 +39,10 @@ export const editorData = [
     comments: 20,
     likes: 135,
     dislikes: 2,
+    check:false,
   },
   {
-    id: 1,
+    id: 4,
     img: img,
     videoTitle:
       "Top 10 Travel for beginners Travel Thailand, Bail, Phuket,Maldives, Andamans and more",
@@ -48,5 +52,6 @@ export const editorData = [
     comments: 20,
     likes: 135,
     dislikes: 2,
+    check:false,
   },
 ];

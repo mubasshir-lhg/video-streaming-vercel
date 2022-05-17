@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Grid,
@@ -14,7 +14,24 @@ import { editorData } from "../_mockup/Editor";
 
 const options = ["Newest", "Oldest"];
 const Editor = () => {
+  const [isChecked, setIsChecked] = useState(false);
+  const [data,setData]=useState(editorData);
   const doSomething = () => {};
+
+  const allCheckHandler = () => {
+    const prevChecked=isChecked;
+    setIsChecked((prevValue) => !prevValue);
+    const updatedData=data.map((obj=>({
+      ...obj,
+      check:prevChecked?false:true
+    })));
+    setData(updatedData)
+  };
+
+  const individualCheckHandler=(id)=>{
+    let updatedData=data.map((obj)=>obj.id===id?{...obj,check:!obj.check}:{...obj});
+    setData(updatedData)
+  }
   return (
     <Box>
       <PageHeader title="Editor" />
@@ -22,7 +39,9 @@ const Editor = () => {
         <Grid container alignItems="center" sx={{ mb: 2 }}>
           <Grid item xs={1}>
             <FormGroup>
-              <FormControlLabel control={<Checkbox color="purple" />} />
+              <FormControlLabel
+                control={<Checkbox color="purple" onClick={allCheckHandler} />}
+              />
             </FormGroup>
           </Grid>
           <Grid item xs={2}>
@@ -46,9 +65,12 @@ const Editor = () => {
           </Grid>
         </Grid>
         <Box>
-          {editorData?.map((value, index) => (
+          {data?.map((value, index) => (
             <Box key={index}>
-              <EditorCard value={value} />
+              <EditorCard 
+              value={value}
+              individualCheckHandler={individualCheckHandler}
+              />
             </Box>
           ))}
         </Box>

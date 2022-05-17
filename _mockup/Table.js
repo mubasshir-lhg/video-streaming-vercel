@@ -17,13 +17,13 @@ export const rows = [
   { img: img2, name: "Jonadrielable", date: "Jan 24,2021", likes: 513 },
 ];
 export const rows2 = [
-  { img: img1, title: "MacBook Pro", views: 513, date: "Jan 24,2021" },
-  { img: img1, title: "MacBook Pro", views: 513, date: "Jan 24,2021" },
-  { img: img1, title: "MacBook Pro", views: 513, date: "Jan 24,2021" },
-  { img: img1, title: "MacBook Pro Max", views: 613, date: "May 24,2022" },
-  { img: img1, title: "MacBook Pro Max", views: 613, date: "May 24,2022" },
-  { img: img1, title: "MacBook Pro Max", views: 613, date: "May 24,2022" },
-  { img: img1, title: "MacBook", views:5000, date: "June 24,2022" },
-  { img: img1, title: "MacBook", views:5000, date: "June 24,2022" },
-  { img: img1, title: "MacBook", views:5000, date: "June 24,2022" },
+  { img: img1, title: "MacBook Pro",description:'some discription here', views: 513, date: "Jan 24,2021" },
+  { img: img1, title: "MacBook Pro",description:'some discription here', views: 513, date: "Jan 24,2021" },
+  { img: img1, title: "MacBook Pro",description:'some discription here', views: 513, date: "Jan 24,2021" },
+  { img: img1, title: "MacBook Pro Max",description:'some discription here', views: 613, date: "May 24,2022" },
+  { img: img1, title: "MacBook Pro Max",description:'some discription here', views: 613, date: "May 24,2022" },
+  { img: img1, title: "MacBook Pro Max",description:'some discription here', views: 613, date: "May 24,2022" },
+  { img: img1, title: "MacBook",description:'some discription here', views:5000, date: "June 24,2022" },
+  { img: img1, title: "MacBook",description:'some discription here', views:5000, date: "June 24,2022" },
+  { img: img1, title: "MacBook",description:'some discription here', views:5000, date: "June 24,2022" },
 ];

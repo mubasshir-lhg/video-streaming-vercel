@@ -9,7 +9,12 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import Image from "next/image";
 import { useTheme } from "@mui/styles";
-import { Checkbox, FormGroup, FormControlLabel } from "@mui/material";
+import {
+  Checkbox,
+  FormGroup,
+  FormControlLabel,
+  Typography,
+} from "@mui/material";
 
 export default function MuiTable2({ rows, coloms }) {
   const [page, setPage] = useState(0);
@@ -58,7 +63,7 @@ export default function MuiTable2({ rows, coloms }) {
             ).map((row, index) => {
               return (
                 <TableRow hover onClick={handleClick} key={index}>
-                  <TableCell sx={{ display: "flex"}}>
+                  <TableCell sx={{ display: "flex" }}>
                     <FormGroup>
                       <FormControlLabel control={<Checkbox color="purple" />} />
                     </FormGroup>
@@ -66,7 +71,7 @@ export default function MuiTable2({ rows, coloms }) {
                       <Image
                         alt="table-img"
                         src={row.img}
-                        width={100}
+                        width={150}
                         height={100}
                         quality={100}
                         objectFit="cover"
@@ -74,7 +79,10 @@ export default function MuiTable2({ rows, coloms }) {
                       />
                     </Box>
                   </TableCell>
-                  <TableCell>{row.title}</TableCell>
+                  <TableCell>
+                    <Typography variant="h5">{row.title}</Typography>
+                    <Typography variant="body2">{row.description}</Typography>
+                  </TableCell>
                   <TableCell>{row.views}</TableCell>
                   <TableCell>{row.date}</TableCell>
                 </TableRow>
@@ -93,7 +101,7 @@ export default function MuiTable2({ rows, coloms }) {
         </Table>
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={[3,5, 10, 25]}
+        rowsPerPageOptions={[3, 5, 10, 25]}
         component="div"
         count={rows.length}
         rowsPerPage={rowsPerPage}

@@ -12,6 +12,7 @@ import Autocomplete from "./Autocomplete";
 import Drawer from "./Drawer";
 import AppBar from "./AppBar";
 import Table from "./Table";
+import CheckBox from "./Checkbox";
 
 // ----------------------------------------------------------------------
 
@@ -29,6 +30,7 @@ export default function ComponentsOverrides(theme) {
     Autocomplete(theme),
     Drawer(theme),
     AppBar(theme),
-    Table(theme)
+    Table(theme),
+    CheckBox(theme)
   );
 }

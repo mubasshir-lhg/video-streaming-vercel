@@ -15,8 +15,6 @@ export default function BasicSelect({
   placeholder,
   options,
   onClick,
-  bgColor,
-  p,
 }) {
   const [selectedVal, setSelectedVal] = useState("");
   const classes = useStyles();
@@ -28,7 +26,6 @@ export default function BasicSelect({
     <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth>
         <TextField
-          placeholder="select any value"
           select
           id="select"
           value={selectedVal}

@@ -8,7 +8,6 @@ import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import FlagIcon from "@mui/icons-material/Flag";
 import { Typography, Box, IconButton, Grid } from "@mui/material";
 import Image from "next/image";
-import user from "../../../assets/Images/user1.jpg";
 
 const CommentCard = ({ item }) => {
   const [open, setOpen] = useState(false);
@@ -22,8 +21,8 @@ const CommentCard = ({ item }) => {
         <Grid item xs={12} md={1}>
           <Image
             src={item.img}
-            width={100}
-            height={100}
+            width={80}
+            height={80}
             objectFit="cover"
             quality={100}
             alt="img"

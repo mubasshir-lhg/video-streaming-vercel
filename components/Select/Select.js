@@ -38,6 +38,7 @@ export default function BasicSelect({
             classes: {
               icon: classes.icon,
             },
+            inputProps:{MenuProps: {disableScrollLock: true}}
           }}
           size="small"
           variant="standard"

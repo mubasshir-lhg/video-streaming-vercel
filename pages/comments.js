@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Grid } from "@mui/material";
 import PageHeader from "../components/PageHeader/PageHeader";
 import { styled } from "@mui/system";
@@ -16,26 +16,44 @@ const LinksWrapper = styled(Box)({
 
 const subLinks = ["Published", "Pending", "Marked as spam"];
 const Comments = () => {
+  const [data, setData] = useState(CommentData);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [pending, setPending] = useState(0);
+  const [markedAsSpam, setMarkedAsSpam] = useState(0);
 
   const handleClick = (ind) => {
     setActiveIndex(ind);
   };
+
+  useEffect(() => {
+    if (data) {
+      setPending(data.length);
+      setMarkedAsSpam(data.length);
+    }
+  }, [data]);
 
   const compToShow = () => {
     switch (activeIndex) {
       case 0:
         return (
           <BoxContainer px="0">
-            <Box sx={{height:'370px',overflow:'auto'}}>
-              {CommentData?.map((item, index) => (
+            <Box sx={{ height: "370px", overflow: "auto" }}>
+              {data?.map((item, index) => (
                 <CommentCard item={item} key={index} />
               ))}
             </Box>
           </BoxContainer>
         );
       case 1:
-        return <BoxContainer>Pending</BoxContainer>;
+        return (
+          <BoxContainer px="0">
+            <Box sx={{ height: "370px", overflow: "auto" }}>
+              {data?.map((item, index) => (
+                <CommentCard item={item} key={index} />
+              ))}
+            </Box>
+          </BoxContainer>
+        );
       case 2:
         return <BoxContainer>Marked as spam</BoxContainer>;
       default:
@@ -44,7 +62,7 @@ const Comments = () => {
   };
   return (
     <Box>
-      <PageHeader title="Channel States" />
+      <PageHeader title="Comments" />
       <LinksWrapper>
         {subLinks?.map((item, index) => (
           <Box
@@ -56,6 +74,8 @@ const Comments = () => {
             onClick={() => handleClick(index)}
           >
             {item}
+            {item === "Pending" && ` (${pending})`}
+            {item === "Marked as spam" && ` (${markedAsSpam})`}
           </Box>
         ))}
       </LinksWrapper>

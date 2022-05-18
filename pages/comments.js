@@ -55,7 +55,15 @@ const Comments = () => {
           </BoxContainer>
         );
       case 2:
-        return <BoxContainer>Marked as spam</BoxContainer>;
+        return (
+          <BoxContainer px="0">
+            <Box sx={{ height: "370px", overflow: "auto" }}>
+              {data?.map((item, index) => (
+                <CommentCard item={item} key={index} />
+              ))}
+            </Box>
+          </BoxContainer>
+        );
       default:
         break;
     }

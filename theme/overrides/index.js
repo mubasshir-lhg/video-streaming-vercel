@@ -11,6 +11,8 @@ import IconButton from "./IconButton";
 import Autocomplete from "./Autocomplete";
 import Drawer from "./Drawer";
 import AppBar from "./AppBar";
+import Table from "./Table";
+import CheckBox from "./Checkbox";
 
 // ----------------------------------------------------------------------
 
@@ -27,6 +29,8 @@ export default function ComponentsOverrides(theme) {
     IconButton(theme),
     Autocomplete(theme),
     Drawer(theme),
-    AppBar(theme)
+    AppBar(theme),
+    Table(theme),
+    CheckBox(theme)
   );
 }

@@ -9,16 +9,19 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import SubscriptionsIcon from "@mui/icons-material/Subscriptions";
 import PageHeader from "../components/PageHeader/PageHeader";
-//chart data
-import { datasets } from "../components/Chart/data";
 import LineChart from "../components/Chart/LineChart";
 import { makeStyles } from "@mui/styles";
+import MuiTable from "../components/Table/Table";
+//data
+import { datasets } from "../components/Chart/data";
+import { rows, coloms,rows2,coloms2 } from "../_mockup/Table";
+import MuiTable2 from "../components/Table/Table2";
 
 const useStyles = makeStyles({
   box: {
-   "& canvas":{
-     width:'98% !important'
-   }
+    "& canvas": {
+      width: "98% !important",
+    },
   },
 });
 
@@ -32,7 +35,7 @@ const LinksWrapper = styled(Box)({
 
 const subLinks = ["Overview", "Subscribers", "Views", "Most viewed Video"];
 const Analytics = () => {
-  const styles=useStyles()
+  const styles = useStyles();
   const { palette } = useTheme();
   const { gradients } = palette;
   const [activeIndex, setActiveIndex] = useState(0);
@@ -79,18 +82,53 @@ const Analytics = () => {
               </Grid>
               <Grid item xs={12}>
                 <Box className={styles.box}>
-                  <LineChart chartData={chartData}  />
+                  <LineChart chartData={chartData} />
                 </Box>
               </Grid>
             </Grid>
           </BoxContainer>
         );
       case 1:
-        return <BoxContainer>subscriber</BoxContainer>;
+        return (
+          <BoxContainer>
+            <Box sx={{ typography: "subtitle1" }}>
+              View All subscribers
+            </Box>
+            <MuiTable rows={rows} coloms={coloms} />
+          </BoxContainer>
+        );
       case 2:
-        return <BoxContainer>views</BoxContainer>;
+        return (
+          <BoxContainer>
+            <Box sx={{ typography: "subtitle1" }}>
+              Your Channel got 153k views in the last 28 days
+            </Box>
+            <Grid container spacing={2} sx={{ flexWrap: "wrap" }}>
+              <Grid item xs={12} md={6} lg={5}>
+                <InfoContainer
+                  background={gradients.purple}
+                  tag="Views"
+                  number="153K"
+                  shape="horizontal"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <Box className={styles.box}>
+                  <LineChart chartData={chartData} />
+                </Box>
+              </Grid>
+            </Grid>
+          </BoxContainer>
+        );
       case 3:
-        return <BoxContainer>most viewed videos</BoxContainer>;
+        return (
+          <BoxContainer>
+          <Box sx={{ typography: "subtitle1" }}>
+            Most View Video
+          </Box>
+          <MuiTable2 rows={rows2} coloms={coloms2} />
+        </BoxContainer>
+        );
       default:
         break;
     }

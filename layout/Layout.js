@@ -148,7 +148,7 @@ export default function Layout({ children }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [navbar, setNavbar] = useState(false);
   const [searchBar, setSearchBar] = useState(false);
-  const isSmDown = useMediaQuery(breakpoints.down("sm"));
+  const isSmDown = useMediaQuery(breakpoints.down("md"));
 
   const handleDrawer = () => {
     setOpen((preState) => !preState);

@@ -29,3 +29,22 @@ a {
 .bar-img{
   border-radius: 8px;
 }
+
+/* scrollbar */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #2f3566; 
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #212540; 
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8900e1; 
+}
+
+/*End of scrollbar */

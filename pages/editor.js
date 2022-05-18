@@ -7,7 +7,7 @@ import {
   Checkbox,
 } from "@mui/material";
 import BoxContainer from "../components/BoxContainer/BoxContainer";
-import EditorCard from "../components/EditorCard/EditorCard";
+import EditorCard from "../components/Cards/EditorCard/EditorCard";
 import PageHeader from "../components/PageHeader/PageHeader";
 import BasicSelect from "../components/Select/Select";
 import { editorData } from "../_mockup/Editor";

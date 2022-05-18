@@ -4,7 +4,7 @@ import PageHeader from "../components/PageHeader/PageHeader";
 import { styled } from "@mui/system";
 import BoxContainer from "../components/BoxContainer/BoxContainer";
 import CommentCard from "../components/Cards/CommentCard/CommentCard";
-import { CommentData } from "../_mockup/Comment";
+import { published, pending, markAsSpam } from "../_mockup/Comment";
 
 const LinksWrapper = styled(Box)({
   display: "flex",
@@ -16,21 +16,23 @@ const LinksWrapper = styled(Box)({
 
 const subLinks = ["Published", "Pending", "Marked as spam"];
 const Comments = () => {
-  const [data, setData] = useState(CommentData);
+  const [publishedData, setData] = useState(published);
+  const [pendingData, setPendingData] = useState(pending);
+  const [markAsSpamData, setMarkAsSpamData] = useState(markAsSpam);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [pending, setPending] = useState(0);
-  const [markedAsSpam, setMarkedAsSpam] = useState(0);
+  const [totalPending, setTotalPending] = useState(0);
+  const [totalmarkedAsSpam, setTotalMarkedAsSpam] = useState(0);
 
   const handleClick = (ind) => {
     setActiveIndex(ind);
   };
 
   useEffect(() => {
-    if (data) {
-      setPending(data.length);
-      setMarkedAsSpam(data.length);
+    if (pendingData && markAsSpamData) {
+      setTotalPending(pendingData.length);
+      setTotalMarkedAsSpam(markAsSpamData.length);
     }
-  }, [data]);
+  }, [pendingData, markAsSpamData]);
 
   const compToShow = () => {
     switch (activeIndex) {
@@ -38,7 +40,7 @@ const Comments = () => {
         return (
           <BoxContainer px="0">
             <Box sx={{ height: "370px", overflow: "auto" }}>
-              {data?.map((item, index) => (
+              {publishedData?.map((item, index) => (
                 <CommentCard item={item} key={index} />
               ))}
             </Box>
@@ -48,7 +50,7 @@ const Comments = () => {
         return (
           <BoxContainer px="0">
             <Box sx={{ height: "370px", overflow: "auto" }}>
-              {data?.map((item, index) => (
+              {pendingData?.map((item, index) => (
                 <CommentCard item={item} key={index} />
               ))}
             </Box>
@@ -58,7 +60,7 @@ const Comments = () => {
         return (
           <BoxContainer px="0">
             <Box sx={{ height: "370px", overflow: "auto" }}>
-              {data?.map((item, index) => (
+              {markAsSpamData?.map((item, index) => (
                 <CommentCard item={item} key={index} />
               ))}
             </Box>
@@ -82,8 +84,8 @@ const Comments = () => {
             onClick={() => handleClick(index)}
           >
             {item}
-            {item === "Pending" && ` (${pending})`}
-            {item === "Marked as spam" && ` (${markedAsSpam})`}
+            {item === "Pending" && ` (${totalPending})`}
+            {item === "Marked as spam" && ` (${totalmarkedAsSpam})`}
           </Box>
         ))}
       </LinksWrapper>

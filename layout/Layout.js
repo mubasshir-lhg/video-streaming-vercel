@@ -3,7 +3,7 @@ import { styled, useTheme } from "@mui/material/styles";
 import { useRouter } from "next/router";
 //components
 import SearchField from "../components/SearchField/SearchField";
-import Head from 'next/head'
+import Head from "next/head";
 //images
 import Image from "next/image";
 import dp from "../assets/Images/user1.jpg";
@@ -15,7 +15,7 @@ import PersonAddOutlinedIcon from "@mui/icons-material/PersonAddOutlined";
 import ModeCommentOutlinedIcon from "@mui/icons-material/ModeCommentOutlined";
 import SubtitlesOutlinedIcon from "@mui/icons-material/SubtitlesOutlined";
 import VideoCallOutlinedIcon from "@mui/icons-material/VideoCallOutlined";
-import VideoCallIcon from '@mui/icons-material/VideoCall';
+import VideoCallIcon from "@mui/icons-material/VideoCall";
 import VideocamOutlinedIcon from "@mui/icons-material/VideocamOutlined";
 import MicNoneOutlinedIcon from "@mui/icons-material/MicNoneOutlined";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
@@ -38,6 +38,8 @@ import {
   List,
   Box,
 } from "@mui/material";
+import { RequestModal } from "../components/Modal/RequestAVideo/RequestAVideo";
+import { UploadVideoModal } from "../components/Modal/UploadVideoModal/UploadVideoModal";
 
 const drawerWidth = 220;
 const sideBarLink = [
@@ -147,6 +149,8 @@ export default function Layout({ children }) {
   const router = useRouter();
   const { breakpoints } = useTheme();
   const [open, setOpen] = useState(true);
+  const [openRequestModal, setOpenRequestModal] = useState(false);
+  const [openUploadModal, setOpenUploadModal] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const [navbar, setNavbar] = useState(false);
   const [searchBar, setSearchBar] = useState(false);
@@ -154,6 +158,10 @@ export default function Layout({ children }) {
 
   const handleDrawer = () => {
     setOpen((preState) => !preState);
+  };
+  const handleCloseModal = () => {
+    setOpenRequestModal(false);
+    setOpenUploadModal(false);
   };
   const ShowSearchBar = () => {
     setSearchBar((preState) => !preState);
@@ -173,14 +181,14 @@ export default function Layout({ children }) {
   };
 
   useEffect(() => {
-    if(isSmDown){
-      setOpen(false)
-    }else{
-      setOpen(true)
+    if (isSmDown) {
+      setOpen(false);
+    } else {
+      setOpen(true);
     }
     changeBackground();
     window.addEventListener("scroll", changeBackground);
-  },[isSmDown]);
+  }, [isSmDown]);
   return (
     <Box sx={{ display: "flex" }}>
       <Head>
@@ -239,13 +247,13 @@ export default function Layout({ children }) {
                     <SearchField />
                   </Box>
                 )}
-                <IconButton>
+                <IconButton onClick={() => setOpenRequestModal(true)}>
                   <VideoCallOutlinedIcon />
                 </IconButton>
                 <IconButton>
                   <MicNoneOutlinedIcon />
                 </IconButton>
-                <IconButton>
+                <IconButton onClick={() => setOpenUploadModal(true)}>
                   <VideocamOutlinedIcon />
                 </IconButton>
                 <IconButton>
@@ -324,6 +332,9 @@ export default function Layout({ children }) {
         <DrawerHeader />
         {children}
       </Box>
+
+      <RequestModal open={openRequestModal} handleClose={handleCloseModal} />
+      <UploadVideoModal open={openUploadModal} handleClose={handleCloseModal} />
     </Box>
   );
 }

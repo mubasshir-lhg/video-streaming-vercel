@@ -3,6 +3,7 @@ import { styled, useTheme } from "@mui/material/styles";
 import { useRouter } from "next/router";
 //components
 import SearchField from "../components/SearchField/SearchField";
+import Head from 'next/head'
 //images
 import Image from "next/image";
 import dp from "../assets/Images/user1.jpg";
@@ -181,6 +182,9 @@ export default function Layout({ children }) {
   },[isSmDown]);
   return (
     <Box sx={{ display: "flex" }}>
+      <Head>
+        <title>Alex-Lei</title>
+      </Head>
       <CssBaseline />
       <AppBar
         position="fixed"

@@ -15,6 +15,7 @@ import PersonAddOutlinedIcon from "@mui/icons-material/PersonAddOutlined";
 import ModeCommentOutlinedIcon from "@mui/icons-material/ModeCommentOutlined";
 import SubtitlesOutlinedIcon from "@mui/icons-material/SubtitlesOutlined";
 import VideoCallOutlinedIcon from "@mui/icons-material/VideoCallOutlined";
+import VideoCallIcon from '@mui/icons-material/VideoCall';
 import VideocamOutlinedIcon from "@mui/icons-material/VideocamOutlined";
 import MicNoneOutlinedIcon from "@mui/icons-material/MicNoneOutlined";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
@@ -74,7 +75,7 @@ const sideBarLink = [
     id: "requests",
     label: "Requests",
     link: "/requests",
-    Icon: VideoCallOutlinedIcon,
+    Icon: VideoCallIcon,
   },
 ];
 const openedMixin = (theme) => ({

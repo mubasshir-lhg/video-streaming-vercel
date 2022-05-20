@@ -1,15 +1,17 @@
 import React from "react";
 import { Box } from "@mui/material";
 import { useTheme } from "@mui/styles";
-const Video = ({ src, width, height,borderRadius }) => {
+const Video = ({ src, width, height, borderRadius,mx }) => {
   const { shape, customShadows } = useTheme();
   return (
-    <Box sx={{ width: width || 240, height: height || 140, my: 2 }}>
+    <Box
+      sx={{ width: width || 240, height: height || 140, my: 2, mx: mx || 0 }}
+    >
       <video
         width="100%"
         controls
         style={{
-          borderRadius:borderRadius|| shape.borderRadiusMd,
+          borderRadius: borderRadius || shape.borderRadiusMd,
           boxShadow: customShadows.z1,
         }}
       >

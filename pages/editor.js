@@ -15,23 +15,25 @@ import { editorData } from "../_mockup/Editor";
 const options = ["Newest", "Oldest"];
 const Editor = () => {
   const [isChecked, setIsChecked] = useState(false);
-  const [data,setData]=useState(editorData);
+  const [data, setData] = useState(editorData);
   const doSomething = () => {};
 
   const allCheckHandler = () => {
-    const prevChecked=isChecked;
+    const prevChecked = isChecked;
     setIsChecked((prevValue) => !prevValue);
-    const updatedData=data.map((obj=>({
+    const updatedData = data.map((obj) => ({
       ...obj,
-      check:prevChecked?false:true
-    })));
-    setData(updatedData)
+      check: prevChecked ? false : true,
+    }));
+    setData(updatedData);
   };
 
-  const individualCheckHandler=(id)=>{
-    let updatedData=data.map((obj)=>obj.id===id?{...obj,check:!obj.check}:{...obj});
-    setData(updatedData)
-  }
+  const individualCheckHandler = (id) => {
+    let updatedData = data.map((obj) =>
+      obj.id === id ? { ...obj, check: !obj.check } : { ...obj }
+    );
+    setData(updatedData);
+  };
   return (
     <Box>
       <PageHeader title="Editor" />
@@ -51,25 +53,25 @@ const Editor = () => {
               placeholder="Actions"
             />
           </Grid>
-          <Grid item xs={4} md={5} lg={7}></Grid>
+          <Grid item xs={4} md={5} lg={6}></Grid>
           <Grid
             item
             xs={5}
             md={4}
-            lg={2}
+            lg={3}
             alignSelf="right"
-            sx={{ display: "flex", flexWrap: "wrap" }}
+            sx={{ display: "flex",justifyContent:'flex-end'}}
           >
             <Box mr={1}>Views :</Box>
-            <BasicSelect options={options} onClick={doSomething} />
+            <BasicSelect options={options} onClick={doSomething} width='60%'/>
           </Grid>
         </Grid>
         <Box>
           {data?.map((value, index) => (
             <Box key={index}>
-              <EditorCard 
-              value={value}
-              individualCheckHandler={individualCheckHandler}
+              <EditorCard
+                value={value}
+                individualCheckHandler={individualCheckHandler}
               />
             </Box>
           ))}

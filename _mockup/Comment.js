@@ -12,7 +12,7 @@ export const published = [
     comment:
       " Ullamco sunt quis ut qui Cupidatat anim nulla labore minim anim officia deserunt nostrud aliqua laborum nisi cillum.Nisi quis labore elit deserunt veniam esse dolore non dolor. eiusmod amet ad qui.Nis qui irure amet commodo aliqua.",
     moreDetail:
-      " more details : Duis Lorem commodo et ipsum cupidatat officia.Mollit laborum velit",
+      "more details",
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ export const published = [
     comment:
       " Ullamco sunt quis ut qui Cupidatat anim nulla labore minim anim officia deserunt nostrud aliqua laborum nisi cillum.Nisi quis labore elit deserunt veniam esse dolore non dolor. eiusmod amet ad qui.Nis qui irure amet commodo aliqua.",
     moreDetail:
-      " more details : Duis Lorem commodo et ipsum cupidatat officia.Mollit laborum velit",
+      "more details",
   },
   {
     id: 3,
@@ -34,7 +34,7 @@ export const published = [
     comment:
       " Ullamco sunt quis ut qui Cupidatat anim nulla labore minim anim officia deserunt nostrud aliqua laborum nisi cillum.Nisi quis labore elit deserunt veniam esse dolore non dolor. eiusmod amet ad qui.Nis qui irure amet commodo aliqua.",
     moreDetail:
-      " more details : Duis Lorem commodo et ipsum cupidatat officia.Mollit laborum velit",
+      "more details",
   },
   {
     id: 4,
@@ -45,7 +45,7 @@ export const published = [
     comment:
       " Ullamco sunt quis ut qui Cupidatat anim nulla labore minim anim officia deserunt nostrud aliqua laborum nisi cillum.Nisi quis labore elit deserunt veniam esse dolore non dolor. eiusmod amet ad qui.Nis qui irure amet commodo aliqua.",
     moreDetail:
-      " more details : Duis Lorem commodo et ipsum cupidatat officia.Mollit laborum velit",
+      "more details",
   },
 ];
 
@@ -59,7 +59,7 @@ export const pending = [
     comment:
       " Ullamco sunt quis ut qui Cupidatat anim nulla labore minim anim officia deserunt nostrud aliqua laborum nisi cillum.Nisi quis labore elit deserunt veniam esse dolore non dolor. eiusmod amet ad qui.Nis qui irure amet commodo aliqua.",
     moreDetail:
-      " more details : Duis Lorem commodo et ipsum cupidatat officia.Mollit laborum velit",
+      "more details",
   },
   {
     id: 2,
@@ -70,7 +70,7 @@ export const pending = [
     comment:
       " Ullamco sunt quis ut qui Cupidatat anim nulla labore minim anim officia deserunt nostrud aliqua laborum nisi cillum.Nisi quis labore elit deserunt veniam esse dolore non dolor. eiusmod amet ad qui.Nis qui irure amet commodo aliqua.",
     moreDetail:
-      " more details : Duis Lorem commodo et ipsum cupidatat officia.Mollit laborum velit",
+      "more details",
   },
   {
     id: 3,
@@ -81,7 +81,7 @@ export const pending = [
     comment:
       " Ullamco sunt quis ut qui Cupidatat anim nulla labore minim anim officia deserunt nostrud aliqua laborum nisi cillum.Nisi quis labore elit deserunt veniam esse dolore non dolor. eiusmod amet ad qui.Nis qui irure amet commodo aliqua.",
     moreDetail:
-      " more details : Duis Lorem commodo et ipsum cupidatat officia.Mollit laborum velit",
+      "more details",
   },
   {
     id: 4,
@@ -92,7 +92,7 @@ export const pending = [
     comment:
       " Ullamco sunt quis ut qui Cupidatat anim nulla labore minim anim officia deserunt nostrud aliqua laborum nisi cillum.Nisi quis labore elit deserunt veniam esse dolore non dolor. eiusmod amet ad qui.Nis qui irure amet commodo aliqua.",
     moreDetail:
-      " more details : Duis Lorem commodo et ipsum cupidatat officia.Mollit laborum velit",
+      "more details",
   },
   {
     id: 5,
@@ -103,7 +103,7 @@ export const pending = [
     comment:
       " Ullamco sunt quis ut qui Cupidatat anim nulla labore minim anim officia deserunt nostrud aliqua laborum nisi cillum.Nisi quis labore elit deserunt veniam esse dolore non dolor. eiusmod amet ad qui.Nis qui irure amet commodo aliqua.",
     moreDetail:
-      " more details : Duis Lorem commodo et ipsum cupidatat officia.Mollit laborum velit",
+      "more details",
   },
   {
     id: 6,
@@ -114,7 +114,7 @@ export const pending = [
     comment:
       " Ullamco sunt quis ut qui Cupidatat anim nulla labore minim anim officia deserunt nostrud aliqua laborum nisi cillum.Nisi quis labore elit deserunt veniam esse dolore non dolor. eiusmod amet ad qui.Nis qui irure amet commodo aliqua.",
     moreDetail:
-      " more details : Duis Lorem commodo et ipsum cupidatat officia.Mollit laborum velit",
+      "more details",
   },
 ];
 
@@ -128,7 +128,7 @@ export const markAsSpam = [
     comment:
       " Ullamco sunt quis ut qui Cupidatat anim nulla labore minim anim officia deserunt nostrud aliqua laborum nisi cillum.Nisi quis labore elit deserunt veniam esse dolore non dolor. eiusmod amet ad qui.Nis qui irure amet commodo aliqua.",
     moreDetail:
-      " more details : Duis Lorem commodo et ipsum cupidatat officia.Mollit laborum velit",
+      "more details",
   },
   {
     id: 2,
@@ -139,7 +139,7 @@ export const markAsSpam = [
     comment:
       " Ullamco sunt quis ut qui Cupidatat anim nulla labore minim anim officia deserunt nostrud aliqua laborum nisi cillum.Nisi quis labore elit deserunt veniam esse dolore non dolor. eiusmod amet ad qui.Nis qui irure amet commodo aliqua.",
     moreDetail:
-      " more details : Duis Lorem commodo et ipsum cupidatat officia.Mollit laborum velit",
+      "more details",
   },
   {
     id: 3,
@@ -150,7 +150,7 @@ export const markAsSpam = [
     comment:
       " Ullamco sunt quis ut qui Cupidatat anim nulla labore minim anim officia deserunt nostrud aliqua laborum nisi cillum.Nisi quis labore elit deserunt veniam esse dolore non dolor. eiusmod amet ad qui.Nis qui irure amet commodo aliqua.",
     moreDetail:
-      " more details : Duis Lorem commodo et ipsum cupidatat officia.Mollit laborum velit",
+      "more details",
   },
   {
     id: 4,
@@ -161,6 +161,6 @@ export const markAsSpam = [
     comment:
       " Ullamco sunt quis ut qui Cupidatat anim nulla labore minim anim officia deserunt nostrud aliqua laborum nisi cillum.Nisi quis labore elit deserunt veniam esse dolore non dolor. eiusmod amet ad qui.Nis qui irure amet commodo aliqua.",
     moreDetail:
-      " more details : Duis Lorem commodo et ipsum cupidatat officia.Mollit laborum velit",
+      "more details",
   },
 ];

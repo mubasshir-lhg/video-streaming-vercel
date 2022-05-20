@@ -1,11 +1,19 @@
-import { Box, Button, Grid, TextField } from "@mui/material";
 import React, { useState } from "react";
+import { Box, Button, Grid, TextField } from "@mui/material";
+import { styled } from "@mui/system";
 import BoxContainer from "../components/BoxContainer/BoxContainer";
 import PageHeader from "../components/PageHeader/PageHeader";
 import BasicSelect from "../components/Select/Select";
 import SubtitleDisplay from "../components/SubtitleDisplay/SubtitleDisplay";
 import Video from "../components/Video/Video";
 import { subtitleData } from "../_mockup/Subtitle";
+
+const ButtonWrapper = styled(Box)({
+  display: "flex",
+  justifyContent: "flex-end",
+  gap: "10px",
+  margin: "16px 0",
+});
 
 const options = ["action 1", "action 2"];
 const Subtitles = () => {
@@ -88,9 +96,10 @@ const Subtitles = () => {
               <Grid item xs={12} md={7} order={{ xs: 1, md: 2 }}>
                 <Video
                   src="/video1.mp4"
-                  width="90%"
+                  width="95%"
                   height="100%"
                   borderRadius="24px"
+                  mx="auto"
                 />
               </Grid>
             </Grid>
@@ -102,6 +111,25 @@ const Subtitles = () => {
   return (
     <Box>
       <PageHeader title="Subtitles" />
+      {!subtitlePage2 ? (
+        <ButtonWrapper>
+          <Button variant="contained" color="secondary" sx={{width:100}}>
+            Edit
+          </Button>
+          <Button variant="contained" color="secondary" sx={{width:100}}>
+            Unpublish
+          </Button>
+        </ButtonWrapper>
+      ) : (
+        <ButtonWrapper>
+          <Button variant="contained" color="secondary" sx={{width:120}}>
+            Delete Draft
+          </Button>
+          <Button variant="contained" color="info" onClick={clickHandler} sx={{width:120}}>
+            Publish Edits
+          </Button>
+        </ButtonWrapper>
+      )}
       {pageToshow()}
     </Box>
   );

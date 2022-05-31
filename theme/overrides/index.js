@@ -13,6 +13,7 @@ import Drawer from "./Drawer";
 import AppBar from "./AppBar";
 import Table from "./Table";
 import CheckBox from "./Checkbox";
+import Calender from "./Calender";
 
 // ----------------------------------------------------------------------
 
@@ -31,6 +32,7 @@ export default function ComponentsOverrides(theme) {
     Drawer(theme),
     AppBar(theme),
     Table(theme),
-    CheckBox(theme)
+    CheckBox(theme),
+    Calender(theme),
   );
 }

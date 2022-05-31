@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import React from "react";
 import SplitChapterCard from "../components/Cards/SplitChapterCard/SplitChapterCard";
 import Video from "../components/Video/Video";
@@ -26,6 +26,10 @@ const SplitChapters = () => {
             endTime="05:00"
           />
         </Grid>
+      </Grid>
+      <Grid item xs={8} container spacing={1} justifyContent="center">
+          <Grid item xs={12} md={6} lg={3}><Button variant="outlined" color='purple' fullWidth>Cancel</Button> </Grid>
+          <Grid item xs={12} md={6} lg={3}><Button variant="contained" color='purple' fullWidth>Split Chapters</Button> </Grid>
       </Grid>
     </Grid>
   );

@@ -11,11 +11,7 @@ const useStyles = makeStyles({
     color: "#fff",
   },
 });
-export default function BasicSelect({
-  placeholder,
-  options,
-  onClick,
-}) {
+export default function BasicSelect({ placeholder, options, onClick, width }) {
   const [selectedVal, setSelectedVal] = useState("");
   const classes = useStyles();
   const handleChange = (event) => {
@@ -38,7 +34,7 @@ export default function BasicSelect({
             classes: {
               icon: classes.icon,
             },
-            inputProps:{MenuProps: {disableScrollLock: true}}
+            inputProps: { MenuProps: { disableScrollLock: true } },
           }}
           size="small"
           variant="standard"

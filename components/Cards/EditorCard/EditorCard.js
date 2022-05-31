@@ -18,7 +18,6 @@ const EditorCard = ({ value, individualCheckHandler }) => {
     <Grid
       container
       alignItems="center"
-      justifyContent="center"
       sx={{ py: 2, borderTop: "1px solid #fff" }}
       spacing={1}
     >
@@ -48,9 +47,9 @@ const EditorCard = ({ value, individualCheckHandler }) => {
           />
         </Box>
       </Grid>
-      <Grid item xs={10} sm={8} lg={7} order={{ xs: 3, md: 3, lg: 1 }}>
+      <Grid item xs={11} lg={7} order={{ xs: 3, md: 3, lg: 1 }} ml='auto'>
         {value.videoTitle}
-        <Typography variant="body2">
+        <Typography variant="body2" mt={1}>
           {value.videoViews} . {value.videoUploadTime}
         </Typography>
       </Grid>

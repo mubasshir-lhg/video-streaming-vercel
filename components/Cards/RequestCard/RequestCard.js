@@ -7,7 +7,7 @@ const RequestCard = ({ item }) => {
   return (
     <Box py={2} px={4} sx={{ "&:hover": { backgroundColor: "primary.light" } }}>
       <Grid container spacing={2}>
-        <Grid item xs={2} md={2} lg={1}>
+        <Grid item xs={3}  md={2} lg={1}>
           <Image
             src={item.img}
             width={80}
@@ -18,7 +18,7 @@ const RequestCard = ({ item }) => {
             className="bar-img"
           />
         </Grid>
-        <Grid item xs={8} md={8}>
+        <Grid item xs={7}  md={8}>
           <Box sx={{ pb: 1, display: "flex", gap: { xs: "10px", md: "30px" } }}>
             <Typography>{item.userName}</Typography>
             <Typography variant="body2">{item.time}</Typography>

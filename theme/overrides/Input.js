@@ -9,6 +9,7 @@ export default function Input(theme) {
           size: 'small',
           backgroundColor:theme.palette.primary.main,
           borderRadius:theme.shape.borderRadiusMd,
+          width:"100%",
         },
       },
     },
@@ -46,6 +47,14 @@ export default function Input(theme) {
         icon: {
           color: "#fff",
         },
+        outlined:{
+          backgroundColor: theme.palette.primary.main,
+          padding: "16px",
+          borderRadius: theme.shape.borderRadius,
+          "&.Mui-focused":{
+            borderColor:'none'
+          }
+        }
       },
     },
     MuiMenu: {

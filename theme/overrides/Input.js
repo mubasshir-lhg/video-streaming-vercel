@@ -6,6 +6,9 @@ export default function Input(theme) {
       styleOverrides: {
         root: {
           color: "#fff",
+          size: 'small',
+          backgroundColor:theme.palette.primary.main,
+          borderRadius:theme.shape.borderRadiusMd,
         },
       },
     },
@@ -63,30 +66,32 @@ export default function Input(theme) {
     MuiFilledInput: {
       styleOverrides: {
         root: {
-          backgroundColor: theme.palette.grey[100],
+          size: 'small',
+          backgroundColor: theme.palette.primary.main,
           "&:hover": {
-            backgroundColor: theme.palette.grey[500_16],
+            backgroundColor: theme.palette.primary.light,
           },
           "&.Mui-focused": {
-            backgroundColor: theme.palette.action.focus,
+            backgroundColor: theme.palette.primary.main,
           },
           "&.Mui-disabled": {
             backgroundColor: theme.palette.action.disabledBackground,
           },
+          "&.MuiFilledInput-inputSizeSmall":{
+            size:'small',
+          }
         },
         underline: {
           "&.MuiFilledInput-underline": {
             disableUnderline: true,
-          },
-          "&:before": {
-            borderBottomColor: theme.palette.grey[500_56],
-          },
+          }
         },
       },
     },
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
+          borderRadius:theme.shape.borderRadiusSm,
           "& .MuiOutlinedInput-notchedOutline": {
             borderColor: theme.palette.grey[500_32],
           },

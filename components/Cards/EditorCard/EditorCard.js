@@ -40,7 +40,7 @@ const EditorCard = ({ value, individualCheckHandler }) => {
             alt="table-img"
             src={value.img}
             width={150}
-            height={100}
+            height={90}
             quality={100}
             objectFit="cover"
             className="bar-img"

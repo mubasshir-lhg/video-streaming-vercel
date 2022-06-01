@@ -25,6 +25,7 @@ const OutlinedButton = ({ text, width, color, active, onClick }) => {
       onClick={onClick}
       sx={{
         px: 2,
+        ml:3,
         color: "white",
         minWidth: "120px",
         minHeight: "40px",

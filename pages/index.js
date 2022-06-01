@@ -21,7 +21,7 @@ const tabs = [
 const Homepage = () => {
   const [value, setValue] = useState(0);
   const [activeBtn, setActivebtn] = useState(0);
-  const [screenSize, setScreenSize] = useState(1440);
+  const [screenSize, setScreenSize] = useState(1540);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -38,7 +38,7 @@ const Homepage = () => {
   return (
     <Box>
       <Grid container spacing={2}>
-        <Grid item xs={12}>
+        <Grid item xs={12} sx={{borderBottom:'1px solid #2447EF' ,pb:1}}>
           <Box sx={{ maxWidth: { xs: screenSize-130, md:screenSize-260 } }}>
             <Tabs
               value={value}

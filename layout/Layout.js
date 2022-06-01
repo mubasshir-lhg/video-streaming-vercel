@@ -22,6 +22,9 @@ import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined
 import SearchIcon from "@mui/icons-material/Search";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import HomeIcon from "@mui/icons-material/Home";
+import FlipCameraAndroidIcon from "@mui/icons-material/FlipCameraAndroid";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
 //mui
 import ClickAwayListener from "@mui/base/ClickAwayListener";
 import MuiDrawer from "@mui/material/Drawer";
@@ -37,16 +40,40 @@ import {
   Toolbar,
   List,
   Box,
+  Typography,
+  Popover,
+  Menu,
+  MenuItem,
 } from "@mui/material";
 import { RequestModal } from "../components/Modal/RequestAVideo/RequestAVideo";
 import { UploadVideoModal } from "../components/Modal/UploadVideoModal/UploadVideoModal";
 
 const drawerWidth = 220;
-const sideBarLink = [
+const sideBarLinkUser = [
+  {
+    id: "home",
+    label: "Home",
+    link: "/",
+    Icon: HomeIcon,
+  },
+  {
+    id: "video",
+    label: "Video ",
+    link: "/video",
+    Icon: FlipCameraAndroidIcon,
+  },
+  {
+    id: "time",
+    label: "Time",
+    link: "/time",
+    Icon: AccessTimeIcon,
+  },
+];
+const sideBarLinkAdmin = [
   {
     id: "dashboard",
     label: "Dashboard",
-    link: "/",
+    link: "/dashboard",
     Icon: DashboardOutlinedIcon,
   },
   {
@@ -154,8 +181,27 @@ export default function Layout({ children }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [navbar, setNavbar] = useState(false);
   const [searchBar, setSearchBar] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [channel, setChannel] = useState(false);
   const isSmDown = useMediaQuery(breakpoints.down("md"));
 
+  const openPopup = Boolean(anchorEl);
+  const openPopupMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const closePopupMenu = () => {
+    setAnchorEl(null);
+  };
+  const switchToChannel = () => {
+    setChannel(true);
+    closePopupMenu();
+    router.push('/dashboard');
+  };
+  const switchToHome = () => {
+    setChannel(false);
+    closePopupMenu();
+    router.push('/');
+  };
   const handleDrawer = () => {
     setOpen((preState) => !preState);
   };
@@ -259,7 +305,15 @@ export default function Layout({ children }) {
                 <IconButton>
                   <NotificationsOutlinedIcon />
                 </IconButton>
-                <Box mt={1} sx={{ minWidth: "25px" }}>
+                <Box
+                  mt={1}
+                  sx={{ minWidth: "25px", cursor: "pointer" }}
+                  id="basic-button"
+                  aria-controls={openPopup ? "basic-menu" : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={openPopup ? "true" : undefined}
+                  onClick={openPopupMenu}
+                >
                   <Image
                     alt="Dp"
                     src={dp}
@@ -270,6 +324,19 @@ export default function Layout({ children }) {
                     className="bar-img"
                   />
                 </Box>
+                <Menu
+                  id="basic-menu"
+                  anchorEl={anchorEl}
+                  open={openPopup}
+                  onClose={closePopupMenu}
+                  MenuListProps={{
+                    "aria-labelledby": "basic-button",
+                  }}
+                >
+                  <MenuItem onClick={switchToChannel}>Your Channel</MenuItem>
+                  <MenuItem onClick={switchToHome}>Home</MenuItem>
+                  <MenuItem onClick={closePopupMenu}>Logout</MenuItem>
+                </Menu>
               </>
             )}
           </>
@@ -298,7 +365,7 @@ export default function Layout({ children }) {
         )}
 
         <List sx={{ pl: 3 }}>
-          {sideBarLink.map((item, index) => (
+          {(channel ? sideBarLinkAdmin : sideBarLinkUser).map((item, index) => (
             <ListItemButton
               key={item.label}
               sx={{

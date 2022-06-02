@@ -2,11 +2,11 @@ import React from "react";
 import { Box } from "@mui/material";
 import { useTheme } from "@mui/styles";
 
-const Video = ({ src,controls, width, height, borderRadius,mx }) => {
+const Video = ({ src,controls, width, borderRadius,mx }) => {
   const { shape, customShadows } = useTheme();
   return (
     <Box
-      sx={{ width: width || 240, height: height || 140, my: 2, mx: mx || 0 }}
+      sx={{ width: width || 240,my: 2, mx: mx || 0 }}
     >
       <video
         width="100%"

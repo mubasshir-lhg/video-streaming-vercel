@@ -7,15 +7,15 @@ import Category from "../components/Category/Category";
 
 const tabs = [
   { text: "all", color: "primary" },
-  { text: "yellow", color: "yellow" },
-  { text: "info", color: "info" },
-  { text: "success", color: "success" },
-  { text: "warning", color: "warning" },
-  { text: "all", color: "primary" },
-  { text: "yellow", color: "yellow" },
-  { text: "info", color: "info" },
-  { text: "success", color: "success" },
-  { text: "warning", color: "warning" },
+  { text: "arts", color: "yellow" },
+  { text: "carfts", color: "info" },
+  { text: "daily hacks", color: "success" },
+  { text: "handmade", color: "warning" },
+  { text: "gardening", color: "primary" },
+  { text: "music", color: "yellow" },
+  { text: "paintng", color: "info" },
+  { text: "technoledge", color: "success" },
+  { text: "animals", color: "warning" },
 ];
 
 const Homepage = () => {

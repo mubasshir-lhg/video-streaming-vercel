@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { Box, Grid, Typography } from "@mui/material";
+import { homedata } from "../../_mockup/Home";
+import { useRouter } from "next/router";
 import Tabs from "@mui/material/Tabs";
 import HomeCard from "../../components/Cards/HomeCard/HomeCard";
-import { homedata } from "../../_mockup/Home";
 import Category from "../../components/Category/Category";
-import { useRouter } from "next/router";
 
 const tabs = [
   { text: "all", color: "primary" },
@@ -38,7 +38,7 @@ const Homepage = () => {
     router.push({
       pathname: "/home/singleVideo",
       query: { videoDetail: item },
-    },'/singleVideo');
+    },'/home/singleVideo');
   };
 
   const getFilteredList = () => {

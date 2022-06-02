@@ -5,10 +5,17 @@ export default function AppBar(theme) {
     MuiAppBar: {
       styleOverrides: {
         root: {
-          backgroundColor:'transparent',
-          boxShadow:'none',
-        }
-      }
-    }
+          backgroundColor: "transparent",
+          boxShadow: "none",
+        },
+      },
+    },
+    MuiTabs: {
+      styleOverrides: {
+        indicator: {
+          height: "0px",
+        },
+      },
+    },
   };
 }

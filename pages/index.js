@@ -1,114 +1,73 @@
-import React from "react";
-import { Box, Grid, Typography, Divider } from "@mui/material";
-import Video from "../components/Video/Video";
-import { useTheme } from "@mui/styles";
-import { styled } from "@mui/system";
-import InfoContainer from "../components/InfoContainer/InfoContainer";
-import BoxContainer from "../components/BoxContainer/BoxContainer";
-//icon
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
-import SubscriptionsIcon from "@mui/icons-material/Subscriptions";
-import PageHeader from "../components/PageHeader/PageHeader";
+import React, { useEffect, useState } from "react";
+import { Box, Grid } from "@mui/material";
+import Tabs from "@mui/material/Tabs";
+import HomeCard from "../components/Cards/HomeCard/HomeCard";
+import { homedata } from "../_mockup/Home";
+import Category from "../components/Category/Category";
 
-const StyledBox = styled(Box)({
-  marginBottom: "10px",
-});
+const tabs = [
+  { text: "all", color: "primary" },
+  { text: "yellow", color: "yellow" },
+  { text: "info", color: "info" },
+  { text: "success", color: "success" },
+  { text: "warning", color: "warning" },
+  { text: "all", color: "primary" },
+  { text: "yellow", color: "yellow" },
+  { text: "info", color: "info" },
+  { text: "success", color: "success" },
+  { text: "warning", color: "warning" },
+];
 
-const StyledGrid = (props) => (
-  <Grid
-    item
-    xs={12}
-    md={6}
-    lg={4}
-    sx={{
-      borderBottom: { xs: "1px solid", md: "none" },
-      borderRight: { md: "1px solid" },
-      px: 2,
-      pb:2,
-    }}
-  >
-    {props.children}
-  </Grid>
-);
+const Homepage = () => {
+  const [value, setValue] = useState(0);
+  const [activeBtn, setActivebtn] = useState(0);
+  const [screenSize, setScreenSize] = useState(1540);
 
-const Home = () => {
-  const { palette } = useTheme();
-  const { gradients } = palette;
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+  const handleActiveBtn = (index) => {
+    setActivebtn(index);
+  };
 
+  useEffect(() => {
+    window.addEventListener('resize', ()=> {
+      setScreenSize( window.innerWidth)
+  })
+  }, [screenSize]);
   return (
     <Box>
-      <PageHeader title='Dashboard'/>
-      <BoxContainer>
-        <Grid
-          container
-          spacing={2}
-          textAlign="left"
-          sx={{ typography: "subtitle1" }}
-        >
-          <StyledGrid>
-            Latest Video performance
-            <Video src="/video1.mp4" />
-            <Typography variant="body1">
-              Top 10 travel tips for biggeners travel thailand, bail, Phuket,
-            </Typography>
-            <Grid container sx={{ typography: "body2", mt: 2 }}>
-              <Grid item xs={6}>
-                <StyledBox>Views</StyledBox>
-                <StyledBox>Views</StyledBox>
-                <StyledBox>Views</StyledBox>
-              </Grid>
-              <Grid item xs={6} textAlign="center">
-                <StyledBox>245 k</StyledBox>
-                <StyledBox>15 k</StyledBox>
-                <StyledBox>5:00</StyledBox>
-              </Grid>
-            </Grid>
-          </StyledGrid>
-          <StyledGrid>
-            Analytics
-            <Typography variant="body2" sx={{ mt: 2 }}>
-              Current Subcriber
-            </Typography>
-            <Typography variant="h3">152</Typography>
-            <Divider sx={{ my: 3 }} />
-            <Typography variant="body1">Summary</Typography>
-            <Typography variant="body2">last 30 Days</Typography>
-            <InfoContainer
-              background={gradients.purple}
-              icon={<VisibilityIcon />}
-              tag="Views"
-              number="15K"
-            />
-            <InfoContainer
-              background={gradients.warning}
-              icon={<ThumbUpAltIcon />}
-              tag="Likes"
-              number="10K"
-            />
-            <InfoContainer
-              icon={<SubscriptionsIcon />}
-              tag="Subscriber"
-              number="112"
-            />
-          </StyledGrid>
-          <Grid item xs={12} md={6} lg={4} pr={2}>
-            Most Viewed Video
-            <Video src="/video1.mp4" />
-            <Typography variant="body1">M1 Max macBook pro Review</Typography>
-            <Grid container sx={{ typography: "body2", mt: 2 }}>
-              <Grid item xs={6}>
-                153k
-              </Grid>
-              <Grid item xs={6}>
-                10 Mar 2022-Now
-              </Grid>
-            </Grid>
-          </Grid>
+      <Grid container spacing={2}>
+        <Grid item xs={12} sx={{borderBottom:'1px solid #2447EF' ,pb:1}}>
+          <Box sx={{ maxWidth: { xs: screenSize-130, md:screenSize-260 } }}>
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              variant="scrollable"
+              scrollButtons="auto"
+              allowScrollButtonsMobile
+              aria-label="scrollable force tabs example"
+            >
+              {tabs.map((data, index) => (
+                <Category
+                  onClick={() => handleActiveBtn(index)}
+                  active={activeBtn == index}
+                  text={data.text}
+                  color={data.color}
+                  key={index}
+                />
+              ))}
+            </Tabs>
+          </Box>
         </Grid>
-      </BoxContainer>
+        {homedata?.map((item, index) => (
+          <Grid item xs={12} md={6} lg={3} key={index}>
+            <HomeCard item={item} />
+          </Grid>
+        ))}
+      </Grid>
     </Box>
   );
 };
 
-export default Home;
+export default Homepage;

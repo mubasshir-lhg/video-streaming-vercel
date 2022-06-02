@@ -1,55 +1,13 @@
-import React, { useState } from "react";
-import { Box } from "@mui/material";
-import IndividualCategory from "./IndividualCategory";
-import { styled } from "@mui/system";
+import React from 'react'
+import { Grid } from "@mui/material";
+import OutlinedButton from "../Button/OutlinedButton";
 
-const Category = () => {
-  const [activeBtn, setActivebtn] = useState(0);
-
-  const handleActiveBtn = (index) => {
-    setActivebtn(index);
-  };
-
-  const LinksWrapper = styled(Box)({
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "flex-start",
-    gap: "50px",
-    marginBottom: "20px",
-    overflowX: "scroll",
-    maxWidth: "100vw",
-    "&::-webkit-scrollbar": {
-      display: "none",
-    },
-  });
-
-  const obj = [
-    { text: "all", color: "primary" },
-    { text: "yellow", color: "yellow" },
-    { text: "info", color: "info" },
-    { text: "success", color: "success" },
-    { text: "warning", color: "warning" },
-    { text: "all", color: "primary" },
-    { text: "yellow", color: "yellow" },
-    { text: "info", color: "info" },
-    { text: "success", color: "success" },
-    { text: "warning", color: "warning" },
-  ];
+const Category = ({text,color,active,onClick}) => {
   return (
-    <LinksWrapper>
-      {obj.map((data, index) => {
-        return (
-          <IndividualCategory
-            onClick={() => handleActiveBtn(index)}
-            active={activeBtn == index}
-            text={data.text}
-            color={data.color}
-            key={index}
-          />
-        );
-      })}
-    </LinksWrapper>
-  );
-};
+    <Grid item>
+        <OutlinedButton text={text}  color={color} active={active} onClick={onClick} />
+    </Grid>
+  )
+}
 
-export default Category;
+export default Category

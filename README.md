@@ -1,5 +1,5 @@
 # alex-lai-streaming-app-frontend
-Project's Title : alex-lai-streaming-app
+Project's Title : alex-lei-streaming-app
 
 Project Description : web base application 
 

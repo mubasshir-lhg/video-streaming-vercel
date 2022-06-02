@@ -122,6 +122,7 @@ const typography = {
     lineHeight: 1.5,
     fontSize: pxToRem(12),
     color: "#fff",
+    opacity: 0.7,
   },
   overline: {
     fontWeight: 700,

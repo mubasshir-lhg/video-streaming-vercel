@@ -1,8 +1,8 @@
 import React from "react";
 import { Grid, TextField, Box, Button } from "@mui/material";
-import Video from "../components/Video/Video";
-import Dropdown from "../components/Dropdown/Dropdown";
-import BasicDatePicker from "../components/DatePicker/DatePicker";
+import Video from "../../components/Video/Video";
+import Dropdown from "../../components/Dropdown/Dropdown";
+import BasicDatePicker from "../../components/DatePicker/DatePicker";
 
 const tagOptions = ["tags1", "tags2", "tags3"];
 const visibiltyOptions = ["public", "private"];

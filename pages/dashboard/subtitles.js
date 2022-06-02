@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Box, Button, Grid, TextField } from "@mui/material";
 import { styled } from "@mui/system";
-import BoxContainer from "../components/BoxContainer/BoxContainer";
-import PageHeader from "../components/PageHeader/PageHeader";
-import BasicSelect from "../components/Select/Select";
-import SubtitleDisplay from "../components/SubtitleDisplay/SubtitleDisplay";
-import Video from "../components/Video/Video";
-import { subtitleData } from "../_mockup/Subtitle";
+import BoxContainer from "../../components/BoxContainer/BoxContainer";
+import PageHeader from "../../components/PageHeader/PageHeader";
+import BasicSelect from "../../components/Select/Select";
+import SubtitleDisplay from "../../components/SubtitleDisplay/SubtitleDisplay";
+import Video from "../../components/Video/Video";
+import { subtitleData } from "../../_mockup/Subtitle";
 
 const ButtonWrapper = styled(Box)({
   display: "flex",

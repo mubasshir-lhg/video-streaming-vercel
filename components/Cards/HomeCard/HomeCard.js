@@ -28,7 +28,7 @@ const InfoWrapper = styled(Box)({
   gap: 15,
 });
 
-const HomeCard = ({ item }) => {
+const HomeCard = ({ item,onClick }) => {
   const {
     videoSrc,
     authorImg,
@@ -39,7 +39,7 @@ const HomeCard = ({ item }) => {
     duration,
   } = item;
   return (
-    <Container>
+    <Container onClick={onClick}>
       <VideoWrapper>
         <Video src={videoSrc} width="100%" height="100%" controls={false} />
         <VideoTime>{duration}</VideoTime>

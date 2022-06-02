@@ -1,9 +1,9 @@
 import { Box, Grid  } from "@mui/material";
 import React from "react";
-import ContainedButton from "../components/Button/ContainedButton";
-import OutlinedButton from "../components/Button/OutlinedButton";
-import AddChapter from "../components/Chapter/AddChapter";
-import ChapterCard from "../components/Chapter/ChapterCard";
+import ContainedButton from "../../components/Button/ContainedButton";
+import OutlinedButton from "../../components/Button/OutlinedButton";
+import AddChapter from "../../components/Chapter/AddChapter";
+import ChapterCard from "../../components/Chapter/ChapterCard";
 const chapter = ({}) => {
     const chap=[{chapter: '01', duration:'20'},{chapter: '02', duration:'10'},{chapter: '03', duration:'01'}];
   return (

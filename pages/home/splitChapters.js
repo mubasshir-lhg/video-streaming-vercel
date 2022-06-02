@@ -1,7 +1,7 @@
 import { Button, Grid } from "@mui/material";
 import React from "react";
-import SplitChapterCard from "../components/Cards/SplitChapterCard/SplitChapterCard";
-import Video from "../components/Video/Video";
+import SplitChapterCard from "../../components/Cards/SplitChapterCard/SplitChapterCard";
+import Video from "../../components/Video/Video";
 
 const SplitChapters = () => {
   return (

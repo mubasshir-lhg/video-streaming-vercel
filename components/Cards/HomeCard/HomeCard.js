@@ -11,6 +11,9 @@ const Container = styled(Box)({
 });
 const VideoWrapper = styled(Box)({
   position: "relative !important",
+  "&:hover":{
+    transform:"scale(1.02)"
+  }
 });
 const VideoTime = styled(Box)(({ theme }) => ({
   position: "absolute !important",

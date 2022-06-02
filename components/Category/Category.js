@@ -1,13 +1,15 @@
-import React from 'react'
-import { Grid } from "@mui/material";
+import React from "react";
 import OutlinedButton from "../Button/OutlinedButton";
 
-const Category = ({text,color,active,onClick}) => {
+const Category = ({ text, color, active, onClick }) => {
   return (
-    <Grid item>
-        <OutlinedButton text={text}  color={color} active={active} onClick={onClick} />
-    </Grid>
-  )
-}
+    <OutlinedButton
+      text={text}
+      color={color}
+      active={active}
+      onClick={onClick}
+    />
+  );
+};
 
-export default Category
+export default Category;

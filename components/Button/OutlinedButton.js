@@ -1,5 +1,5 @@
+import React from "react";
 import Button from "@mui/material/Button";
-import React, { useState } from "react";
 import { useTheme } from "@mui/styles";
 
 const OutlinedButton = ({ text, width, color, active, onClick }) => {

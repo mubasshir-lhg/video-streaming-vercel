@@ -10,7 +10,7 @@ const ButtonWrapper = styled(Box)({
   marginTop: "16px",
 });
 
-const AddComment = () => {
+const AddComment = ({ placeholder, Cancel,ReplayBtn }) => {
   return (
     <Grid container spacing={1} mt={3}>
       <Grid item xs={1}>
@@ -26,16 +26,16 @@ const AddComment = () => {
       <Grid item xs={11}>
         <TextField
           variant="standard"
-          placeholder="Add Comment..."
+          placeholder={placeholder || "Add Comment..."}
           fullWidth
           sx={{ backgroundColor: "transparent" }}
         />
         <ButtonWrapper>
-          <Button variant="outlined" color="secondary">
+          <Button variant="outlined" color="secondary" onClick={Cancel}>
             Cancel
           </Button>
           <Button variant="contained" color="info">
-            Submit
+            {ReplayBtn || 'Submit'}
           </Button>
         </ButtonWrapper>
       </Grid>

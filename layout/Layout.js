@@ -244,7 +244,7 @@ export default function Layout({ children }) {
         open={open}
         sx={{
           py: navbar ? 0.5 : 2,
-          backgroundColor: navbar && "secondary.main",
+          backgroundColor: navbar && "#2f3566",
         }}
       >
         <Toolbar>

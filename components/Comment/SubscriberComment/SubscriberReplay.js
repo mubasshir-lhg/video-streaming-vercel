@@ -5,10 +5,9 @@ import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
 import Collapse from "@mui/material/Collapse";
 import AddComment from "../AddComment/AddComment";
-import SubscriberReplay from './SubscriberReplay'
 
-const SubscriberComment = ({ item,sendComment }) => {
-  const { subImg, subName, commentLikes, commentDisLikes, comment,replay } = item;
+const SubscriberReplay = ({ item,sendComment }) => {
+  const { subImg, subName, commentLikes, commentDisLikes, comment } = item;
   const [open, setOpen] = useState(false);
   const handleClick = () => {
     setOpen(!open);
@@ -58,13 +57,10 @@ const SubscriberComment = ({ item,sendComment }) => {
             ReplayBtn="Replay"
             sendComment={sendComment}
           />
-          {replay?.map((item,index)=>(
-            <SubscriberReplay item={item} key={index}/>
-          ))}
         </Collapse>
       </Grid>
     </Grid>
   );
 };
 
-export default SubscriberComment;
+export default SubscriberReplay;

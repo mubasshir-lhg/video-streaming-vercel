@@ -7,11 +7,9 @@ const RelatedVideos = ({ item ,onClick}) => {
     videoSrc,
     title,
     authorName,
-    authorImg,
     views,
     uploadTime,
     duration,
-    description,
   } = item;
   return (
     <Grid container spacing={2} mt={1} alignItems="center" onClick={onClick}>

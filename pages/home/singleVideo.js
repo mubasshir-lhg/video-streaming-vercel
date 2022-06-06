@@ -51,14 +51,10 @@ const SingleVideo = () => {
   };
   return (
     <Grid container spacing={4}>
-      <Grid item xs={6}>
+      <Grid item xs={12} md={8}>
         <VideoToPlay />
-        <AddComment sendComment={sendComment} />
-        {subscriberData?.map((item, index) => (
-          <SubscriberComment item={item} sendComment={sendReplay} key={index} />
-        ))}
       </Grid>
-      <Grid item xs={4}>
+      <Grid item xs={12} md={4}>
         <ChapterWrapper>
           <ChapterHeader>
             <Typography variant="subtitle1">Chapters</Typography>
@@ -80,6 +76,12 @@ const SingleVideo = () => {
             />
           ))}
         </ChapterWrapper>
+      </Grid>
+      <Grid item xs={12} md={8}>
+        <AddComment sendComment={sendComment} />
+        {subscriberData?.map((item, index) => (
+          <SubscriberComment item={item} sendComment={sendReplay} key={index} />
+        ))}
       </Grid>
     </Grid>
   );

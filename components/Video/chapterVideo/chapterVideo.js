@@ -7,7 +7,6 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 const ChaptersWrapper = styled(Box)({
   display: "flex",
   alignItems: "center",
-  gap: 50,
   margin: "10px 30px",
   cursor: "pointer",
   position: "relative",
@@ -22,7 +21,7 @@ const ChapterVideo = ({ item, onClick, activeBorder, activePlayBtn }) => {
   const { videoSrc, title, time } = item;
   return (
     <Box>
-      <ChaptersWrapper onClick={onClick}>
+      <ChaptersWrapper onClick={onClick} sx={{gap:{xs:1,lg:2,xl:10}}}>
         <PlayBtn sx={activePlayBtn}>
           <PlayArrowIcon />
         </PlayBtn>

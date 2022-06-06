@@ -183,6 +183,13 @@ export default function Layout({ children }) {
   const [channel, setChannel] = useState(false);
   const isSmDown = useMediaQuery(breakpoints.down("md"));
 
+  const getSearchValue=(searchVal)=>{
+    router.push({
+      pathname: "/home/searchVideos",
+      query: { searchVal: searchVal },
+    },'/home/searchVideos');
+  }
+
   const openPopup = Boolean(anchorEl);
   const openPopupMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -277,7 +284,7 @@ export default function Layout({ children }) {
                 }}
               >
                 <Box sx={{ flexGrow: 1 }}>
-                  <SearchField />
+                  <SearchField  getSearchValue={getSearchValue}/>
                 </Box>
               </ClickAwayListener>
             ) : (
@@ -288,7 +295,7 @@ export default function Layout({ children }) {
                   </IconButton>
                 ) : (
                   <Box sx={{ flexGrow: 1 }}>
-                    <SearchField />
+                    <SearchField  getSearchValue={getSearchValue}/>
                   </Box>
                 )}
                 <IconButton onClick={() => setOpenRequestModal(true)}>

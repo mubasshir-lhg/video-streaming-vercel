@@ -327,6 +327,7 @@ export default function Layout({ children }) {
                   anchorEl={anchorEl}
                   open={openPopup}
                   onClose={closePopupMenu}
+                  disableScrollLock={ true }
                   MenuListProps={{
                     "aria-labelledby": "basic-button",
                   }}

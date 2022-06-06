@@ -28,7 +28,9 @@ const ChapterHeader = styled(Box)(({ theme }) => ({
 
 const SingleVideo = () => {
   const [subscriberData, setSubscriberData] = useState(subscriberComments);
+  const [allChaptersData, setAllChaptersData] = useState(chaptersData);
   const [activeChapter, setActiveChapter] = useState(0);
+  const [playChapter, setPlayChapter] = useState(allChaptersData[0]);
 
   const sendComment = (val) => {
     setSubscriberData([
@@ -48,11 +50,12 @@ const SingleVideo = () => {
   };
   const playVideo = (index, item) => {
     setActiveChapter(index);
+    setPlayChapter(item)
   };
   return (
     <Grid container spacing={4}>
       <Grid item xs={12} md={8}>
-        <VideoToPlay />
+        <VideoToPlay item={playChapter}/>
       </Grid>
       <Grid item xs={12} md={4}>
         <ChapterWrapper>
@@ -62,12 +65,12 @@ const SingleVideo = () => {
               <CloseIcon />
             </IconButton>
           </ChapterHeader>
-          {chaptersData?.map((item, index) => (
+          {allChaptersData?.map((item, index) => (
             <ChapterVideo
               item={item}
               key={index}
               activeChapter={activeChapter === index}
-              lastChapter={chaptersData.length - 1 === index}
+              lastChapter={allChaptersData.length - 1 === index}
               onClick={() => playVideo(index, item)}
             />
           ))}

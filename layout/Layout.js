@@ -71,7 +71,7 @@ const sideBarLinkAdmin = [
   {
     id: "dashboard",
     label: "Dashboard",
-    link: "/dashboard",
+    link: "/",
     Icon: DashboardOutlinedIcon,
   },
   {
@@ -193,12 +193,12 @@ export default function Layout({ children }) {
   const switchToChannel = () => {
     setChannel(true);
     closePopupMenu();
-    router.push('/dashboard');
+    router.push("/dashboard/");
   };
   const switchToHome = () => {
     setChannel(false);
     closePopupMenu();
-    router.push('/');
+    router.push("/home/");
   };
   const handleDrawer = () => {
     setOpen((preState) => !preState);
@@ -212,7 +212,7 @@ export default function Layout({ children }) {
   };
 
   const goToPage = (href, index) => {
-    router.push(href);
+    channel ? router.push(`/dashboard/${href}`) : router.push(`/home/${href}`);
     setActiveIndex(index);
   };
 
@@ -244,7 +244,7 @@ export default function Layout({ children }) {
         open={open}
         sx={{
           py: navbar ? 0.5 : 2,
-          backgroundColor: navbar && "secondary.main",
+          backgroundColor: navbar && "#2f3566",
         }}
       >
         <Toolbar>

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Box } from "@mui/material";
-import PageHeader from "../components/PageHeader/PageHeader";
+import PageHeader from "../../components/PageHeader/PageHeader";
 import { styled } from "@mui/system";
-import BoxContainer from "../components/BoxContainer/BoxContainer";
-import CommentCard from "../components/Cards/CommentCard/CommentCard";
-import { published, pending, markAsSpam } from "../_mockup/Comment";
+import BoxContainer from "../../components/BoxContainer/BoxContainer";
+import CommentCard from "../../components/Cards/CommentCard/CommentCard";
+import { published, pending, markAsSpam } from "../../_mockup/Comment";
 
 const LinksWrapper = styled(Box)({
   display: "flex",

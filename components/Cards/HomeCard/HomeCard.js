@@ -11,6 +11,9 @@ const Container = styled(Box)({
 });
 const VideoWrapper = styled(Box)({
   position: "relative !important",
+  "&:hover": {
+    transform: "scale(1.02)",
+  },
 });
 const VideoTime = styled(Box)(({ theme }) => ({
   position: "absolute !important",
@@ -25,7 +28,7 @@ const InfoWrapper = styled(Box)({
   gap: 15,
 });
 
-const HomeCard = ({ item }) => {
+const HomeCard = ({ item,onClick }) => {
   const {
     videoSrc,
     authorImg,
@@ -36,7 +39,7 @@ const HomeCard = ({ item }) => {
     duration,
   } = item;
   return (
-    <Container>
+    <Container onClick={onClick}>
       <VideoWrapper>
         <Video src={videoSrc} width="100%" height="100%" controls={false} />
         <VideoTime>{duration}</VideoTime>
@@ -44,7 +47,9 @@ const HomeCard = ({ item }) => {
       <InfoWrapper>
         <Avatar src={authorImg} alt="img" />
         <Box>
-          <Typography variant="subtitle1">{title}</Typography>
+          <Typography variant="subtitle1">
+            {title.length > 50 ? `${title.substring(0, 50)}...` : title}
+          </Typography>
           <Typography variant="caption" component="div" mt={2}>
             {authorName}
           </Typography>

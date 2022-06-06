@@ -6,11 +6,11 @@ import {
   FormControlLabel,
   Checkbox,
 } from "@mui/material";
-import BoxContainer from "../components/BoxContainer/BoxContainer";
-import EditorCard from "../components/Cards/EditorCard/EditorCard";
-import PageHeader from "../components/PageHeader/PageHeader";
-import BasicSelect from "../components/Select/Select";
-import { editorData } from "../_mockup/Editor";
+import BoxContainer from "../../components/BoxContainer/BoxContainer";
+import EditorCard from "../../components/Cards/EditorCard/EditorCard";
+import PageHeader from "../../components/PageHeader/PageHeader";
+import BasicSelect from "../../components/Select/Select";
+import { editorData } from "../../_mockup/Editor";
 
 const options = ["Newest", "Oldest"];
 const Editor = () => {

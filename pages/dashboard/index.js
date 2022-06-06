@@ -1,15 +1,15 @@
 import React from "react";
 import { Box, Grid, Typography, Divider } from "@mui/material";
-import Video from "../components/Video/Video";
+import Video from "../../components/Video/Video";
 import { useTheme } from "@mui/styles";
 import { styled } from "@mui/system";
-import InfoContainer from "../components/InfoContainer/InfoContainer";
-import BoxContainer from "../components/BoxContainer/BoxContainer";
+import InfoContainer from "../../components/InfoContainer/InfoContainer";
+import BoxContainer from "../../components/BoxContainer/BoxContainer";
 //icon
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import SubscriptionsIcon from "@mui/icons-material/Subscriptions";
-import PageHeader from "../components/PageHeader/PageHeader";
+import PageHeader from "../../components/PageHeader/PageHeader";
 
 const StyledBox = styled(Box)({
   marginBottom: "10px",

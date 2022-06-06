@@ -1,21 +1,21 @@
 import React, { useState } from "react";
 import { Box, Grid } from "@mui/material";
 import { useTheme } from "@mui/styles";
-import BoxContainer from "../components/BoxContainer/BoxContainer";
-import InfoContainer from "../components/InfoContainer/InfoContainer";
+import BoxContainer from "../../components/BoxContainer/BoxContainer";
+import InfoContainer from "../../components/InfoContainer/InfoContainer";
 import { styled } from "@mui/system";
 //icons
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import SubscriptionsIcon from "@mui/icons-material/Subscriptions";
-import PageHeader from "../components/PageHeader/PageHeader";
-import LineChart from "../components/Chart/LineChart";
+import PageHeader from "../../components/PageHeader/PageHeader";
+import LineChart from "../../components/Chart/LineChart";
 import { makeStyles } from "@mui/styles";
-import MuiTable from "../components/Table/Table";
+import MuiTable from "../../components/Table/Table";
 //data
-import { datasets } from "../components/Chart/data";
-import { rows, coloms,rows2,coloms2 } from "../_mockup/Table";
-import MuiTable2 from "../components/Table/Table2";
+import { datasets } from "../../components/Chart/data";
+import { rows, coloms,rows2,coloms2 } from "../../_mockup/Table";
+import MuiTable2 from "../../components/Table/Table2";
 
 const useStyles = makeStyles({
   box: {

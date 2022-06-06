@@ -11,7 +11,7 @@ const VideoWrapper = styled(Box)({
 
 const VideoTime = styled(Box)(({ theme }) => ({
   position: "absolute !important",
-  bottom: 20,
+  bottom:4,
   right: 0,
   padding: "5px 20px",
   borderRadius: "30px",
@@ -24,7 +24,7 @@ import Video from "../Video";
 const VideoWithTime = ({ src, duration }) => {
   return (
     <VideoWrapper>
-      <Video src={src} width="100%" height="100%" controls={false} />
+      <Video src={src} width="100%" height="100%" controls={false} my='0'/>
       <VideoTime>{duration}</VideoTime>
     </VideoWrapper>
   );

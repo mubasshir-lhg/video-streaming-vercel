@@ -6,10 +6,12 @@ import AddComment from "../../components/Comment/AddComment/AddComment";
 import SubscriberComment from "../../components/Comment/SubscriberComment/SubscriberComment";
 import { subscriberComments } from "../../_mockup/subscriberComments";
 import { chaptersData } from "../../_mockup/Chapters";
+import { RelatedVideosData } from "../../_mockup/RalatedVideos";
 import user1 from "../../assets/Images/user1.jpg";
 import CloseIcon from "@mui/icons-material/Close";
 import { styled } from "@mui/system";
 import ChapterVideo from "../../components/Video/chapterVideo/chapterVideo";
+import RelatedVideos from "../../components/Video/relatedVideos/relatedVideos";
 
 const ChapterWrapper = styled(Box)(({ theme }) => ({
   borderRadius: "12px",
@@ -18,7 +20,7 @@ const ChapterWrapper = styled(Box)(({ theme }) => ({
   marginTop: "16px",
 }));
 const ChapterHeader = styled(Box)(({ theme }) => ({
-  backgroundColor: theme.palette.primary.light,
+  backgroundColor: theme.palette.secondary.main,
   borderRadius: "12px 12px 0 0",
   display: "flex",
   justifyContent: "space-between",
@@ -28,7 +30,11 @@ const ChapterHeader = styled(Box)(({ theme }) => ({
 
 const SingleVideo = () => {
   const [subscriberData, setSubscriberData] = useState(subscriberComments);
+  const [allChaptersData, setAllChaptersData] = useState(chaptersData);
   const [activeChapter, setActiveChapter] = useState(0);
+  const [playChapter, setPlayChapter] = useState(allChaptersData[0]);
+  const [allRelatedVideosData, setRelatedVideosData] =
+    useState(RelatedVideosData);
 
   const sendComment = (val) => {
     setSubscriberData([
@@ -48,13 +54,26 @@ const SingleVideo = () => {
   };
   const playVideo = (index, item) => {
     setActiveChapter(index);
+    setPlayChapter(item);
   };
   return (
     <Grid container spacing={4}>
-      <Grid item xs={12} md={8}>
-        <VideoToPlay />
+      <Grid item xs={12} md={6} xl={8}>
+        <Grid item xs={12}>
+          <VideoToPlay item={playChapter} />
+        </Grid>
+        <Grid item xs={12}>
+          <AddComment sendComment={sendComment} />
+          {subscriberData?.map((item, index) => (
+            <SubscriberComment
+              item={item}
+              sendComment={sendReplay}
+              key={index}
+            />
+          ))}
+        </Grid>
       </Grid>
-      <Grid item xs={12} md={4}>
+      <Grid item xs={12} md={6} xl={4}>
         <ChapterWrapper>
           <ChapterHeader>
             <Typography variant="subtitle1">Chapters</Typography>
@@ -62,26 +81,25 @@ const SingleVideo = () => {
               <CloseIcon />
             </IconButton>
           </ChapterHeader>
-          {chaptersData?.map((item, index) => (
+          {allChaptersData?.map((item, index) => (
             <ChapterVideo
               item={item}
               key={index}
-              activeBorder={{
-                borderRight: activeChapter === index && "2px solid #fff",
-              }}
-              activePlayBtn={{
-                transform: activeChapter === index && "scale(1)",
-              }}
+              activeChapter={activeChapter === index}
+              lastChapter={allChaptersData.length - 1 === index}
               onClick={() => playVideo(index, item)}
             />
           ))}
         </ChapterWrapper>
-      </Grid>
-      <Grid item xs={12} md={8}>
-        <AddComment sendComment={sendComment} />
-        {subscriberData?.map((item, index) => (
-          <SubscriberComment item={item} sendComment={sendReplay} key={index} />
-        ))}
+        <Box sx={{ px:{md:1,xl: 4}, mt: 4 }}>
+          {allRelatedVideosData?.map((item, index) => (
+            <RelatedVideos
+              key={index}
+              item={item}
+              onClick={() => playVideo(index, item)}
+            />
+          ))}
+        </Box>
       </Grid>
     </Grid>
   );

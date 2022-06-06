@@ -1,34 +1,21 @@
 import React from "react";
 import { styled } from "@mui/system";
 import { Box, Typography } from "@mui/material";
-import Video from "../../Video/Video";
 import Avatar from "@mui/material/Avatar";
+import VideoWithTime from "../../Video/VideoWithTime/VideoWithTime";
 
 const Container = styled(Box)({
   display: "flex",
   flexDirection: "column",
   gap: 10,
 });
-const VideoWrapper = styled(Box)({
-  position: "relative !important",
-  "&:hover": {
-    transform: "scale(1.02)",
-  },
-});
-const VideoTime = styled(Box)(({ theme }) => ({
-  position: "absolute !important",
-  bottom: 20,
-  right: 0,
-  padding: "5px 20px",
-  borderRadius: "30px",
-  backgroundColor: theme.palette.primary.main,
-}));
+
 const InfoWrapper = styled(Box)({
   display: "flex",
   gap: 15,
 });
 
-const HomeCard = ({ item,onClick }) => {
+const HomeCard = ({ item, onClick }) => {
   const {
     videoSrc,
     authorImg,
@@ -40,10 +27,7 @@ const HomeCard = ({ item,onClick }) => {
   } = item;
   return (
     <Container onClick={onClick}>
-      <VideoWrapper>
-        <Video src={videoSrc} width="100%" height="100%" controls={false} />
-        <VideoTime>{duration}</VideoTime>
-      </VideoWrapper>
+      <VideoWithTime src={videoSrc} duration={duration} />
       <InfoWrapper>
         <Avatar src={authorImg} alt="img" />
         <Box>

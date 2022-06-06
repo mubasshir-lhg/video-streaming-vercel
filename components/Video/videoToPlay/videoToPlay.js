@@ -3,14 +3,15 @@ import { Typography, Box, Grid, Button } from "@mui/material";
 import Video from "../Video";
 import Image from "next/image";
 
-const VideoToPlay = () => {
+const VideoToPlay = ({ item }) => {
+  const { videoSrc, title } = item;
   return (
     <>
       <Box sx={{ borderBottom: "1px solid #fff" }}>
-        <Video src="/video1.mp4" width="100%" height="100%" controls={true} />
+        <Video src={videoSrc} width="100%" height="100%" controls={true} />
         <Typography variant="body1">Chapter 02</Typography>
         <Typography variant="subtitle1" my={1}>
-          M1 Max MacBook Pro Review: Truly Next Level!
+          {title}
         </Typography>
         <Typography variant="caption" component="div">
           2757057 views . Nov 4,

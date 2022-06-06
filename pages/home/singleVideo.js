@@ -6,10 +6,12 @@ import AddComment from "../../components/Comment/AddComment/AddComment";
 import SubscriberComment from "../../components/Comment/SubscriberComment/SubscriberComment";
 import { subscriberComments } from "../../_mockup/subscriberComments";
 import { chaptersData } from "../../_mockup/Chapters";
+import { RelatedVideosData } from "../../_mockup/RalatedVideos";
 import user1 from "../../assets/Images/user1.jpg";
 import CloseIcon from "@mui/icons-material/Close";
 import { styled } from "@mui/system";
 import ChapterVideo from "../../components/Video/chapterVideo/chapterVideo";
+import RelatedVideos from "../../components/Video/relatedVideos/relatedVideos";
 
 const ChapterWrapper = styled(Box)(({ theme }) => ({
   borderRadius: "12px",
@@ -31,6 +33,8 @@ const SingleVideo = () => {
   const [allChaptersData, setAllChaptersData] = useState(chaptersData);
   const [activeChapter, setActiveChapter] = useState(0);
   const [playChapter, setPlayChapter] = useState(allChaptersData[0]);
+  const [allRelatedVideosData, setRelatedVideosData] =
+    useState(RelatedVideosData);
 
   const sendComment = (val) => {
     setSubscriberData([
@@ -50,12 +54,24 @@ const SingleVideo = () => {
   };
   const playVideo = (index, item) => {
     setActiveChapter(index);
-    setPlayChapter(item)
+    setPlayChapter(item);
   };
   return (
     <Grid container spacing={4}>
       <Grid item xs={12} md={8}>
-        <VideoToPlay item={playChapter}/>
+        <Grid item xs={12}>
+          <VideoToPlay item={playChapter} />
+        </Grid>
+        <Grid item xs={12}>
+          <AddComment sendComment={sendComment} />
+          {subscriberData?.map((item, index) => (
+            <SubscriberComment
+              item={item}
+              sendComment={sendReplay}
+              key={index}
+            />
+          ))}
+        </Grid>
       </Grid>
       <Grid item xs={12} md={4}>
         <ChapterWrapper>
@@ -75,12 +91,15 @@ const SingleVideo = () => {
             />
           ))}
         </ChapterWrapper>
-      </Grid>
-      <Grid item xs={12} md={8}>
-        <AddComment sendComment={sendComment} />
-        {subscriberData?.map((item, index) => (
-          <SubscriberComment item={item} sendComment={sendReplay} key={index} />
-        ))}
+        <Box sx={{ px: 4, mt: 4 }}>
+          {allRelatedVideosData?.map((item, index) => (
+            <RelatedVideos
+              key={index}
+              item={item}
+              onClick={() => playVideo(index, item)}
+            />
+          ))}
+        </Box>
       </Grid>
     </Grid>
   );

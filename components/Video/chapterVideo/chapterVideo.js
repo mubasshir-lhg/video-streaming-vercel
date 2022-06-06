@@ -4,14 +4,17 @@ import Video from "../Video";
 import { styled } from "@mui/system";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 
-const ChaptersWrapper = styled(Box)({
+const ChaptersWrapper = styled(Box)(({theme})=>({
   display: "flex",
   alignItems: "center",
   margin: "0 30px",
+  [theme.breakpoints.down("lg")]:{
+    margin: "0 0 0 30px",
+  },
   padding: "10px 0",
   cursor: "pointer",
   position: "relative",
-});
+}));
 const PlayBtn = styled(Box)({
   position: "absolute",
   top: "translate(50%,-50%)",
@@ -28,13 +31,12 @@ const ChapterVideo = ({ item, onClick, activeChapter, lastChapter }) => {
         borderRadius: lastChapter && "0 0 12px 12px",
       }}
     >
-      <ChaptersWrapper onClick={onClick} sx={{ gap: { xs: 1, lg: 2, xl: 10 } }}>
+      <ChaptersWrapper onClick={onClick} sx={{ gap: { xs: 1, lg: 2, xl: 3 } }}>
         <PlayBtn sx={{ transform: activeChapter && "scale(1)" }}>
           <PlayArrowIcon />
         </PlayBtn>
         <Video src={videoSrc} width="180px" my="0" />
         <Box
-          mr={4}
           sx={{ borderRight: activeChapter && "2px solid #fff" }}
           flexGrow={1}
         >

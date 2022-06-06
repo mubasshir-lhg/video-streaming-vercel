@@ -15,10 +15,10 @@ const RelatedVideos = ({ item ,onClick}) => {
   } = item;
   return (
     <Grid container spacing={2} mt={1} alignItems="center" onClick={onClick}>
-      <Grid item xs={6} md={5}>
+      <Grid item xs={6}  lg={5}>
         <VideoWithTime src={videoSrc} duration={duration} />
       </Grid>
-      <Grid item xs={6} md={7}>
+      <Grid item xs={6}  lg={7}>
         <Typography variant="subtitle1">{title}</Typography>
         <Typography variant="caption" component="div">
           {authorName}

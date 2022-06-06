@@ -58,7 +58,7 @@ const SingleVideo = () => {
   };
   return (
     <Grid container spacing={4}>
-      <Grid item xs={12} md={8}>
+      <Grid item xs={12} md={6} xl={8}>
         <Grid item xs={12}>
           <VideoToPlay item={playChapter} />
         </Grid>
@@ -73,7 +73,7 @@ const SingleVideo = () => {
           ))}
         </Grid>
       </Grid>
-      <Grid item xs={12} md={4}>
+      <Grid item xs={12} md={6} xl={4}>
         <ChapterWrapper>
           <ChapterHeader>
             <Typography variant="subtitle1">Chapters</Typography>
@@ -91,7 +91,7 @@ const SingleVideo = () => {
             />
           ))}
         </ChapterWrapper>
-        <Box sx={{ px: 4, mt: 4 }}>
+        <Box sx={{ px:{md:1,xl: 4}, mt: 4 }}>
           {allRelatedVideosData?.map((item, index) => (
             <RelatedVideos
               key={index}

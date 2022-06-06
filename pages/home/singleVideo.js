@@ -18,7 +18,7 @@ const ChapterWrapper = styled(Box)(({ theme }) => ({
   marginTop: "16px",
 }));
 const ChapterHeader = styled(Box)(({ theme }) => ({
-  backgroundColor: theme.palette.primary.light,
+  backgroundColor: theme.palette.secondary.main,
   borderRadius: "12px 12px 0 0",
   display: "flex",
   justifyContent: "space-between",
@@ -66,12 +66,8 @@ const SingleVideo = () => {
             <ChapterVideo
               item={item}
               key={index}
-              activeBorder={{
-                borderRight: activeChapter === index && "2px solid #fff",
-              }}
-              activePlayBtn={{
-                transform: activeChapter === index && "scale(1)",
-              }}
+              activeChapter={activeChapter === index}
+              lastChapter={chaptersData.length - 1 === index}
               onClick={() => playVideo(index, item)}
             />
           ))}

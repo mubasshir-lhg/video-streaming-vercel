@@ -34,7 +34,7 @@ const SearchVideoResult = ({ item, onClick }) => {
             my:1,
           }}
         >
-          <Avatar src={authorImg} alt="img" /> {authorName}
+          <Avatar src={authorImg} alt="img" sx={{ width: {xs:24,sm:48}, height: {xs:24,sm:48} }}/> {authorName}
         </Box>
         <Typography variant="body2">{description}</Typography>
       </Grid>

@@ -12,7 +12,6 @@ const SearchField = ({ getSearchValue}) => {
   }
   const submitSearch=()=>{
     getSearchValue(inputVal)
-    setInputVal('')
   }
   return (
     <Paper

@@ -7,7 +7,7 @@ const VideoToPlay = () => {
   return (
     <>
       <Box sx={{ borderBottom: "1px solid #fff" }}>
-        <Video src="/video1.mp4" width="90%" height="100%" controls={true} />
+        <Video src="/video1.mp4" width="100%" height="100%" controls={true} />
         <Typography variant="body1">Chapter 02</Typography>
         <Typography variant="subtitle1" my={1}>
           M1 Max MacBook Pro Review: Truly Next Level!
@@ -55,18 +55,42 @@ const VideoToPlay = () => {
             The 14 and 16 MacBook Pros are incredible. I can finallly retire the
             travel iMac
           </Typography>
-          <Typography variant="caption" component="div"> Link http://</Typography>
-          <Typography variant="caption" component="div"> Link http://</Typography>
-          <Typography variant="caption" component="div"> Link http://</Typography>
-          <Typography variant="caption" component="div"> Link http://</Typography>
-          <Typography variant="caption" component="div"> Link http://</Typography>
-          <Typography variant="caption" component="div"> Link http://</Typography>
-          <Typography variant="caption" component="div"> Link http://</Typography>
-          <Typography variant="caption" component="div"> Link http://</Typography>
-          <Typography variant="caption" component="div"> Link http://</Typography>
-          <Typography variant="caption" component="div"> Link http://</Typography>
-          <Typography variant="caption" component="div"> Link http://</Typography>
-          <Typography variant="caption" component="div"> Link http://</Typography>
+          <Typography variant="caption" component="div">
+            Link http://
+          </Typography>
+          <Typography variant="caption" component="div">
+            Link http://
+          </Typography>
+          <Typography variant="caption" component="div">
+            Link http://
+          </Typography>
+          <Typography variant="caption" component="div">
+            Link http://
+          </Typography>
+          <Typography variant="caption" component="div">
+            Link http://
+          </Typography>
+          <Typography variant="caption" component="div">
+            Link http://
+          </Typography>
+          <Typography variant="caption" component="div">
+            Link http://
+          </Typography>
+          <Typography variant="caption" component="div">
+            Link http://
+          </Typography>
+          <Typography variant="caption" component="div">
+            Link http://
+          </Typography>
+          <Typography variant="caption" component="div">
+            Link http://
+          </Typography>
+          <Typography variant="caption" component="div">
+            Link http://
+          </Typography>
+          <Typography variant="caption" component="div">
+            Link http://
+          </Typography>
         </Grid>
       </Grid>
     </>

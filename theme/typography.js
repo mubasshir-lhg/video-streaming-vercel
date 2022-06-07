@@ -64,11 +64,11 @@ const typography = {
     ...responsiveFontSizes({ sm: 19, md: 20, lg: 20 }),
   },
   h6: {
-    fontWeight: 700,
+    fontWeight: 400,
     lineHeight: 28 / 18,
     color: "#fff",
-    fontSize: pxToRem(18),
-    ...responsiveFontSizes({ sm: 18, md: 18, lg: 18 }),
+    fontSize: pxToRem(19),
+    ...responsiveFontSizes({ sm: 16, md: 18, lg: 19 }),
   },
   normaltext: {
     fontWeight: 400,

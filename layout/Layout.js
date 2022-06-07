@@ -190,6 +190,10 @@ export default function Layout({ children }) {
     },'/home/searchVideos');
   }
 
+  const uploadVideo=()=>{
+    router.push("/home/splitChapters");
+    handleCloseModal()
+  }
   const openPopup = Boolean(anchorEl);
   const openPopupMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -407,7 +411,7 @@ export default function Layout({ children }) {
       </Box>
 
       <RequestModal open={openRequestModal} handleClose={handleCloseModal} />
-      <UploadVideoModal open={openUploadModal} handleClose={handleCloseModal} />
+      <UploadVideoModal open={openUploadModal} handleClose={handleCloseModal} onClick={uploadVideo}/>
     </Box>
   );
 }

@@ -25,6 +25,7 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import HomeIcon from "@mui/icons-material/Home";
 import FlipCameraAndroidIcon from "@mui/icons-material/FlipCameraAndroid";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 //mui
 import ClickAwayListener from "@mui/base/ClickAwayListener";
 import MuiDrawer from "@mui/material/Drawer";
@@ -45,6 +46,7 @@ import {
 } from "@mui/material";
 import { RequestModal } from "../components/Modal/RequestAVideo/RequestAVideo";
 import { UploadVideoModal } from "../components/Modal/UploadVideoModal/UploadVideoModal";
+import PopupMenu from "../components/PopupMenu/PopupMenu";
 
 const drawerWidth = 220;
 const sideBarLinkUser = [
@@ -122,7 +124,10 @@ const closedMixin = (theme) => ({
   overflowX: "hidden",
   width: `calc(${theme.spacing(7)} + 18px)`,
   [theme.breakpoints.up("sm")]: {
-    width: `calc(${theme.spacing(8)} + 18px)`,
+    width: `calc(${theme.spacing(8)} + 20px)`,
+  },
+  [theme.breakpoints.down("sm")]: {
+    width: `0px`,
   },
 });
 
@@ -181,19 +186,24 @@ export default function Layout({ children }) {
   const [searchBar, setSearchBar] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const [channel, setChannel] = useState(false);
-  const isSmDown = useMediaQuery(breakpoints.down("md"));
+  const [menuOption, setMenuOption] = useState([]);
+  const isMdDown = useMediaQuery(breakpoints.down("md"));
+  const isSmDown = useMediaQuery(breakpoints.down("sm"));
 
-  const getSearchValue=(searchVal)=>{
-    router.push({
-      pathname: "/home/searchVideos",
-      query: { searchVal: searchVal },
-    },'/home/searchVideos');
-  }
+  const getSearchValue = (searchVal) => {
+    router.push(
+      {
+        pathname: "/home/searchVideos",
+        query: { searchVal: searchVal },
+      },
+      "/home/searchVideos"
+    );
+  };
 
-  const uploadVideo=()=>{
+  const uploadVideo = () => {
     router.push("/home/splitChapters");
-    handleCloseModal()
-  }
+    handleCloseModal();
+  };
   const openPopup = Boolean(anchorEl);
   const openPopupMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -236,14 +246,63 @@ export default function Layout({ children }) {
   };
 
   useEffect(() => {
-    if (isSmDown) {
+    if (isMdDown) {
       setOpen(false);
     } else {
       setOpen(true);
     }
     changeBackground();
     window.addEventListener("scroll", changeBackground);
-  }, [isSmDown]);
+  }, [isMdDown]);
+
+  const menuOptions1 = [
+    { onClickFunc: switchToChannel, child: "Your Channel" },
+    { onClickFunc: switchToHome, child: "Home" },
+    { onClickFunc: closePopupMenu, child: "Logout" },
+  ];
+  const menuOptions2 = [
+    {
+      onClickFunc: () => setOpenRequestModal(true),
+      child: (
+        <>
+          <VideoCallOutlinedIcon sx={{ pr: 1 }} />
+          Request Video
+        </>
+      ),
+    },
+    {
+      onClickFunc: closePopupMenu,
+      child: (
+        <>
+          <MicNoneOutlinedIcon sx={{ pr: 1 }} />
+          Voice
+        </>
+      ),
+    },
+    {
+      onClickFunc: () => setOpenUploadModal(true),
+      child: (
+        <>
+          <VideocamOutlinedIcon sx={{ pr: 1 }} />
+          Upload video
+        </>
+      ),
+    },
+    {
+      onClickFunc: closePopupMenu,
+      child: (
+        <>
+          <NotificationsOutlinedIcon sx={{ pr: 1 }} />
+          Notification
+        </>
+      ),
+    },
+  ];
+
+  const updateMenuOptions = (e, opt) => {
+    setMenuOption(opt);
+    openPopupMenu(e);
+  };
   return (
     <Box sx={{ display: "flex" }}>
       <Head>
@@ -264,14 +323,14 @@ export default function Layout({ children }) {
               onClick={handleDrawer}
               edge="start"
               sx={{
-                mr: 3,
+                mr: {xs:0,sm:3},
                 ml: 2,
                 ...(open && { display: "none" }),
               }}
             >
               <MenuIcon />
             </IconButton>
-            <Box mt={1} sx={{ ml: !open && 2, flexGrow: 1, minWidth: "25px" }}>
+            <Box mt={1} sx={{ flexGrow: 1, minWidth: "25px" }}>
               <Image
                 alt="logo"
                 src={logo}
@@ -281,27 +340,15 @@ export default function Layout({ children }) {
                 objectFit="cover"
               />
             </Box>
-            {searchBar ? (
-              <ClickAwayListener
-                onClickAway={() => {
-                  setSearchBar(false);
-                }}
-              >
-                <Box sx={{ flexGrow: 1 }}>
-                  <SearchField  getSearchValue={getSearchValue}/>
-                </Box>
-              </ClickAwayListener>
+            <Box sx={{ flexGrow: 1 }}>
+              <SearchField getSearchValue={getSearchValue} />
+            </Box>
+            {isSmDown ? (
+              <IconButton onClick={(e) => updateMenuOptions(e, menuOptions2)}>
+                <MoreVertIcon />
+              </IconButton>
             ) : (
               <>
-                {isSmDown ? (
-                  <IconButton onClick={ShowSearchBar}>
-                    <SearchIcon />
-                  </IconButton>
-                ) : (
-                  <Box sx={{ flexGrow: 1 }}>
-                    <SearchField  getSearchValue={getSearchValue}/>
-                  </Box>
-                )}
                 <IconButton onClick={() => setOpenRequestModal(true)}>
                   <VideoCallOutlinedIcon />
                 </IconButton>
@@ -314,41 +361,33 @@ export default function Layout({ children }) {
                 <IconButton>
                   <NotificationsOutlinedIcon />
                 </IconButton>
-                <Box
-                  mt={1}
-                  sx={{ minWidth: "25px", cursor: "pointer" }}
-                  id="basic-button"
-                  aria-controls={openPopup ? "basic-menu" : undefined}
-                  aria-haspopup="true"
-                  aria-expanded={openPopup ? "true" : undefined}
-                  onClick={openPopupMenu}
-                >
-                  <Image
-                    alt="Dp"
-                    src={dp}
-                    width={30}
-                    height={30}
-                    quality={100}
-                    objectFit="cover"
-                    className="bar-img"
-                  />
-                </Box>
-                <Menu
-                  id="basic-menu"
-                  anchorEl={anchorEl}
-                  open={openPopup}
-                  onClose={closePopupMenu}
-                  disableScrollLock={ true }
-                  MenuListProps={{
-                    "aria-labelledby": "basic-button",
-                  }}
-                >
-                  <MenuItem onClick={switchToChannel}>Your Channel</MenuItem>
-                  <MenuItem onClick={switchToHome}>Home</MenuItem>
-                  <MenuItem onClick={closePopupMenu}>Logout</MenuItem>
-                </Menu>
               </>
             )}
+            <Box
+              mt={1}
+              sx={{ minWidth: "25px", cursor: "pointer" }}
+              id="basic-button"
+              aria-controls={openPopup ? "basic-menu" : undefined}
+              aria-haspopup="true"
+              aria-expanded={openPopup ? "true" : undefined}
+              onClick={(e) => updateMenuOptions(e, menuOptions1)}
+            >
+              <Image
+                alt="Dp"
+                src={dp}
+                width={30}
+                height={30}
+                quality={100}
+                objectFit="cover"
+                className="bar-img"
+              />
+            </Box>
+            <PopupMenu
+              anchorEl={anchorEl}
+              open={openPopup}
+              onClose={closePopupMenu}
+              options={menuOption}
+            />
           </>
         </Toolbar>
       </AppBar>
@@ -411,7 +450,11 @@ export default function Layout({ children }) {
       </Box>
 
       <RequestModal open={openRequestModal} handleClose={handleCloseModal} />
-      <UploadVideoModal open={openUploadModal} handleClose={handleCloseModal} onClick={uploadVideo}/>
+      <UploadVideoModal
+        open={openUploadModal}
+        handleClose={handleCloseModal}
+        onClick={uploadVideo}
+      />
     </Box>
   );
 }

@@ -1,9 +1,9 @@
 import React from "react";
-import OutlinedButton from "../Button/OutlinedButton";
+import CategoryButton from "./CategoryButton";
 
 const Category = ({ text, color, active, onClick }) => {
   return (
-    <OutlinedButton
+    <CategoryButton
       text={text}
       color={color}
       active={active}

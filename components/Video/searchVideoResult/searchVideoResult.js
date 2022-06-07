@@ -1,8 +1,12 @@
 import React from "react";
 import VideoWithTime from "../VideoWithTime/VideoWithTime";
-import { Avatar, Grid, Typography, Box } from "@mui/material";
+import { Avatar, Grid, Typography, Box, useMediaQuery } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 
 const SearchVideoResult = ({ item, onClick }) => {
+  const { breakpoints } = useTheme();
+  const isSmDown = useMediaQuery(breakpoints.down("sm"));
+
   const {
     videoSrc,
     title,
@@ -23,8 +27,8 @@ const SearchVideoResult = ({ item, onClick }) => {
         <VideoWithTime src={videoSrc} duration={duration} />
       </Grid>
       <Grid item xs={6} lg={9}>
-        <Typography variant="subtitle1" mb={1}>
-          {title}
+        <Typography variant="subtitle1" mb={{xs:0.1,sm:1}}>
+          {isSmDown ? title.substring(0, 15) + "..." : title}
         </Typography>
         <Typography variant="caption">
           {views} views . {uploadTime}
@@ -35,7 +39,7 @@ const SearchVideoResult = ({ item, onClick }) => {
             alignItems: "center",
             typography: "subtile2",
             gap: 1,
-            my: 1,
+            my: {xs:0.2,sm:1},
           }}
         >
           <Avatar
@@ -45,7 +49,9 @@ const SearchVideoResult = ({ item, onClick }) => {
           />
           {authorName}
         </Box>
-        <Typography variant="body2">{description}</Typography>
+        <Typography variant="body2">
+          {isSmDown ? description.substring(0, 15) + "..." : description}
+        </Typography>
       </Grid>
     </Grid>
   );

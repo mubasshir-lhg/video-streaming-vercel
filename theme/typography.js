@@ -105,19 +105,19 @@ const typography = {
     color: "#fff",
     letterSpacing: "1.2px",
     fontSize: pxToRem(17),
-    ...responsiveFontSizes({xs:7,sm: 12, md: 16, lg: 17 }),
+    ...responsiveFontSizes({xs:11,sm: 12, md: 16, lg: 17 }),
 
   },
   subtitle2: {
     fontWeight: 400,
     lineHeight: 22 / 14,
     fontSize: pxToRem(15),
-    ...responsiveFontSizes({xs:11,sm: 13, md: 14, lg: 15 }),
+    ...responsiveFontSizes({xs:10,sm: 14, md: 14, lg: 15 }),
   },
   body1: {
     lineHeight: 1.5,
     fontSize: pxToRem(14),
-    ...responsiveFontSizes({xs:9,sm: 11, md: 12, lg: 14 }),
+    ...responsiveFontSizes({xs:11,sm: 12, md: 12, lg: 14 }),
   },
   body2: {
     lineHeight: 22 / 14,
@@ -125,14 +125,14 @@ const typography = {
     fontSize: pxToRem(12),
     letterSpacing:1,
     opacity: 0.9,
-    ...responsiveFontSizes({xs:8,sm: 9, md: 10, lg: 12 }),
+    ...responsiveFontSizes({xs:10,sm: 10, md: 10, lg: 12 }),
   },
   caption: {
     lineHeight: 1.5,
     fontSize: pxToRem(12),
     color: "#fff",
     opacity: 0.7,
-    ...responsiveFontSizes({xs:8,sm: 9, md: 10, lg: 12 }),
+    ...responsiveFontSizes({xs:10,sm: 10, md: 10, lg: 12 }),
   },
   overline: {
     fontWeight: 700,

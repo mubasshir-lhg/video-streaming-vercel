@@ -25,7 +25,7 @@ const StyledGrid = (props) => (
       borderBottom: { xs: "1px solid", md: "none" },
       borderRight: { md: "1px solid" },
       px: 2,
-      pb:2,
+      pb: 2,
     }}
   >
     {props.children}
@@ -38,7 +38,7 @@ const Home = () => {
 
   return (
     <Box>
-      <PageHeader title='Dashboard'/>
+      <PageHeader title="Dashboard" />
       <BoxContainer>
         <Grid
           container
@@ -47,7 +47,9 @@ const Home = () => {
           sx={{ typography: "subtitle1" }}
         >
           <StyledGrid>
-            Latest Video performance
+            <Typography variant="h6">
+              Latest Video performance
+            </Typography>
             <Video src="/video1.mp4" />
             <Typography variant="body1">
               Top 10 travel tips for biggeners travel thailand, bail, Phuket,
@@ -66,7 +68,7 @@ const Home = () => {
             </Grid>
           </StyledGrid>
           <StyledGrid>
-            Analytics
+            <Typography variant="h6">Analytics</Typography>
             <Typography variant="body2" sx={{ mt: 2 }}>
               Current Subcriber
             </Typography>
@@ -93,7 +95,7 @@ const Home = () => {
             />
           </StyledGrid>
           <Grid item xs={12} md={6} lg={4} pr={2}>
-            Most Viewed Video
+            <Typography variant="h6"> Most Viewed Video</Typography>
             <Video src="/video1.mp4" />
             <Typography variant="body1">M1 Max macBook pro Review</Typography>
             <Grid container sx={{ typography: "body2", mt: 2 }}>

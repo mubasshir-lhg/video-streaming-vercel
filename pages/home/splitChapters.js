@@ -1,13 +1,29 @@
+import React, { useState } from "react";
 import { Button, Grid } from "@mui/material";
-import React from "react";
-import SplitChapterCard from "../../components/Cards/SplitChapterCard/SplitChapterCard";
 import Video from "../../components/Video/Video";
+import SplitChapterCard from "../../components/Cards/SplitChapterCard/SplitChapterCard";
+import { ConfirmationModal } from "../../components/Modal/ConfirmationModal/ConfirmationModal";
+import {useRouter} from 'next/router'
 
 const SplitChapters = () => {
+  const router=useRouter()
+  const [open, setOpen] = useState(false);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const splitChapter = () => {
+    setOpen(true);
+  };
+  const Confirm = () => {
+    handleClose()
+    router.push("/home/chapter")
+  };
+
   return (
     <Grid container spacing={4} justifyContent="center">
       <Grid item xs={8}>
-        <Video src="video1.mp4" width="100%" height="100%" />
+        <Video src="/video1.mp4" width="100%" height="100%" controls={true} />
       </Grid>
       <Grid item xs={8} container spacing={1} justifyContent="center">
         <Grid item xs={12} md={6} xl={3}>
@@ -28,9 +44,24 @@ const SplitChapters = () => {
         </Grid>
       </Grid>
       <Grid item xs={8} container spacing={1} justifyContent="center">
-          <Grid item xs={12} md={6} lg={3}><Button variant="outlined" color='purple' fullWidth>Cancel</Button> </Grid>
-          <Grid item xs={12} md={6} lg={3}><Button variant="contained" color='purple' fullWidth>Split Chapters</Button> </Grid>
+        <Grid item xs={12} md={6} lg={3}>
+          <Button variant="outlined" color="purple" fullWidth>
+            Cancel
+          </Button>
+        </Grid>
+        <Grid item xs={12} md={6} lg={3}>
+          <Button
+            variant="contained"
+            color="purple"
+            fullWidth
+            onClick={splitChapter}
+          >
+            Split Chapters
+          </Button>
+        </Grid>
       </Grid>
+
+      <ConfirmationModal open={open} handleClose={handleClose} Confirm={Confirm}/>
     </Grid>
   );
 };

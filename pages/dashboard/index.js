@@ -24,7 +24,7 @@ const StyledGrid = (props) => (
     sx={{
       borderBottom: { xs: "1px solid", md: "none" },
       borderRight: { md: "1px solid" },
-      px: 2,
+      px: {xs:0.5,sm:1,lg:2},
       pb: 2,
     }}
   >

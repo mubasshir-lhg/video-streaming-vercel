@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import { makeStyles } from "@mui/styles";
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -22,12 +22,12 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     gap: "10px",
     alignItems: "center",
-    justifyContent:'Center',
-    marginTop:'20px'
+    justifyContent: "Center",
+    marginTop: "20px",
   },
 }));
 
-export const ConfirmationModal = ({ handleClose, open }) => {
+export const ConfirmationModal = ({ handleClose, open, Confirm }) => {
   const classes = useStyles();
   return (
     <>
@@ -44,17 +44,16 @@ export const ConfirmationModal = ({ handleClose, open }) => {
       >
         <Fade in={open}>
           <Box className={classes.modal}>
-            <Box sx={{ typography: "subtitle1" }} mt={5}>
-              Are you sure about spliting these chapters?
+            <Box mt={5}>
+              <Typography variant="subtitle1">
+                Are you sure about spliting these chapters?
+              </Typography>
             </Box>
-            <Box
-              className={classes.box}
-              mb={2}
-            >
+            <Box className={classes.box} mb={2}>
               <Button variant="outlined" color="purple" onClick={handleClose}>
                 Go Back
               </Button>
-              <Button variant="contained" color="purple" onClick={handleClose}>
+              <Button variant="contained" color="purple" onClick={Confirm}>
                 Confirm
               </Button>
             </Box>

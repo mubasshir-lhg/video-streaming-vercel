@@ -123,6 +123,7 @@ const typography = {
     lineHeight: 22 / 14,
     fontWeight: 300,
     fontSize: pxToRem(12),
+    letterSpacing:1,
     opacity: 0.9,
     ...responsiveFontSizes({xs:6,sm: 8, md: 10, lg: 12 }),
   },

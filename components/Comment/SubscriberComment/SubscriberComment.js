@@ -5,10 +5,11 @@ import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
 import Collapse from "@mui/material/Collapse";
 import AddComment from "../AddComment/AddComment";
-import SubscriberReplay from './SubscriberReplay'
+import SubscriberReplay from "./SubscriberReplay";
 
-const SubscriberComment = ({ item,sendComment }) => {
-  const { subImg, subName, commentLikes, commentDisLikes, comment,replay } = item;
+const SubscriberComment = ({ item, sendComment }) => {
+  const { subImg, subName, commentLikes, commentDisLikes, comment, replay } =
+    item;
   const [open, setOpen] = useState(false);
   const handleClick = () => {
     setOpen(!open);
@@ -28,7 +29,7 @@ const SubscriberComment = ({ item,sendComment }) => {
       </Grid>
       <Grid item xs={11}>
         <Typography variant="subtitle1">{subName}</Typography>
-        <Typography variant="caption" component="p">
+        <Typography variant="body2" component="p">
           {comment}
         </Typography>
         <Box
@@ -42,13 +43,13 @@ const SubscriberComment = ({ item,sendComment }) => {
           <IconButton>
             <ThumbUpOffAltIcon />
           </IconButton>
-          <Box>{commentLikes}</Box>
+          <Typography variant="caption">{commentLikes}</Typography>
           <IconButton>
             <ThumbDownOffAltIcon />
           </IconButton>
-          <Box>{commentDisLikes}</Box>
+          <Typography variant="caption">{commentDisLikes}</Typography>
           <Box onClick={handleClick} sx={{ cursor: "pointer" }}>
-            Reply
+            <Typography variant="caption"> Reply</Typography>
           </Box>
         </Box>
         <Collapse in={open} timeout="auto" unmountOnExit>
@@ -58,8 +59,8 @@ const SubscriberComment = ({ item,sendComment }) => {
             ReplayBtn="Replay"
             sendComment={sendComment}
           />
-          {replay?.map((item,index)=>(
-            <SubscriberReplay item={item} key={index}/>
+          {replay?.map((item, index) => (
+            <SubscriberReplay item={item} key={index} />
           ))}
         </Collapse>
       </Grid>

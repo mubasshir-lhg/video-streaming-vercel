@@ -24,7 +24,7 @@ const StyledGrid = (props) => (
     sx={{
       borderBottom: { xs: "1px solid", md: "none" },
       borderRight: { md: "1px solid" },
-      px: {xs:0.5,sm:1,lg:2},
+      px: { xs: 0.5, sm: 1, lg: 2 },
       pb: 2,
     }}
   >
@@ -47,14 +47,15 @@ const Home = () => {
           sx={{ typography: "subtitle1" }}
         >
           <StyledGrid>
-            <Typography variant="h6">
-              Latest Video performance
-            </Typography>
+            <Typography variant="h6">Latest Video performance</Typography>
             <Video src="/video1.mp4" />
             <Typography variant="body1">
               Top 10 travel tips for biggeners travel thailand, bail, Phuket,
             </Typography>
-            <Grid container sx={{ typography: "body2", mt: 2 }}>
+            <Grid
+              container
+              sx={{ typography: { xs: "body1", sm: "body2" }, mt: 2 }}
+            >
               <Grid item xs={6}>
                 <StyledBox>Views</StyledBox>
                 <StyledBox>Views</StyledBox>
@@ -69,13 +70,15 @@ const Home = () => {
           </StyledGrid>
           <StyledGrid>
             <Typography variant="h6">Analytics</Typography>
-            <Typography variant="body2" sx={{ mt: 2 }}>
+            <Box sx={{ mt: 2, typography: { xs: "body1", sm: "body2" } }}>
               Current Subcriber
-            </Typography>
+            </Box>
             <Typography variant="h3">152</Typography>
             <Divider sx={{ my: 3 }} />
             <Typography variant="body1">Summary</Typography>
-            <Typography variant="body2">last 30 Days</Typography>
+            <Box sx={{ typography: { xs: "body1", sm: "body2" } }}>
+              last 30 Days
+            </Box>
             <InfoContainer
               background={gradients.purple}
               icon={<VisibilityIcon />}
@@ -98,7 +101,10 @@ const Home = () => {
             <Typography variant="h6"> Most Viewed Video</Typography>
             <Video src="/video1.mp4" />
             <Typography variant="body1">M1 Max macBook pro Review</Typography>
-            <Grid container sx={{ typography: "body2", mt: 2 }}>
+            <Grid
+              container
+              sx={{ typography: { xs: "body1", sm: "body2" }, mt: 2 }}
+            >
               <Grid item xs={6}>
                 153k
               </Grid>

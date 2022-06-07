@@ -10,18 +10,22 @@ const SearchVideos = () => {
   const [data, setData] = useState(RelatedVideosData);
 
   const getFilteredList = () => {
-    return data.filter(
-      (item) => item.authorName.toLowerCase().includes(searchedVal?.toLowerCase()) 
+    return data.filter((item) =>
+      item.authorName.toLowerCase().includes(searchedVal?.toLowerCase())
     );
   };
-  const filteredList = useMemo(getFilteredList, [searchedVal,data]);
+  const filteredList = useMemo(getFilteredList, [searchedVal, data]);
+
+  const playVideo=()=>{
+    router.push("/home/singleVideo")
+  }
   return (
-    <Grid container>
-      <Grid item xs={12}>
-        {filteredList?.map((item, index) => (
-          <SearchVideoResult item={item} key={index} />
-        ))}
-      </Grid>
+    <Grid container rowSpacing={1}>
+      {filteredList?.map((item, index) => (
+        <Grid item xs={12} key={index}>
+          <SearchVideoResult item={item} onClick={playVideo}/>
+        </Grid>
+      ))}
     </Grid>
   );
 };

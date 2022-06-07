@@ -14,7 +14,11 @@ const SearchVideoResult = ({ item, onClick }) => {
     description,
   } = item;
   return (
-    <Grid container spacing={{xs:0.5,sm:1,lg:2,xl:4}} mt={1} onClick={onClick}>
+    <Grid
+      container
+      spacing={{ xs: 0.5, sm: 1, lg: 2, xl: 4 }}
+      onClick={onClick}
+    >
       <Grid item xs={6} lg={3}>
         <VideoWithTime src={videoSrc} duration={duration} />
       </Grid>
@@ -31,10 +35,15 @@ const SearchVideoResult = ({ item, onClick }) => {
             alignItems: "center",
             typography: "subtile2",
             gap: 1,
-            my:1,
+            my: 1,
           }}
         >
-          <Avatar src={authorImg} alt="img" sx={{ width: {xs:24,sm:48}, height: {xs:24,sm:48} }}/> {authorName}
+          <Avatar
+            src={authorImg}
+            alt="img"
+            sx={{ width: { xs: 24, sm: 48 }, height: { xs: 24, sm: 48 } }}
+          />
+          {authorName}
         </Box>
         <Typography variant="body2">{description}</Typography>
       </Grid>

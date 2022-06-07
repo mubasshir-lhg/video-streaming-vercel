@@ -117,7 +117,7 @@ const typography = {
   body1: {
     lineHeight: 1.5,
     fontSize: pxToRem(14),
-    ...responsiveFontSizes({xs:6,sm: 10, md: 12, lg: 14 }),
+    ...responsiveFontSizes({xs:9,sm: 11, md: 12, lg: 14 }),
   },
   body2: {
     lineHeight: 22 / 14,
@@ -125,14 +125,14 @@ const typography = {
     fontSize: pxToRem(12),
     letterSpacing:1,
     opacity: 0.9,
-    ...responsiveFontSizes({xs:6,sm: 8, md: 10, lg: 12 }),
+    ...responsiveFontSizes({xs:8,sm: 9, md: 10, lg: 12 }),
   },
   caption: {
     lineHeight: 1.5,
     fontSize: pxToRem(12),
     color: "#fff",
     opacity: 0.7,
-    ...responsiveFontSizes({xs:6,sm: 8, md: 10, lg: 12 }),
+    ...responsiveFontSizes({xs:8,sm: 9, md: 10, lg: 12 }),
   },
   overline: {
     fontWeight: 700,
@@ -142,11 +142,11 @@ const typography = {
     textTransform: "uppercase",
   },
   button: {
-    fontWeight: 700,
+    fontWeight: 400,
     lineHeight: 24 / 14,
     fontSize: pxToRem(14),
     textTransform: "capitalize",
-    ...responsiveFontSizes({ sm: 12, md: 13, lg: 14 }),
+    ...responsiveFontSizes({ xs:10,sm: 11, md: 13, lg: 14 }),
   },
 };
 

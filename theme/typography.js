@@ -112,7 +112,7 @@ const typography = {
     fontWeight: 400,
     lineHeight: 22 / 14,
     fontSize: pxToRem(15),
-    ...responsiveFontSizes({xs:6,sm: 10, md: 12, lg: 14 }),
+    ...responsiveFontSizes({xs:11,sm: 13, md: 14, lg: 15 }),
   },
   body1: {
     lineHeight: 1.5,

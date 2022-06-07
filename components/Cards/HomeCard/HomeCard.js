@@ -26,7 +26,7 @@ const HomeCard = ({ item, onClick }) => {
     duration,
   } = item;
   return (
-    <Container onClick={onClick}>
+    <Container onClick={onClick} mt={1}>
       <VideoWithTime src={videoSrc} duration={duration} />
       <InfoWrapper>
         <Avatar src={authorImg} alt="img" />
@@ -34,7 +34,7 @@ const HomeCard = ({ item, onClick }) => {
           <Typography variant="subtitle1">
             {title.length > 50 ? `${title.substring(0, 50)}...` : title}
           </Typography>
-          <Typography variant="caption" component="div" mt={2}>
+          <Typography variant="caption" component="div" mt={1}>
             {authorName}
           </Typography>
           <Typography variant="caption">

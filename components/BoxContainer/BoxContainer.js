@@ -6,8 +6,8 @@ const BoxContainer = ({ children,py,px }) => {
   return (
     <Box
       sx={{
-        py:py || 5,
-        px:px || 4,
+        py:py || {xs:1,sm:2,md:5},
+        px:px || {xs:2,sm:3,md:4},
         backgroundColor: "primary.main",
         borderRadius: shape.borderRadius,
         boxShadow: customShadows.z12,

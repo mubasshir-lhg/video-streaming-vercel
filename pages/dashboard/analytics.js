@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Grid } from "@mui/material";
+import { Box, Grid,Typography } from "@mui/material";
 import { useTheme } from "@mui/styles";
 import BoxContainer from "../../components/BoxContainer/BoxContainer";
 import InfoContainer from "../../components/InfoContainer/InfoContainer";
@@ -14,7 +14,7 @@ import { makeStyles } from "@mui/styles";
 import MuiTable from "../../components/Table/Table";
 //data
 import { datasets } from "../../components/Chart/data";
-import { rows, coloms,rows2,coloms2 } from "../../_mockup/Table";
+import { rows, coloms, rows2, coloms2 } from "../../_mockup/Table";
 import MuiTable2 from "../../components/Table/Table2";
 
 const useStyles = makeStyles({
@@ -51,7 +51,9 @@ const Analytics = () => {
         return (
           <BoxContainer>
             <Box sx={{ typography: "subtitle1" }}>
-              Your Channel has gotten 3,492,332 views so for
+              <Typography variant="subtitle1">
+                Your Channel has gotten 3,492,332 views so for
+              </Typography>
             </Box>
             <Grid container spacing={2} sx={{ flexWrap: "wrap" }}>
               <Grid item xs={6} md={4} lg={2}>
@@ -91,9 +93,7 @@ const Analytics = () => {
       case 1:
         return (
           <BoxContainer>
-            <Box sx={{ typography: "subtitle1" }}>
-              View All subscribers
-            </Box>
+            <Box sx={{ typography: "subtitle1" }}>View All subscribers</Box>
             <MuiTable rows={rows} coloms={coloms} />
           </BoxContainer>
         );
@@ -123,11 +123,9 @@ const Analytics = () => {
       case 3:
         return (
           <BoxContainer>
-          <Box sx={{ typography: "subtitle1" }}>
-            Most View Video
-          </Box>
-          <MuiTable2 rows={rows2} coloms={coloms2} />
-        </BoxContainer>
+            <Box sx={{ typography: "subtitle1" }}>Most View Video</Box>
+            <MuiTable2 rows={rows2} coloms={coloms2} />
+          </BoxContainer>
         );
       default:
         break;

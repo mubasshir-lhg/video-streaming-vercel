@@ -3,12 +3,20 @@ import { Button, Box, TextField, Grid } from "@mui/material";
 import Image from "next/image";
 import { styled } from "@mui/system";
 
-const ButtonWrapper = styled(Box)({
+const ButtonWrapper = styled(Box)(({theme})=>({
   display: "flex",
   justifyContent: "flex-end",
   gap: 10,
   marginTop: "16px",
-});
+  [theme.breakpoints.down("sm")]:{
+    justifyContent: "center",
+    marginTop: "8px",
+    "& Button":{
+      width:"100%"
+    }
+  },
+ 
+}));
 
 const AddComment = ({ placeholder, Cancel, ReplayBtn,sendComment }) => {
   const [inputVal,setInputVal]=useState("")
@@ -22,7 +30,7 @@ const AddComment = ({ placeholder, Cancel, ReplayBtn,sendComment }) => {
   }
   return (
     <Grid container spacing={1} mt={3}>
-      <Grid item xs={1}>
+      <Grid item xs={2} sm={1}>
         <Image
           width={40}
           height={40}
@@ -32,7 +40,7 @@ const AddComment = ({ placeholder, Cancel, ReplayBtn,sendComment }) => {
           className="bar-img"
         />
       </Grid>
-      <Grid item xs={11}>
+      <Grid item xs={12}>
         <TextField
           value={inputVal}
           variant="standard"

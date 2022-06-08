@@ -1,26 +1,56 @@
-import { Box, Grid  } from "@mui/material";
 import React from "react";
-import ContainedButton from "../../components/Button/ContainedButton";
-import OutlinedButton from "../../components/Button/OutlinedButton";
+import { Box, Grid, Button } from "@mui/material";
 import AddChapter from "../../components/Chapter/AddChapter";
 import ChapterCard from "../../components/Chapter/ChapterCard";
-const chapter = ({}) => {
-    const chap=[{chapter: '01', duration:'20'},{chapter: '02', duration:'10'},{chapter: '03', duration:'01'}];
+import { useRouter } from "next/router";
+
+const Chapter = () => {
+  const router = useRouter();
+  const chap = [
+    { chapterNo: "01", duration: "20" },
+    { chapterNo: "02", duration: "10" },
+    { chapterNo: "03", duration: "01" },
+    { chapterNo: "04", duration: "01" },
+  ];
+
+  const editChapter = () => {
+    router.push("/home/editChapter");
+  };
+  const saveChapter = () => {
+    router.push("/home/");
+  };
   return (
-    <Box sx={{p:2}} >
-        <Grid container spacing={2}>
-        {chap.map((item, index) => { return (<ChapterCard key={index} chapterNum={item.chapter} chapterDuration={item.duration} />) })}
-        <Grid item xs={12} > <AddChapter/> </Grid>
+    <Box sx={{ p: 2 }}>
+      <Grid container spacing={2}>
+        {chap.map((item, index) => (
+          <ChapterCard key={index} item={item} Edit={editChapter} />
+        ))}
+        <Grid item xs={12}>
+          <AddChapter />
+        </Grid>
       </Grid>
-      <Grid container  spacing={2.5} justifyContent="center" sx={{
-        p: 3,
-        flexGrow: 1
-      }}>
-        <Grid item > <OutlinedButton text='Cancel' width='220px' color='primary' /> </Grid>
-        <Grid item > <ContainedButton text='Save Chapters' width='220px' color='purple'/></Grid>
+      <Grid
+        container
+        spacing={3}
+        justifyContent="center"
+        sx={{
+          p: 3,
+          flexGrow: 1,
+        }}
+      >
+        <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
+          <Button variant="outlined" color="purple" fullWidth>
+            Cancel
+          </Button>
+        </Grid>
+        <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
+          <Button variant="contained" color="purple" fullWidth onClick={saveChapter}>
+            Save Chapters
+          </Button>
+        </Grid>
       </Grid>
     </Box>
-  )
-}
+  );
+};
 
-export default chapter
+export default Chapter;

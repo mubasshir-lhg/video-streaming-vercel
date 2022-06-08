@@ -64,11 +64,11 @@ const typography = {
     ...responsiveFontSizes({ sm: 19, md: 20, lg: 20 }),
   },
   h6: {
-    fontWeight: 700,
+    fontWeight: 400,
     lineHeight: 28 / 18,
     color: "#fff",
-    fontSize: pxToRem(18),
-    ...responsiveFontSizes({ sm: 18, md: 18, lg: 18 }),
+    fontSize: pxToRem(19),
+    ...responsiveFontSizes({ sm: 16, md: 18, lg: 19 }),
   },
   normaltext: {
     fontWeight: 400,
@@ -105,33 +105,35 @@ const typography = {
     color: "#fff",
     letterSpacing: "1.2px",
     fontSize: pxToRem(17),
-    ...responsiveFontSizes({xs:7,sm: 12, md: 16, lg: 17 }),
+    ...responsiveFontSizes({sm: 14, md: 16, lg: 17 }),
 
   },
   subtitle2: {
     fontWeight: 400,
     lineHeight: 22 / 14,
     fontSize: pxToRem(15),
-    ...responsiveFontSizes({xs:6,sm: 10, md: 12, lg: 14 }),
+    ...responsiveFontSizes({xs:10,sm: 14, md: 14, lg: 15 }),
   },
   body1: {
     lineHeight: 1.5,
     fontSize: pxToRem(14),
-    ...responsiveFontSizes({xs:6,sm: 10, md: 12, lg: 14 }),
+    letterSpacing:1.5,
+    ...responsiveFontSizes({ md: 13, lg: 14 }),
   },
   body2: {
     lineHeight: 22 / 14,
     fontWeight: 300,
     fontSize: pxToRem(12),
+    letterSpacing:1,
     opacity: 0.9,
-    ...responsiveFontSizes({xs:6,sm: 8, md: 10, lg: 12 }),
+    ...responsiveFontSizes({ sm:13,md: 11, lg: 12 }),
   },
   caption: {
     lineHeight: 1.5,
     fontSize: pxToRem(12),
     color: "#fff",
-    opacity: 0.7,
-    ...responsiveFontSizes({xs:6,sm: 8, md: 10, lg: 12 }),
+    opacity: 0.8,
+    ...responsiveFontSizes({xs:11, lg: 12 }),
   },
   overline: {
     fontWeight: 700,
@@ -141,11 +143,11 @@ const typography = {
     textTransform: "uppercase",
   },
   button: {
-    fontWeight: 700,
+    fontWeight: 400,
     lineHeight: 24 / 14,
     fontSize: pxToRem(14),
     textTransform: "capitalize",
-    ...responsiveFontSizes({ sm: 12, md: 13, lg: 14 }),
+    ...responsiveFontSizes({ xs:10,sm: 11, md: 13, lg: 14 }),
   },
 };
 

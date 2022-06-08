@@ -2,7 +2,7 @@ import React from "react";
 import Button from "@mui/material/Button";
 import { useTheme } from "@mui/styles";
 
-const OutlinedButton = ({ text, width, color, active, onClick }) => {
+const CategoryButton = ({ text, width, color, active, onClick }) => {
   const { palette } = useTheme();
 
   let activeColor = "";
@@ -38,4 +38,4 @@ const OutlinedButton = ({ text, width, color, active, onClick }) => {
   );
 };
 
-export default OutlinedButton;
+export default CategoryButton;

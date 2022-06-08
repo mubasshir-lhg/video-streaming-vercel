@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import { makeStyles } from "@mui/styles";
-import { IconButton } from "@mui/material";
+import { IconButton, Typography } from "@mui/material";
 import UploadIcon from "@mui/icons-material/Upload";
 
 const useStyles = makeStyles((theme) => ({
@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export const UploadVideoModal = ({ handleClose, open }) => {
+export const UploadVideoModal = ({ handleClose, open,onClick }) => {
   const classes = useStyles();
   return (
     <>
@@ -48,10 +48,10 @@ export const UploadVideoModal = ({ handleClose, open }) => {
         <Fade in={open}>
           <Box className={classes.modal}>
             <Box sx={{ typography: "subtitle1" }} className={`${classes.box} CustomeBorder`}>
-              <IconButton>
-                <UploadIcon />
+              <IconButton onClick={onClick}>
+                <UploadIcon fontSize="large"/>
               </IconButton>
-              Upload a Video
+              <Typography variant="subtitle1">Upload a Video</Typography>
             </Box>
           </Box>
         </Fade>

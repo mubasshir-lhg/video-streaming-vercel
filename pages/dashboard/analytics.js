@@ -100,7 +100,9 @@ const Analytics = () => {
         return (
           <BoxContainer>
             <Box sx={{ typography: "subtitle1" }}>View All subscribers</Box>
-            <MuiTable rows={rows} coloms={coloms} />
+            <Box sx={{ width: "100%", overflow: "auto" }}>
+              <MuiTable rows={rows} coloms={coloms} />
+            </Box>
           </BoxContainer>
         );
       case 2:
@@ -110,12 +112,12 @@ const Analytics = () => {
               Your Channel got 153k views in the last 28 days
             </Box>
             <Grid container spacing={2} sx={{ flexWrap: "wrap" }}>
-              <Grid item xs={12} md={6} lg={5}>
+              <Grid item xs={12} md={7} lg={5}>
                 <InfoContainer
                   background={gradients.purple}
                   tag="Views"
                   number="153K"
-                  shape="horizontal"
+                  shape={isSmDown ? "" : "horizontal"}
                 />
               </Grid>
               <Grid item xs={12}>

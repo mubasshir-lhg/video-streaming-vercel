@@ -321,7 +321,7 @@ export default function Layout({ children }) {
               onClick={handleDrawer}
               edge="start"
               sx={{
-                mr: {xs:0,sm:3},
+                mr: { xs: 0, sm: 3 },
                 ml: 2,
                 ...(open && { display: "none" }),
               }}
@@ -389,7 +389,11 @@ export default function Layout({ children }) {
           </>
         </Toolbar>
       </AppBar>
-      <Drawer variant="permanent" open={open}>
+      <Drawer
+        variant="permanent"
+        open={open}
+        sx={{ position: isSmDown && "absolute", top: 0, left: 0 }}
+      >
         <DrawerHeader>
           <IconButton onClick={handleDrawer} sx={{ mt: 3 }}>
             {open === false ? "" : <ChevronLeftIcon />}
@@ -442,7 +446,7 @@ export default function Layout({ children }) {
           ))}
         </List>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: {xs:1,sm:2,md:3} }}>
+      <Box component="main" sx={{ flexGrow: 1, p: { xs: 1, sm: 2, md: 3 } }}>
         <DrawerHeader />
         {children}
       </Box>

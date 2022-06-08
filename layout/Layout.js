@@ -181,7 +181,6 @@ export default function Layout({ children }) {
   const [openUploadModal, setOpenUploadModal] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const [navbar, setNavbar] = useState(false);
-  const [searchBar, setSearchBar] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const [channel, setChannel] = useState(false);
   const [menuOption, setMenuOption] = useState([]);
@@ -197,7 +196,10 @@ export default function Layout({ children }) {
       "/home/searchVideos"
     );
   };
-
+  const logoHandler = () => {
+    router.push("/home/");
+    setChannel(false)
+  };
   const uploadVideo = () => {
     router.push("/home/splitChapters");
     handleCloseModal();
@@ -226,17 +228,12 @@ export default function Layout({ children }) {
     setOpenRequestModal(false);
     setOpenUploadModal(false);
   };
-  const ShowSearchBar = () => {
-    setSearchBar((preState) => !preState);
-  };
-
   const goToPage = (href, index) => {
     channel ? router.push(`/dashboard/${href}`) : router.push(`/home/${href}`);
     setActiveIndex(index);
   };
-
   const changeBackground = () => {
-    if (window.scrollY >= 66) {
+    if (window.scrollY >=10) {
       setNavbar(true);
     } else {
       setNavbar(false);
@@ -328,7 +325,7 @@ export default function Layout({ children }) {
             >
               <MenuIcon />
             </IconButton>
-            <Box mt={1} sx={{ flexGrow: 1, minWidth: "25px" }}>
+            <Box mt={1} sx={{ flexGrow: 1, minWidth: "25px" }} onClick={logoHandler}>
               <Image
                 alt="logo"
                 src={logo}

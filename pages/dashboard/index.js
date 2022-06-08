@@ -48,7 +48,9 @@ const Home = () => {
         >
           <StyledGrid>
             <Typography variant="h6">Latest Video performance</Typography>
-            <Video src="/video1.mp4" />
+            <Box sx={{ width: { xs: "100%", lg: "280px" } }}>
+              <Video src="/video1.mp4" width="100%" />
+            </Box>
             <Typography variant="body1">
               Top 10 travel tips for biggeners travel thailand, bail, Phuket,
             </Typography>
@@ -99,7 +101,9 @@ const Home = () => {
           </StyledGrid>
           <Grid item xs={12} md={6} lg={4} pr={2}>
             <Typography variant="h6"> Most Viewed Video</Typography>
-            <Video src="/video1.mp4" />
+            <Box sx={{ width: { xs: "100%", lg: "280px" } }}>
+              <Video src="/video1.mp4" width="100%" />
+            </Box>
             <Typography variant="body1">M1 Max macBook pro Review</Typography>
             <Grid
               container

@@ -150,7 +150,7 @@ const Analytics = () => {
             }}
             onClick={() => handleClick(index)}
           >
-            {item}
+           <Typography variant="subtitle1"> {item}</Typography>
           </Box>
         ))}
       </LinksWrapper>

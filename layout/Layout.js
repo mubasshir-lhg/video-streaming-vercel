@@ -233,7 +233,7 @@ export default function Layout({ children }) {
     setActiveIndex(index);
   };
   const changeBackground = () => {
-    if (window.scrollY >=10) {
+    if (window.scrollY >=5) {
       setNavbar(true);
     } else {
       setNavbar(false);

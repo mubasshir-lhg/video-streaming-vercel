@@ -51,19 +51,19 @@ const sideBarLinkUser = [
   {
     id: "home",
     label: "Home",
-    link: "/",
+    link: "",
     Icon: HomeIcon,
   },
   {
     id: "video",
     label: "Video ",
-    link: "/video",
+    link: "video",
     Icon: FlipCameraAndroidIcon,
   },
   {
     id: "time",
     label: "Time",
-    link: "/time",
+    link: "time",
     Icon: AccessTimeIcon,
   },
 ];
@@ -71,37 +71,37 @@ const sideBarLinkAdmin = [
   {
     id: "dashboard",
     label: "Dashboard",
-    link: "/",
+    link: "",
     Icon: DashboardOutlinedIcon,
   },
   {
     id: "analytics",
     label: "Analytics",
-    link: "/analytics",
+    link: "analytics",
     Icon: TimelineOutlinedIcon,
   },
   {
     id: "editor",
     label: "Editor",
-    link: "/editor",
+    link: "editor",
     Icon: PersonAddOutlinedIcon,
   },
   {
     id: "comments",
     label: "Comments",
-    link: "/comments",
+    link: "comments",
     Icon: ModeCommentOutlinedIcon,
   },
   {
     id: "subtitles",
     label: "Subtitles",
-    link: "/subtitles",
+    link: "subtitles",
     Icon: SubtitlesOutlinedIcon,
   },
   {
     id: "requests",
     label: "Requests",
-    link: "/requests",
+    link: "requests",
     Icon: VideoCallIcon,
   },
 ];

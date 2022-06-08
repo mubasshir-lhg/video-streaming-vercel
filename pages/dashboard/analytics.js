@@ -32,8 +32,8 @@ const LinksWrapper = styled(Box)(({ theme }) => ({
   gap: "50px",
   marginBottom: "20px",
   [theme.breakpoints.down("sm")]: {
-    flexDirection: "column",
     gap: "16px",
+    flexWrap: "wrap",
   },
 }));
 

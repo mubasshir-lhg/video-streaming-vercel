@@ -11,7 +11,7 @@ const Requests = () => {
     <Box>
       <PageHeader title="Request" />
       <BoxContainer px="0">
-        <Box sx={{ height: "450px", overflow: "auto" }}>
+        <Box sx={{ height: { xs: "auto", sm: "450px" }, overflow: "auto" }}>
           {requestData?.map((item, index) => (
             <RequestCard item={item} key={index} />
           ))}

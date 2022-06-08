@@ -35,14 +35,14 @@ export default function MuiTable({ rows, coloms }) {
       <TableContainer>
         <Table
           aria-labelledby="tableTitle"
-          size={"medium"}
+          size="medium"
         >
           <TableHead>
             <TableRow>
               {coloms?.map((item, index) => (
                 <TableCell
                   key={index}
-                  sx={{ borderBottom: `2px solid ${purple.main}` }}
+                  sx={{ borderBottom: `2px solid ${purple.main}`,minWidth:180 }}
                 >
                   {item}
                 </TableCell>

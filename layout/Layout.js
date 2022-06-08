@@ -446,7 +446,7 @@ export default function Layout({ children }) {
           ))}
         </List>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: { xs: 1, sm: 2, md: 3 } }}>
+      <Box component="main" sx={{ maxWidth:"100%",flexGrow: 1, p: { xs: 1, sm: 2, md: 3 } }}>
         <DrawerHeader />
         {children}
       </Box>

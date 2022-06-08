@@ -100,9 +100,7 @@ const Analytics = () => {
         return (
           <BoxContainer>
             <Box sx={{ typography: "subtitle1" }}>View All subscribers</Box>
-            <Box sx={{ width: "100%", overflow: "auto" }}>
               <MuiTable rows={rows} coloms={coloms} />
-            </Box>
           </BoxContainer>
         );
       case 2:

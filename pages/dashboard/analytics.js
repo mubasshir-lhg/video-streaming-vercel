@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Grid,Typography } from "@mui/material";
+import { Box, Grid, Typography,useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/styles";
 import BoxContainer from "../../components/BoxContainer/BoxContainer";
 import InfoContainer from "../../components/InfoContainer/InfoContainer";
@@ -36,10 +36,12 @@ const LinksWrapper = styled(Box)({
 const subLinks = ["Overview", "Subscribers", "Views", "Most viewed Video"];
 const Analytics = () => {
   const styles = useStyles();
-  const { palette } = useTheme();
+  const { palette, breakpoints } = useTheme();
   const { gradients } = palette;
   const [activeIndex, setActiveIndex] = useState(0);
   const [chartData, setChartData] = useState(datasets);
+  const isMdDown = useMediaQuery(breakpoints.down("md"));
+  const isSmDown = useMediaQuery(breakpoints.down("sm"));
 
   const handleClick = (ind) => {
     setActiveIndex(ind);
@@ -55,31 +57,31 @@ const Analytics = () => {
                 Your Channel has gotten 3,492,332 views so for
               </Typography>
             </Box>
-            <Grid container spacing={2} sx={{ flexWrap: "wrap" }}>
-              <Grid item xs={6} md={4} lg={2}>
+            <Grid container spacing={2}>
+              <Grid item xs={12} md={4} lg={3} xl={2}>
                 <InfoContainer
                   background={gradients.purple}
                   icon={<VisibilityIcon />}
                   tag="Views"
                   number="15K"
-                  shape="vertical"
+                  shape={isSmDown?"":isMdDown?"horizontal":"vertical"}
                 />
               </Grid>
-              <Grid item xs={6} md={4} lg={2}>
+              <Grid item xs={12} md={4} lg={3} xl={2}>
                 <InfoContainer
                   background={gradients.warning}
                   icon={<ThumbUpAltIcon />}
                   tag="Likes"
                   number="15K"
-                  shape="vertical"
+                  shape={isSmDown?"":isMdDown?"horizontal":"vertical"}
                 />
               </Grid>
-              <Grid item xs={6} md={4} lg={2}>
+              <Grid item xs={12} md={4} lg={3} xl={2}>
                 <InfoContainer
                   icon={<SubscriptionsIcon />}
                   tag="Subscribers"
                   number="15K"
-                  shape="vertical"
+                  shape={isSmDown?"":isMdDown?"horizontal":"vertical"}
                 />
               </Grid>
               <Grid item xs={12}>

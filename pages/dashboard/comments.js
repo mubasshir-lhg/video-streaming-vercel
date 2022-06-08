@@ -39,7 +39,7 @@ const Comments = () => {
       case 0:
         return (
           <BoxContainer px="0">
-            <Box sx={{ height: "370px", overflow: "auto" }}>
+            <Box sx={{ height: {xs:"auto",lg:"370px"}, overflow: "auto" }}>
               {publishedData?.map((item, index) => (
                 <CommentCard item={item} key={index} />
               ))}
@@ -49,7 +49,7 @@ const Comments = () => {
       case 1:
         return (
           <BoxContainer px="0">
-            <Box sx={{ height: "370px", overflow: "auto" }}>
+            <Box sx={{ height: {xs:"auto",lg:"370px"}, overflow: "auto" }}>
               {pendingData?.map((item, index) => (
                 <CommentCard item={item} key={index} />
               ))}
@@ -59,7 +59,7 @@ const Comments = () => {
       case 2:
         return (
           <BoxContainer px="0">
-            <Box sx={{ height: "370px", overflow: "auto" }}>
+            <Box sx={{ height: {xs:"auto",lg:"370px"}, overflow: "auto" }}>
               {markAsSpamData?.map((item, index) => (
                 <CommentCard item={item} key={index} />
               ))}

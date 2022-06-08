@@ -38,7 +38,7 @@ const CommentCard = ({ item }) => {
             className="bar-img"
           />
         </Grid>
-        <Grid item xs={8} md={7} lg={8}>
+        <Grid item xs={12} sm={8} md={7} lg={8}>
           <Box sx={{ pb: 1, display: "flex", gap: { xs: "10px", md: "30px" } }}>
             <Typography>{item.userName}</Typography>
             <Typography variant="body2">{item.time}</Typography>
@@ -46,17 +46,17 @@ const CommentCard = ({ item }) => {
           </Box>
           {item.comment}
         </Grid>
-        <Grid item xs={1} sx={{ml:'auto'}}>
+        <Grid item xs={2} sm={1} sx={{ml:'auto'}}>
           <IconButton>
             <ThumbUpIcon />
           </IconButton>
         </Grid>
-        <Grid item xs={1}>
+        <Grid item xs={2} sm={1}>
           <IconButton>
             <FlagIcon />
           </IconButton>
         </Grid>
-        <Grid item xs={1}>
+        <Grid item xs={2} sm={1}>
           <IconButton onClick={handleClick}>
             {open ? <ExpandLess /> : <ExpandMore />}
           </IconButton>

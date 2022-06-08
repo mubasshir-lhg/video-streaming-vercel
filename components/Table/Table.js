@@ -34,7 +34,6 @@ export default function MuiTable({ rows, coloms }) {
     <Box sx={{ width: "100%" }}>
       <TableContainer>
         <Table
-          sx={{ minWidth: 550 }}
           aria-labelledby="tableTitle"
           size={"medium"}
         >

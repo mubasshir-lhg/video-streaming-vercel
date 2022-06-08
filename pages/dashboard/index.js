@@ -99,7 +99,7 @@ const Home = () => {
               number="112"
             />
           </StyledGrid>
-          <Grid item xs={12} md={6} lg={4} pr={2}>
+          <Grid item xs={12} lg={4} pr={{xs:0,lg:2}}>
             <Typography variant="h6"> Most Viewed Video</Typography>
             <Box sx={{ width: { xs: "100%", lg: "280px" } }}>
               <Video src="/video1.mp4" width="100%" />

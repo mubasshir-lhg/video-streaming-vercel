@@ -18,7 +18,7 @@ const RequestCard = ({ item }) => {
             className="bar-img"
           />
         </Grid>
-        <Grid item xs={7}  md={8}>
+        <Grid item xs={12} sm={7}  md={8} order={{xs:2,sm:1}}>
           <Box sx={{ pb: 1, display: "flex", gap: { xs: "10px", md: "30px" } }}>
             <Typography>{item.userName}</Typography>
             <Typography variant="body2">{item.time}</Typography>
@@ -26,7 +26,7 @@ const RequestCard = ({ item }) => {
           </Box>
           {item.comment}
         </Grid>
-        <Grid item xs={2} md={2} lg={3} textAlign="right">
+        <Grid item xs={2} md={2} lg={3} textAlign="right" order={{xs:1,sm:2}}>
           <IconButton>
             <VideoCallIcon />
           </IconButton>

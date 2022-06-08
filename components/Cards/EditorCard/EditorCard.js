@@ -35,12 +35,12 @@ const EditorCard = ({ value, individualCheckHandler }) => {
         </FormGroup>
       </Grid>
       <Grid item sm={4} md={4} lg={2}>
-        <Box sx={{ minWidth: "100px", mr: 2 }}>
+        <Box sx={{ minWidth: "100px", mr: {xs:0.5,sm:1} }}>
           <Image
             alt="table-img"
             src={value.img}
-            width={150}
-            height={90}
+            width={120}
+            height={80}
             quality={100}
             objectFit="cover"
             className="bar-img"

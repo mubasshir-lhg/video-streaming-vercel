@@ -49,7 +49,7 @@ export default function MuiTable2({ rows, coloms }) {
               {coloms?.map((item, index) => (
                 <TableCell
                   key={index}
-                  sx={{ borderBottom: `2px solid ${purple.main}` }}
+                  sx={{ borderBottom: `2px solid ${purple.main}`,minWidth:index==2?50:180 }}
                 >
                   {item}
                 </TableCell>

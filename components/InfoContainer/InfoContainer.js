@@ -50,7 +50,7 @@ const InfoContainer = ({ background, icon, tag, number, shape }) => {
         return (
           <StyledInfoVertical background={background}>
             <Box>
-              <StyledTypography variant="body2">{tag}</StyledTypography>
+              <StyledTypography variant="subtitle1">{tag}</StyledTypography>
               <IconButton>{icon}</IconButton>
             </Box>
             <Typography variant="h6">
@@ -76,7 +76,7 @@ const InfoContainer = ({ background, icon, tag, number, shape }) => {
           <StyledInfo background={background}>
             <Box>
               <IconButton>{icon}</IconButton>
-              <StyledTypography variant="body2">{tag}</StyledTypography>
+              <StyledTypography variant="subtitle1">{tag}</StyledTypography>
             </Box>
             <Typography variant="h6"> {number}</Typography>
           </StyledInfo>

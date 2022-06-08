@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Grid, Typography,useMediaQuery } from "@mui/material";
+import { Box, Grid, Typography, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/styles";
 import BoxContainer from "../../components/BoxContainer/BoxContainer";
 import InfoContainer from "../../components/InfoContainer/InfoContainer";
@@ -25,13 +25,17 @@ const useStyles = makeStyles({
   },
 });
 
-const LinksWrapper = styled(Box)({
+const LinksWrapper = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "flex-start",
   gap: "50px",
   marginBottom: "20px",
-});
+  [theme.breakpoints.down("sm")]: {
+    flexDirection: "column",
+    gap: "16px",
+  },
+}));
 
 const subLinks = ["Overview", "Subscribers", "Views", "Most viewed Video"];
 const Analytics = () => {
@@ -64,7 +68,7 @@ const Analytics = () => {
                   icon={<VisibilityIcon />}
                   tag="Views"
                   number="15K"
-                  shape={isSmDown?"":isMdDown?"horizontal":"vertical"}
+                  shape={isSmDown ? "" : isMdDown ? "horizontal" : "vertical"}
                 />
               </Grid>
               <Grid item xs={12} md={4} lg={3} xl={2}>
@@ -73,7 +77,7 @@ const Analytics = () => {
                   icon={<ThumbUpAltIcon />}
                   tag="Likes"
                   number="15K"
-                  shape={isSmDown?"":isMdDown?"horizontal":"vertical"}
+                  shape={isSmDown ? "" : isMdDown ? "horizontal" : "vertical"}
                 />
               </Grid>
               <Grid item xs={12} md={4} lg={3} xl={2}>
@@ -81,7 +85,7 @@ const Analytics = () => {
                   icon={<SubscriptionsIcon />}
                   tag="Subscribers"
                   number="15K"
-                  shape={isSmDown?"":isMdDown?"horizontal":"vertical"}
+                  shape={isSmDown ? "" : isMdDown ? "horizontal" : "vertical"}
                 />
               </Grid>
               <Grid item xs={12}>

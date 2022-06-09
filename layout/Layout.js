@@ -257,7 +257,10 @@ export default function Layout({ children }) {
   ];
   const menuOptions2 = [
     {
-      onClickFunc: () => setOpenRequestModal(true),
+      onClickFunc: () => {
+        setOpenRequestModal(true);
+        closePopupMenu();
+      },
       child: (
         <>
           <VideoCallOutlinedIcon sx={{ pr: 1 }} />
@@ -275,7 +278,10 @@ export default function Layout({ children }) {
       ),
     },
     {
-      onClickFunc: () => setOpenUploadModal(true),
+      onClickFunc: () => {
+        setOpenUploadModal(true);
+        closePopupMenu();
+      },
       child: (
         <>
           <VideocamOutlinedIcon sx={{ pr: 1 }} />

@@ -198,7 +198,7 @@ export default function Layout({ children }) {
   };
   const logoHandler = () => {
     router.push("/home/");
-    setChannel(false)
+    setChannel(false);
   };
   const uploadVideo = () => {
     router.push("/home/splitChapters");
@@ -233,7 +233,7 @@ export default function Layout({ children }) {
     setActiveIndex(index);
   };
   const changeBackground = () => {
-    if (window.scrollY >=5) {
+    if (window.scrollY >= 10) {
       setNavbar(true);
     } else {
       setNavbar(false);
@@ -325,7 +325,11 @@ export default function Layout({ children }) {
             >
               <MenuIcon />
             </IconButton>
-            <Box mt={1} sx={{ flexGrow: 1, minWidth: "25px" }} onClick={logoHandler}>
+            <Box
+              mt={1}
+              sx={{ flexGrow: 1, minWidth: "25px", cursor: "pointer" }}
+              onClick={logoHandler}
+            >
               <Image
                 alt="logo"
                 src={logo}
@@ -443,7 +447,10 @@ export default function Layout({ children }) {
           ))}
         </List>
       </Drawer>
-      <Box component="main" sx={{ maxWidth:"100%",flexGrow: 1, p: { xs: 1, sm: 2, md: 3 } }}>
+      <Box
+        component="main"
+        sx={{ maxWidth: "100%", flexGrow: 1, p: { xs: 1, sm: 2, md: 3 } }}
+      >
         <DrawerHeader />
         {children}
       </Box>

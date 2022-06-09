@@ -1,7 +1,17 @@
-import '../styles/globals.css';
-import ThemeConfig from '../theme';
-import Layout from '../layout/Layout';
-function MyApp({ Component, pageProps }) {
+import "../styles/globals.css";
+import ThemeConfig from "../theme";
+import Layout from "../layout/Layout";
+import AuthLayout from "../layout/AuthLayout";
+function MyApp({ Component, pageProps, router }) {
+  if (router.pathname.startsWith("/auth")) {
+    return (
+      <ThemeConfig>
+        <AuthLayout>
+          <Component {...pageProps} />
+        </AuthLayout>
+      </ThemeConfig>
+    );
+  }
   return (
     <ThemeConfig>
       <Layout>

@@ -33,7 +33,7 @@ const VideoToPlay = ({ item }) => {
             className="bar-img"
           />
         </Grid>
-        <Grid item xs={7} sm={9}>
+        <Grid item xs={7} sm={9} md={8} lg={9}>
           <Typography variant="subtitle1">Heading Here</Typography>
           <Typography variant="caption" component="div">
             267k views
@@ -42,7 +42,7 @@ const VideoToPlay = ({ item }) => {
             3 months
           </Typography>
         </Grid>
-        <Grid item xs={12} sm={2}>
+        <Grid item xs={12} sm={2} md={3} lg={2}>
           <Button variant="contained" color="warning" fullWidth>
             Subscribe
           </Button>

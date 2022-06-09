@@ -19,6 +19,9 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: 24,
     textAlign: "center",
     padding: "40px 40px",
+    [theme.breakpoints.down("sm")]:{
+      width: "95%",
+    }
   },
   box:{
     borderRadius: theme.shape.borderRadiusSm,

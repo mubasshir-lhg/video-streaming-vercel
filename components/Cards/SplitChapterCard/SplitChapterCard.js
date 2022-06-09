@@ -5,7 +5,6 @@ import ScheduleIcon from "@mui/icons-material/Schedule";
 
 const Container = styled(Box)(({ theme }) => ({
   width: "100%",
-  maxWidth: "250px",
   display: "flex",
   flexDirection: "column",
   backgroundColor: theme.palette.primary.light,
@@ -46,7 +45,7 @@ const SplitChapterCard = ({ header, startTime, endTime }) => {
   return (
     <Container>
       <Header>
-        <Typography variant="subtitle2">{header}</Typography>
+        <Typography variant="subtitle1">{header}</Typography>
       </Header>
       <MiniCardsWrapper>
         <MiniCard>

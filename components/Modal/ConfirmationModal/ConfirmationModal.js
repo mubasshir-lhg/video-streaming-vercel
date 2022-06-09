@@ -17,6 +17,9 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: 24,
     textAlign: "center",
     padding: "20px 40px",
+    [theme.breakpoints.down("sm")]:{
+      width: "95%",
+    }
   },
   box: {
     display: "flex",

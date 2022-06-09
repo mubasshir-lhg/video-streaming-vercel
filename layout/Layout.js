@@ -39,8 +39,6 @@ import {
   Toolbar,
   List,
   Box,
-  Menu,
-  MenuItem,
 } from "@mui/material";
 import { RequestModal } from "../components/Modal/RequestAVideo/RequestAVideo";
 import { UploadVideoModal } from "../components/Modal/UploadVideoModal/UploadVideoModal";
@@ -198,7 +196,7 @@ export default function Layout({ children }) {
   };
   const logoHandler = () => {
     router.push("/home/");
-    setChannel(false)
+    setChannel(false);
   };
   const uploadVideo = () => {
     router.push("/home/splitChapters");
@@ -232,8 +230,12 @@ export default function Layout({ children }) {
     channel ? router.push(`/dashboard/${href}`) : router.push(`/home/${href}`);
     setActiveIndex(index);
   };
+  const logout = () => {
+    router.push(`/auth/login`)
+    closePopupMenu();
+  };
   const changeBackground = () => {
-    if (window.scrollY >=5) {
+    if (window.scrollY >= 10) {
       setNavbar(true);
     } else {
       setNavbar(false);
@@ -253,11 +255,14 @@ export default function Layout({ children }) {
   const menuOptions1 = [
     { onClickFunc: switchToChannel, child: "Your Channel" },
     { onClickFunc: switchToHome, child: "Home" },
-    { onClickFunc: closePopupMenu, child: "Logout" },
+    { onClickFunc: logout, child: "Logout" },
   ];
   const menuOptions2 = [
     {
-      onClickFunc: () => setOpenRequestModal(true),
+      onClickFunc: () => {
+        setOpenRequestModal(true);
+        closePopupMenu();
+      },
       child: (
         <>
           <VideoCallOutlinedIcon sx={{ pr: 1 }} />
@@ -275,7 +280,10 @@ export default function Layout({ children }) {
       ),
     },
     {
-      onClickFunc: () => setOpenUploadModal(true),
+      onClickFunc: () => {
+        setOpenUploadModal(true);
+        closePopupMenu();
+      },
       child: (
         <>
           <VideocamOutlinedIcon sx={{ pr: 1 }} />
@@ -298,6 +306,7 @@ export default function Layout({ children }) {
     setMenuOption(opt);
     openPopupMenu(e);
   };
+
   return (
     <Box sx={{ display: "flex" }}>
       <Head>
@@ -325,7 +334,11 @@ export default function Layout({ children }) {
             >
               <MenuIcon />
             </IconButton>
-            <Box mt={1} sx={{ flexGrow: 1, minWidth: "25px" }} onClick={logoHandler}>
+            <Box
+              mt={1}
+              sx={{ flexGrow: 1, minWidth: "25px", cursor: "pointer" }}
+              onClick={logoHandler}
+            >
               <Image
                 alt="logo"
                 src={logo}
@@ -443,7 +456,10 @@ export default function Layout({ children }) {
           ))}
         </List>
       </Drawer>
-      <Box component="main" sx={{ maxWidth:"100%",flexGrow: 1, p: { xs: 1, sm: 2, md: 3 } }}>
+      <Box
+        component="main"
+        sx={{ maxWidth: "100%", flexGrow: 1, p: { xs: 1, sm: 2, md: 3 } }}
+      >
         <DrawerHeader />
         {children}
       </Box>

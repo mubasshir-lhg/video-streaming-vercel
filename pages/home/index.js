@@ -35,10 +35,13 @@ const Homepage = () => {
   };
 
   const goToSingleVideo = (item) => {
-    router.push({
-      pathname: "/home/singleVideo",
-      query: { videoDetail: item },
-    },'/home/singleVideo');
+    router.push(
+      {
+        pathname: "/home/singleVideo",
+        query: { videoDetail: item },
+      },
+      "/home/singleVideo"
+    );
   };
 
   const getFilteredList = () => {
@@ -50,7 +53,7 @@ const Homepage = () => {
     );
   };
 
-  const filteredList = useMemo(getFilteredList, [selectedCategory, homedata]);
+  const filteredList = useMemo(getFilteredList, [selectedCategory]);
 
   useEffect(() => {
     window.addEventListener("resize", () => {
@@ -62,7 +65,14 @@ const Homepage = () => {
       <Grid container spacing={2}>
         <Grid item xs={12} sx={{ borderBottom: "1px solid #2447EF", pb: 1 }}>
           <Box
-            sx={{ maxWidth: { xs: screenSize - 130, md: screenSize - 260 } }}
+            sx={{
+              maxWidth: {
+                xs: screenSize,
+                sm: screenSize - 130,
+                md: screenSize - 260,
+              },
+              mt:2
+            }}
           >
             <Tabs
               value={value}

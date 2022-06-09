@@ -9,7 +9,7 @@ const tagOptions = ["tags1", "tags2", "tags3"];
 const visibiltyOptions = ["public", "private"];
 const restrictionOptions = ["copy Write claim", "other"];
 const Label = ({ children }) => (
-  <Box sx={{ py: 2, typography: "subtitle2" }}>{children}</Box>
+  <Box sx={{ py: 2, typography: {xs:"subtitle1",md:"subtitle2"} }}>{children}</Box>
 );
 const EditChapter = () => {
   const router=useRouter()
@@ -17,11 +17,11 @@ const EditChapter = () => {
     router.push("/home/chapter");
   };
   return (
-    <Grid container spacing={6} mt={5}>
-      <Grid item xs={12} md={6} sx={{ mt: 3 }}>
-        <Video src="/video1.mp4" width="100%" height="100%" />
+    <Grid container spacing={6} mt={{xs:0,sm:5}}>
+      <Grid item xs={12} lg={6} sx={{ mt:{xs:1,sm: 3 }}}>
+        <Video src="/video1.mp4" width="100%" height="100%" my="0"/>
       </Grid>
-      <Grid item xs={12} md={5}>
+      <Grid item xs={12} lg={5}>
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <Label>Title</Label>

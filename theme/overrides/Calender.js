@@ -19,5 +19,19 @@ export default function Calender(theme) {
         },
       },
     },
+    MuiDatePickerToolbar:{
+      styleOverrides: {
+        root: {
+          backgroundColor: theme.palette.primary.main,
+        },
+      },
+    },
+    MuiDialogActions:{
+      styleOverrides: {
+        root: {
+          backgroundColor: theme.palette.primary.main,
+        },
+      },
+    }
   };
 }

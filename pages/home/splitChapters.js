@@ -23,14 +23,14 @@ const SplitChapters = () => {
   return (
     <Box mt={2}>
       <Grid container spacing={{ xs: 1, md: 4 }} justifyContent="center">
-      <Grid item xs={12} md={10} lg={8}>
+      <Grid item xs={12} md={10} lg={9}>
         <Video src="/video1.mp4" width="100%" height="100%" controls={true} />
       </Grid>
       <Grid
         item
         xs={12}
         md={10}
-        lg={8}
+        lg={9}
         container
         spacing={1}
         justifyContent="center"

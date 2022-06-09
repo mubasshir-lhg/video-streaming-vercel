@@ -39,8 +39,6 @@ import {
   Toolbar,
   List,
   Box,
-  Menu,
-  MenuItem,
 } from "@mui/material";
 import { RequestModal } from "../components/Modal/RequestAVideo/RequestAVideo";
 import { UploadVideoModal } from "../components/Modal/UploadVideoModal/UploadVideoModal";
@@ -232,6 +230,10 @@ export default function Layout({ children }) {
     channel ? router.push(`/dashboard/${href}`) : router.push(`/home/${href}`);
     setActiveIndex(index);
   };
+  const logout = () => {
+    router.push(`/auth/login`)
+    closePopupMenu();
+  };
   const changeBackground = () => {
     if (window.scrollY >= 10) {
       setNavbar(true);
@@ -253,7 +255,7 @@ export default function Layout({ children }) {
   const menuOptions1 = [
     { onClickFunc: switchToChannel, child: "Your Channel" },
     { onClickFunc: switchToHome, child: "Home" },
-    { onClickFunc: closePopupMenu, child: "Logout" },
+    { onClickFunc: logout, child: "Logout" },
   ];
   const menuOptions2 = [
     {
@@ -304,6 +306,7 @@ export default function Layout({ children }) {
     setMenuOption(opt);
     openPopupMenu(e);
   };
+
   return (
     <Box sx={{ display: "flex" }}>
       <Head>

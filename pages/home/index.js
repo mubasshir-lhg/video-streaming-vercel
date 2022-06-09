@@ -53,7 +53,7 @@ const Homepage = () => {
     );
   };
 
-  const filteredList = useMemo(getFilteredList, [selectedCategory, homedata]);
+  const filteredList = useMemo(getFilteredList, [selectedCategory]);
 
   useEffect(() => {
     window.addEventListener("resize", () => {

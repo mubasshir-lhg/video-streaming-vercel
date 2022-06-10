@@ -4,6 +4,7 @@ import { homedata } from "../../_mockup/Home";
 import { useRouter } from "next/router";
 import Tabs from "@mui/material/Tabs";
 import HomeCard from "../../components/Cards/HomeCard/HomeCard";
+import HomeSkeleton from "../../components/Skeleton/HomeSkeleton/HomeSkeleton";
 import Category from "../../components/Category/Category";
 
 const tabs = [
@@ -21,6 +22,7 @@ const tabs = [
 
 const Homepage = () => {
   const [value, setValue] = useState(0);
+  const [loading, setLoading] = useState(false);
   const [activeBtn, setActivebtn] = useState(0);
   const [screenSize, setScreenSize] = useState(1540);
   const [selectedCategory, setSelectedCategory] = useState();
@@ -71,7 +73,7 @@ const Homepage = () => {
                 sm: screenSize - 130,
                 md: screenSize - 260,
               },
-              mt:2
+              mt: 2,
             }}
           >
             <Tabs
@@ -94,10 +96,17 @@ const Homepage = () => {
             </Tabs>
           </Box>
         </Grid>
-        {filteredList.length > 0 ? (
+        {loading ? (
+          filteredList.map((item, index) => (
+            <Grid item xs={12} md={6} lg={3} key={index}>
+              <HomeSkeleton />
+            </Grid>
+          ))
+        ) : filteredList.length > 0 ? (
           filteredList.map((item, index) => (
             <Grid item xs={12} md={6} lg={3} key={index}>
               <HomeCard item={item} onClick={() => goToSingleVideo(item)} />
+              {/* <HomeSkeleton /> */}
             </Grid>
           ))
         ) : (

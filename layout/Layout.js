@@ -234,6 +234,11 @@ export default function Layout({ children }) {
     router.push(`/auth/login`)
     closePopupMenu();
   };
+  const goToProfile = () => {
+    router.push(`/dashboard/profile`)
+    closePopupMenu();
+    setChannel(true)
+  };
   const changeBackground = () => {
     if (window.scrollY >= 10) {
       setNavbar(true);
@@ -255,6 +260,7 @@ export default function Layout({ children }) {
   const menuOptions1 = [
     { onClickFunc: switchToChannel, child: "Your Channel" },
     { onClickFunc: switchToHome, child: "Home" },
+    { onClickFunc: goToProfile, child: "Profile" },
     { onClickFunc: logout, child: "Logout" },
   ];
   const menuOptions2 = [

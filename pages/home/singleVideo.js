@@ -12,6 +12,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { styled } from "@mui/system";
 import ChapterVideo from "../../components/Video/chapterVideo/chapterVideo";
 import RelatedVideos from "../../components/Video/relatedVideos/relatedVideos";
+import RelatedVideosSkeleton from "../../components/Skeleton/RelatedVideoSkeleton/RelatedVideoSkeleton";
 
 const ChapterWrapper = styled(Box)(({ theme }) => ({
   borderRadius: "12px",
@@ -32,6 +33,7 @@ const SingleVideo = () => {
   const [subscriberData, setSubscriberData] = useState(subscriberComments);
   const [allChaptersData, setAllChaptersData] = useState(chaptersData);
   const [activeChapter, setActiveChapter] = useState(0);
+  const [loading, setloading] = useState(false);
   const [playChapter, setPlayChapter] = useState(allChaptersData[0]);
   const [allRelatedVideosData, setRelatedVideosData] =
     useState(RelatedVideosData);
@@ -91,14 +93,20 @@ const SingleVideo = () => {
             />
           ))}
         </ChapterWrapper>
-        <Box sx={{ px:{md:1,xl: 4}, mt: 4 }}>
-          {allRelatedVideosData?.map((item, index) => (
-            <RelatedVideos
-              key={index}
-              item={item}
-              onClick={() => playVideo(index, item)}
-            />
-          ))}
+        <Box sx={{ px: { md: 1, xl: 4 }, mt: 4 }}>
+          {loading ? (
+            allRelatedVideosData.map((item, index) => (
+              <RelatedVideosSkeleton key={index}/>
+            ))
+          ) : (
+            allRelatedVideosData?.map((item, index) => (
+              <RelatedVideos
+                key={index}
+                item={item}
+                onClick={() => playVideo(index, item)}
+              />
+            ))
+          )}
         </Box>
       </Grid>
     </Grid>

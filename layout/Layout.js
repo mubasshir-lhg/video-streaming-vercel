@@ -23,7 +23,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import HomeIcon from "@mui/icons-material/Home";
 import FlipCameraAndroidIcon from "@mui/icons-material/FlipCameraAndroid";
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import HistoryIcon from '@mui/icons-material/History';
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 //mui
 import MuiDrawer from "@mui/material/Drawer";
@@ -59,10 +59,10 @@ const sideBarLinkUser = [
     Icon: FlipCameraAndroidIcon,
   },
   {
-    id: "time",
-    label: "Time",
-    link: "time",
-    Icon: AccessTimeIcon,
+    id: "history",
+    label: "History",
+    link: "history",
+    Icon: HistoryIcon,
   },
 ];
 const sideBarLinkAdmin = [
@@ -328,7 +328,7 @@ export default function Layout({ children }) {
               edge="start"
               sx={{
                 mr: { xs: 0, sm: 3 },
-                ml: 2,
+                ml:{ xs: 0, sm: 2 },
                 ...(open && { display: "none" }),
               }}
             >

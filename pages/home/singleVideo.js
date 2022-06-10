@@ -94,19 +94,17 @@ const SingleVideo = () => {
           ))}
         </ChapterWrapper>
         <Box sx={{ px: { md: 1, xl: 4 }, mt: 4 }}>
-          {loading ? (
-            allRelatedVideosData.map((item, index) => (
-              <RelatedVideosSkeleton key={index}/>
-            ))
-          ) : (
-            allRelatedVideosData?.map((item, index) => (
-              <RelatedVideos
-                key={index}
-                item={item}
-                onClick={() => playVideo(index, item)}
-              />
-            ))
-          )}
+          {loading
+            ? allRelatedVideosData.map((item, index) => (
+                <RelatedVideosSkeleton key={index} />
+              ))
+            : allRelatedVideosData?.map((item, index) => (
+                <RelatedVideos
+                  key={index}
+                  item={item}
+                  onClick={() => playVideo(index, item)}
+                />
+              ))}
         </Box>
       </Grid>
     </Grid>

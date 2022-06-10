@@ -10,7 +10,6 @@ import {
 import { styled } from "@mui/system";
 import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
 
-
 const LabelImg = styled("label")`
   position: absolute;
   bottom: 10px;
@@ -41,7 +40,12 @@ const Profile = () => {
         <Typography variant="h6">Profile setting</Typography>
       </Grid>
       <Grid item xs={12} sm={5} md={4} lg={3} xl={2} p={3}>
-        <Box sx={{ borderRight:{xs:"none",sm: "1px solid #fff"}, position: "relative" }}>
+        <Box
+          sx={{
+            borderRight: { xs: "none", sm: "1px solid #fff" },
+            position: "relative",
+          }}
+        >
           <Avatar
             src={profileImage || "/user1.jpg"}
             alt="user"
@@ -51,7 +55,6 @@ const Profile = () => {
             <PhotoCameraIcon />
           </LabelImg>
         </Box>
-
         <input
           type="file"
           name="upload image"
@@ -68,7 +71,7 @@ const Profile = () => {
         </Grid>
         <Grid item xs={6}>
           <Label>Email</Label>
-          <TextField name="email" />
+          <TextField name="email" disabled/>
         </Grid>
         <Grid item xs={6}>
           <Label>Contact</Label>

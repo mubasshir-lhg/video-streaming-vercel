@@ -48,7 +48,6 @@ import {
   Box,
 } from "@mui/material";
 
-
 const drawerWidth = 220;
 const sideBarLinkUser = [
   {
@@ -314,40 +313,12 @@ export default function Layout({ children }) {
     },
   ];
 
-  const notificationOption = [
-    {
+  const notificationOption = NotificationData?.map((item, index) => {
+    return {
       onClickFunc: closePopupMenu,
-      child: <NotificationCard />,
-    },
-    {
-      onClickFunc: closePopupMenu,
-      child: <NotificationCard />,
-    },
-    {
-      onClickFunc: closePopupMenu,
-      child: <NotificationCard />,
-    },
-    {
-      onClickFunc: closePopupMenu,
-      child: <NotificationCard />,
-    },
-    {
-      onClickFunc: closePopupMenu,
-      child: <NotificationCard />,
-    },
-    {
-      onClickFunc: closePopupMenu,
-      child: <NotificationCard />,
-    },
-    {
-      onClickFunc: closePopupMenu,
-      child: <NotificationCard />,
-    },
-    {
-      onClickFunc: closePopupMenu,
-      child: <NotificationCard />,
-    },
-  ];
+      child: <NotificationCard item={item} />,
+    };
+  });
   const updateMenuOptions = (e, opt) => {
     setMenuOption(opt);
     openPopupMenu(e);
@@ -415,7 +386,7 @@ export default function Layout({ children }) {
                 <IconButton
                   onClick={(e) => updateMenuOptions(e, notificationOption)}
                 >
-                  <Badge badgeContent={4} color="error">
+                  <Badge badgeContent={notificationOption.length} color="error">
                     <NotificationsOutlinedIcon />
                   </Badge>
                 </IconButton>

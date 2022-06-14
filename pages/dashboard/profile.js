@@ -37,9 +37,9 @@ const Profile = () => {
   return (
     <Grid container mt={6}>
       <Grid item xs={12}>
-        <Typography variant="h6">Profile setting</Typography>
+        <Typography variant="h6">Profile Setting</Typography>
       </Grid>
-      <Grid item xs={12} sm={5} md={4} lg={3} xl={2} p={3}>
+      <Grid item xs={12} sm={5} md={4} lg={3} p={3}>
         <Box
           sx={{
             borderRight: { xs: "none", sm: "1px solid #fff" },
@@ -64,14 +64,14 @@ const Profile = () => {
           onChange={imgHandler}
         />
       </Grid>
-      <Grid item xs={12} sm={7} md={8} lg={6} container spacing={2}>
+      <Grid item xs={12} sm={7} md={8} lg={8} container spacing={2}>
         <Grid item xs={6}>
           <Label>Name</Label>
           <TextField name="name" />
         </Grid>
         <Grid item xs={6}>
           <Label>Email</Label>
-          <TextField name="email" disabled/>
+          <TextField name="email" disabled />
         </Grid>
         <Grid item xs={6}>
           <Label>Contact</Label>

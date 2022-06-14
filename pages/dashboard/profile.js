@@ -42,7 +42,9 @@ const Profile = () => {
       <Grid item xs={12} sm={5} md={4} lg={3} p={3}>
         <Box
           sx={{
-            borderRight: { xs: "none", sm: "1px solid #fff" },
+            width: 150,
+            height: 150,
+            mx:"auto",
             position: "relative",
           }}
         >
@@ -65,36 +67,36 @@ const Profile = () => {
         />
       </Grid>
       <Grid item xs={12} sm={7} md={8} lg={8} container spacing={2}>
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={6}>
           <Label>Name</Label>
           <TextField name="name" />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={6}>
           <Label>Email</Label>
           <TextField name="email" disabled />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={6}>
           <Label>Contact</Label>
           <TextField name="contact" type="text" />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={6}>
           <Label>Current Password</Label>
           <TextField name="password" type="password" />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={6}>
           <Label>New Password</Label>
           <TextField name="newPassword" type="password" />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={6}>
           <Label>Confirm Password</Label>
           <TextField name="confirmPassword" type="password" />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={6}>
           <Button variant="outlined" color="purple" fullWidth>
             Cancel
           </Button>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={6}>
           <Button variant="contained" color="purple" fullWidth>
             Update
           </Button>

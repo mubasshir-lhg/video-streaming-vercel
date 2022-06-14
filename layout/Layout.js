@@ -328,6 +328,7 @@ export default function Layout({ children }) {
     <Box sx={{ display: "flex" }}>
       <Head>
         <title>Alex-Lei</title>
+        <link rel="icon" href="/favicon.png" />
       </Head>
       <CssBaseline />
       <AppBar

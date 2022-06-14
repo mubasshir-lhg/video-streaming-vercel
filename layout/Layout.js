@@ -386,6 +386,7 @@ export default function Layout({ children }) {
                 </IconButton>
                 <IconButton
                   onClick={(e) => updateMenuOptions(e, notificationOption)}
+                  sx={{ mr: 1 }}
                 >
                   <Badge badgeContent={notificationOption.length} color="error">
                     <NotificationsOutlinedIcon />

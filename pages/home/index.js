@@ -39,10 +39,10 @@ const Homepage = () => {
   const goToSingleVideo = (item) => {
     router.push(
       {
-        pathname: "/home/singleVideo",
+        pathname: "/home/playVideo",
         query: { videoDetail: item },
       },
-      "/home/singleVideo"
+      "/home/playVideo"
     );
   };
 

@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import { withRouter } from "next/router";
 import { Grid, Typography, Box, IconButton } from "@mui/material";
-import VideoToPlay from "../../components/Video/videoToPlay/videoToPlay";
-import AddComment from "../../components/Comment/AddComment/AddComment";
-import SubscriberComment from "../../components/Comment/SubscriberComment/SubscriberComment";
-import { subscriberComments } from "../../_mockup/subscriberComments";
-import { chaptersData } from "../../_mockup/Chapters";
-import { RelatedVideosData } from "../../_mockup/RalatedVideos";
-import user1 from "../../assets/Images/user1.jpg";
+import VideoToPlay from "../../../components/Video/videoToPlay/videoToPlay";
+import AddComment from "../../../components/Comment/AddComment/AddComment";
+import SubscriberComment from "../../../components/Comment/SubscriberComment/SubscriberComment";
+import { subscriberComments } from "../../../_mockup/subscriberComments";
+import { chaptersData } from "../../../_mockup/Chapters";
+import { RelatedVideosData } from "../../../_mockup/RalatedVideos";
+import user1 from "../../../assets/Images/user1.jpg";
 import CloseIcon from "@mui/icons-material/Close";
 import { styled } from "@mui/system";
-import ChapterVideo from "../../components/Video/chapterVideo/chapterVideo";
-import RelatedVideos from "../../components/Video/relatedVideos/relatedVideos";
-import RelatedVideosSkeleton from "../../components/Skeleton/RelatedVideoSkeleton/RelatedVideoSkeleton";
+import ChapterVideo from "../../../components/Video/chapterVideo/chapterVideo";
+import RelatedVideos from "../../../components/Video/relatedVideos/relatedVideos";
+import RelatedVideosSkeleton from "../../../components/Skeleton/RelatedVideoSkeleton/RelatedVideoSkeleton";
 
 const ChapterWrapper = styled(Box)(({ theme }) => ({
   borderRadius: "12px",

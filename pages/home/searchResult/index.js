@@ -1,10 +1,10 @@
 import React, { useState, useMemo } from "react";
 import { Grid } from "@mui/material";
 import { useRouter } from "next/router";
-import { RelatedVideosData } from "../../_mockup/RalatedVideos";
-import SearchVideoResult from "../../components/Video/searchVideoResult/searchVideoResult";
+import { RelatedVideosData } from "../../../_mockup/RalatedVideos";
+import SearchVideoResult from "../../../components/Video/searchVideoResult/searchVideoResult";
 
-const SearchVideos = () => {
+const SearchResult = () => {
   const router = useRouter();
   const [searchedVal, setSearchedVal] = useState(router.query.searchVal);
   const [data, setData] = useState(RelatedVideosData);
@@ -16,18 +16,18 @@ const SearchVideos = () => {
   };
   const filteredList = useMemo(getFilteredList, [searchedVal, data]);
 
-  const playVideo=()=>{
-    router.push("/home/singleVideo")
-  }
+  const playVideo = () => {
+    router.push("/home/playVideo");
+  };
   return (
-    <Grid container rowSpacing={1}>
+    <Grid container rowSpacing={1} mt={2}>
       {filteredList?.map((item, index) => (
         <Grid item xs={12} key={index}>
-          <SearchVideoResult item={item} onClick={playVideo}/>
+          <SearchVideoResult item={item} onClick={playVideo} />
         </Grid>
       ))}
     </Grid>
   );
 };
 
-export default SearchVideos;
+export default SearchResult;

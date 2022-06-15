@@ -192,10 +192,10 @@ export default function Layout({ children }) {
   const getSearchValue = (searchVal) => {
     router.push(
       {
-        pathname: "/home/searchVideos",
+        pathname: "/home/searchResult",
         query: { searchVal: searchVal },
       },
-      "/home/searchVideos"
+      "/home/searchResult"
     );
   };
   const logoHandler = () => {
@@ -203,7 +203,7 @@ export default function Layout({ children }) {
     setChannel(false);
   };
   const uploadVideo = () => {
-    router.push("/home/splitChapters");
+    router.push("/home/uploadVideo/splitChapters");
     handleCloseModal();
   };
   const openPopup = Boolean(anchorEl);
@@ -335,7 +335,7 @@ export default function Layout({ children }) {
         position="fixed"
         open={open}
         sx={{
-          py: navbar ? 0.5 : 2,
+          py: 2,
           backgroundColor: navbar && "#2f3566",
         }}
       >

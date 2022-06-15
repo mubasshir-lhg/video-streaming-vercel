@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Grid, Button } from "@mui/material";
-import AddChapter from "../../components/Chapter/AddChapter";
-import ChapterCard from "../../components/Chapter/ChapterCard";
+import AddChapter from "../../../components/Chapter/AddChapter";
+import ChapterCard from "../../../components/Chapter/ChapterCard";
 import { useRouter } from "next/router";
 
 const Chapter = () => {
@@ -14,7 +14,7 @@ const Chapter = () => {
   ];
 
   const editChapter = () => {
-    router.push("/home/editChapter");
+    router.push("/home/uploadVideo/editChapter");
   };
   const saveChapter = () => {
     router.push("/home/");

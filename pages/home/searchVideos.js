@@ -20,7 +20,7 @@ const SearchVideos = () => {
     router.push("/home/singleVideo")
   }
   return (
-    <Grid container rowSpacing={1}>
+    <Grid container rowSpacing={1} mt={2}>
       {filteredList?.map((item, index) => (
         <Grid item xs={12} key={index}>
           <SearchVideoResult item={item} onClick={playVideo}/>

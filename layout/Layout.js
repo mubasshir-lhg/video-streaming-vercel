@@ -335,7 +335,7 @@ export default function Layout({ children }) {
         position="fixed"
         open={open}
         sx={{
-          py: navbar ? 0.5 : 2,
+          py: 2,
           backgroundColor: navbar && "#2f3566",
         }}
       >

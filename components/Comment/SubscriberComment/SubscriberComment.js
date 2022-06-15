@@ -56,7 +56,7 @@ const SubscriberComment = ({ item, sendComment }) => {
           <AddComment
             placeholder="Add a reply"
             Cancel={handleClick}
-            ReplayBtn="Replay"
+            ReplayBtn="Reply"
             sendComment={sendComment}
           />
           {replay?.map((item, index) => (

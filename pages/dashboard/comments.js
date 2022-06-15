@@ -5,6 +5,7 @@ import { styled } from "@mui/system";
 import BoxContainer from "../../components/BoxContainer/BoxContainer";
 import CommentCard from "../../components/Cards/CommentCard/CommentCard";
 import { published, pending, markAsSpam } from "../../_mockup/Comment";
+import Axios from "axios";
 
 const LinksWrapper = styled(Box)({
   display: "flex",
@@ -15,7 +16,8 @@ const LinksWrapper = styled(Box)({
 });
 
 const subLinks = ["Published", "Pending", "Marked as spam"];
-const Comments = () => {
+const Comments = ({ postComments }) => {
+  console.log(postComments);
   const [publishedData, setData] = useState(published);
   const [pendingData, setPendingData] = useState(pending);
   const [markAsSpamData, setMarkAsSpamData] = useState(markAsSpam);
@@ -39,7 +41,7 @@ const Comments = () => {
       case 0:
         return (
           <BoxContainer px="0">
-            <Box sx={{ height: {xs:"auto",lg:"370px"}, overflow: "auto" }}>
+            <Box sx={{ height: { xs: "auto", lg: "370px" }, overflow: "auto" }}>
               {publishedData?.map((item, index) => (
                 <CommentCard item={item} key={index} />
               ))}
@@ -49,7 +51,7 @@ const Comments = () => {
       case 1:
         return (
           <BoxContainer px="0">
-            <Box sx={{ height: {xs:"auto",lg:"370px"}, overflow: "auto" }}>
+            <Box sx={{ height: { xs: "auto", lg: "370px" }, overflow: "auto" }}>
               {pendingData?.map((item, index) => (
                 <CommentCard item={item} key={index} />
               ))}
@@ -59,7 +61,7 @@ const Comments = () => {
       case 2:
         return (
           <BoxContainer px="0">
-            <Box sx={{ height: {xs:"auto",lg:"370px"}, overflow: "auto" }}>
+            <Box sx={{ height: { xs: "auto", lg: "370px" }, overflow: "auto" }}>
               {markAsSpamData?.map((item, index) => (
                 <CommentCard item={item} key={index} />
               ))}
@@ -92,6 +94,15 @@ const Comments = () => {
       {compToShow()}
     </Box>
   );
+};
+
+export const getStaticProps = async () => {
+  const data = await Axios.get(
+    "https://jsonplaceholder.typicode.com/posts/1/comments"
+  );
+  return {
+    props: { postComments: data.data },
+  };
 };
 
 export default Comments;

@@ -6,6 +6,7 @@ import Fade from "@mui/material/Fade";
 import { makeStyles } from "@mui/styles";
 import { IconButton, Typography } from "@mui/material";
 import UploadIcon from "@mui/icons-material/Upload";
+import CloseIcon from '@mui/icons-material/Close';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -30,7 +31,12 @@ const useStyles = makeStyles((theme) => ({
     justifyContent:'center',
     alignItems:'center',
     padding:'80px 0',
-  }
+  },
+  closeIcon:{
+    position:'absolute',
+    top:5,
+    right:5,
+}
 }));
 
 export const UploadVideoModal = ({ handleClose, open,onClick }) => {
@@ -56,6 +62,9 @@ export const UploadVideoModal = ({ handleClose, open,onClick }) => {
               </IconButton>
               <Typography variant="subtitle1">Upload a Video</Typography>
             </Box>
+            <IconButton onClick={handleClose} className={classes.closeIcon}>
+                <CloseIcon/>
+            </IconButton>
           </Box>
         </Fade>
       </Modal>

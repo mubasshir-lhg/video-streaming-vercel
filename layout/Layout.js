@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import { useRouter } from "next/router";
+//data
+import { NotificationData } from "../_mockup/AppBar/Notification";
 //components
 import SearchField from "../components/SearchField/SearchField";
+import { RequestModal } from "../components/Modal/RequestAVideo/RequestAVideo";
+import { UploadVideoModal } from "../components/Modal/UploadVideoModal/UploadVideoModal";
+import PopupMenu from "../components/PopupMenu/PopupMenu";
+import NotificationCard from "../components/Cards/NotificationCard/NotificationCard";
 import Head from "next/head";
 //images
 import Image from "next/image";
@@ -23,8 +29,9 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import HomeIcon from "@mui/icons-material/Home";
 import FlipCameraAndroidIcon from "@mui/icons-material/FlipCameraAndroid";
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import HistoryIcon from "@mui/icons-material/History";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import Badge from "@mui/material/Badge";
 //mui
 import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
@@ -40,9 +47,6 @@ import {
   List,
   Box,
 } from "@mui/material";
-import { RequestModal } from "../components/Modal/RequestAVideo/RequestAVideo";
-import { UploadVideoModal } from "../components/Modal/UploadVideoModal/UploadVideoModal";
-import PopupMenu from "../components/PopupMenu/PopupMenu";
 
 const drawerWidth = 220;
 const sideBarLinkUser = [
@@ -59,10 +63,10 @@ const sideBarLinkUser = [
     Icon: FlipCameraAndroidIcon,
   },
   {
-    id: "time",
-    label: "Time",
-    link: "time",
-    Icon: AccessTimeIcon,
+    id: "history",
+    label: "History",
+    link: "history",
+    Icon: HistoryIcon,
   },
 ];
 const sideBarLinkAdmin = [
@@ -231,9 +235,15 @@ export default function Layout({ children }) {
     setActiveIndex(index);
   };
   const logout = () => {
-    router.push(`/auth/login`)
+    router.push(`/auth/login`);
     closePopupMenu();
   };
+  const goToProfile = () => {
+    router.push(`/dashboard/profile`);
+    closePopupMenu();
+    setChannel(true);
+  };
+  const notificationHandler = () => {};
   const changeBackground = () => {
     if (window.scrollY >= 10) {
       setNavbar(true);
@@ -255,6 +265,7 @@ export default function Layout({ children }) {
   const menuOptions1 = [
     { onClickFunc: switchToChannel, child: "Your Channel" },
     { onClickFunc: switchToHome, child: "Home" },
+    { onClickFunc: goToProfile, child: "Profile" },
     { onClickFunc: logout, child: "Logout" },
   ];
   const menuOptions2 = [
@@ -302,6 +313,12 @@ export default function Layout({ children }) {
     },
   ];
 
+  const notificationOption = NotificationData?.map((item, index) => {
+    return {
+      onClickFunc: closePopupMenu,
+      child: <NotificationCard item={item} />,
+    };
+  });
   const updateMenuOptions = (e, opt) => {
     setMenuOption(opt);
     openPopupMenu(e);
@@ -311,6 +328,7 @@ export default function Layout({ children }) {
     <Box sx={{ display: "flex" }}>
       <Head>
         <title>Alex-Lei</title>
+        <link rel="icon" href="/favicon.png" />
       </Head>
       <CssBaseline />
       <AppBar
@@ -328,7 +346,7 @@ export default function Layout({ children }) {
               edge="start"
               sx={{
                 mr: { xs: 0, sm: 3 },
-                ml: 2,
+                ml: { xs: 0, sm: 2 },
                 ...(open && { display: "none" }),
               }}
             >
@@ -366,8 +384,13 @@ export default function Layout({ children }) {
                 <IconButton onClick={() => setOpenUploadModal(true)}>
                   <VideocamOutlinedIcon />
                 </IconButton>
-                <IconButton>
-                  <NotificationsOutlinedIcon />
+                <IconButton
+                  onClick={(e) => updateMenuOptions(e, notificationOption)}
+                  sx={{ mr: 1 }}
+                >
+                  <Badge badgeContent={notificationOption.length} color="error">
+                    <NotificationsOutlinedIcon />
+                  </Badge>
                 </IconButton>
               </>
             )}

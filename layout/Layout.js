@@ -4,6 +4,9 @@ import { useMediaQuery, CssBaseline, Box } from "@mui/material";
 import Head from "next/head";
 import AppBarComp from "../components/AppBar/AppBar";
 import DrawerComp from "../components/Drawer/Drawer";
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
+import useLoading from "../hooks/Loading";
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
@@ -19,6 +22,7 @@ export default function Layout({ children }) {
   const [open, setOpen] = useState(true);
   const [channel, setChannel] = useState(false);
   const isSmDown = useMediaQuery(breakpoints.down("sm"));
+  const loading = useLoading();
 
   const handleDrawer = () => {
     setOpen((preState) => !preState);
@@ -49,7 +53,16 @@ export default function Layout({ children }) {
         sx={{ maxWidth: "100%", flexGrow: 1, p: { xs: 1, sm: 2, md: 3 } }}
       >
         <DrawerHeader />
-        {children}
+        {loading ? (
+          <Backdrop
+            sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+            open={loading}
+          >
+            <CircularProgress color="inherit" />
+          </Backdrop>
+        ) : (
+          children
+        )}
       </Box>
     </Box>
   );

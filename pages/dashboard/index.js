@@ -32,7 +32,7 @@ const StyledGrid = (props) => (
   </Grid>
 );
 
-const Home = () => {
+const Dashboard = () => {
   const { palette } = useTheme();
   const { gradients } = palette;
 
@@ -123,4 +123,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Dashboard;

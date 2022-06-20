@@ -23,10 +23,10 @@ import { UploadVideoModal } from "../Modal/UploadVideoModal/UploadVideoModal";
 import { NotificationData } from "../../_mockup/AppBar/Notification";
 import { Box, IconButton, Toolbar, useMediaQuery } from "@mui/material";
 
-const drawerWidth=220;
+const drawerWidth = 220;
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
-})(({ theme, open  }) => ({
+})(({ theme, open }) => ({
   zIndex: theme.zIndex.drawer + 1,
   transition: theme.transitions.create(["width", "margin"], {
     easing: theme.transitions.easing.sharp,
@@ -41,14 +41,7 @@ const AppBar = styled(MuiAppBar, {
     }),
   }),
 }));
-const AppBarComp = ({
-  open,
-  handleDrawer,
-  isSmDown,
-  setOpen,
-  setChannel,
-}) => {
-  console.log("open==", open);
+const AppBarComp = ({ open, handleDrawer, isSmDown, setOpen, setChannel }) => {
   const router = useRouter();
   const { breakpoints } = useTheme();
   const [menuOption, setMenuOption] = useState([]);

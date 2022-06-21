@@ -11,6 +11,7 @@ import EditorCard from "../../components/Cards/EditorCard/EditorCard";
 import PageHeader from "../../components/PageHeader/PageHeader";
 import BasicSelect from "../../components/Select/Select";
 import { editorData } from "../../_mockup/Editor";
+import withAuth from "../../HOC/ProtectedRoutes";
 
 const options = ["Newest", "Oldest"];
 const Editor = () => {
@@ -60,10 +61,10 @@ const Editor = () => {
             md={4}
             lg={3}
             alignSelf="right"
-            sx={{ display: "flex",justifyContent:'flex-end'}}
+            sx={{ display: "flex", justifyContent: "flex-end" }}
           >
             <Box mr={1}>Views :</Box>
-            <BasicSelect options={options} onClick={doSomething} width='60%'/>
+            <BasicSelect options={options} onClick={doSomething} width="60%" />
           </Grid>
         </Grid>
         <Box>
@@ -81,4 +82,4 @@ const Editor = () => {
   );
 };
 
-export default Editor;
+export default withAuth(Editor);

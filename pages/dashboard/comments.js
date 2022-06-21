@@ -6,6 +6,7 @@ import BoxContainer from "../../components/BoxContainer/BoxContainer";
 import CommentCard from "../../components/Cards/CommentCard/CommentCard";
 import { published, pending, markAsSpam } from "../../_mockup/Comment";
 import Axios from "axios";
+import withAuth from "../../HOC/ProtectedRoutes";
 
 const LinksWrapper = styled(Box)({
   display: "flex",
@@ -105,4 +106,4 @@ export const getStaticProps = async () => {
   };
 };
 
-export default Comments;
+export default withAuth(Comments);

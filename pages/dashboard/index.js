@@ -10,6 +10,7 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import SubscriptionsIcon from "@mui/icons-material/Subscriptions";
 import PageHeader from "../../components/PageHeader/PageHeader";
+import withAuth from "../../HOC/ProtectedRoutes";
 
 const StyledBox = styled(Box)({
   marginBottom: "10px",
@@ -99,7 +100,7 @@ const Dashboard = () => {
               number="112"
             />
           </StyledGrid>
-          <Grid item xs={12} lg={4} pr={{xs:0,lg:2}}>
+          <Grid item xs={12} lg={4} pr={{ xs: 0, lg: 2 }}>
             <Typography variant="h6"> Most Viewed Video</Typography>
             <Box sx={{ width: { xs: "100%", lg: "280px" } }}>
               <Video src="/video1.mp4" width="100%" />
@@ -123,4 +124,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default withAuth(Dashboard);

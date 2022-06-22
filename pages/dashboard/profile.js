@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/system";
 import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
+import withAuth from "../../HOC/ProtectedRoutes";
 
 const LabelImg = styled("label")`
   position: absolute;
@@ -44,7 +45,7 @@ const Profile = () => {
           sx={{
             width: 150,
             height: 150,
-            mx:"auto",
+            mx: "auto",
             position: "relative",
           }}
         >
@@ -106,4 +107,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default withAuth(Profile);

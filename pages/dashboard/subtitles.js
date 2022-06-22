@@ -7,6 +7,7 @@ import BasicSelect from "../../components/Select/Select";
 import SubtitleDisplay from "../../components/SubtitleDisplay/SubtitleDisplay";
 import Video from "../../components/Video/Video";
 import { subtitleData } from "../../_mockup/Subtitle";
+import withAuth from "../../HOC/ProtectedRoutes";
 
 const ButtonWrapper = styled(Box)({
   display: "flex",
@@ -113,19 +114,24 @@ const Subtitles = () => {
       <PageHeader title="Subtitles" />
       {!subtitlePage2 ? (
         <ButtonWrapper>
-          <Button variant="contained" color="secondary" sx={{width:100}}>
+          <Button variant="contained" color="secondary" sx={{ width: 100 }}>
             Edit
           </Button>
-          <Button variant="contained" color="secondary" sx={{width:100}}>
+          <Button variant="contained" color="secondary" sx={{ width: 100 }}>
             Unpublish
           </Button>
         </ButtonWrapper>
       ) : (
         <ButtonWrapper>
-          <Button variant="contained" color="secondary" sx={{width:120}}>
+          <Button variant="contained" color="secondary" sx={{ width: 120 }}>
             Delete Draft
           </Button>
-          <Button variant="contained" color="info" onClick={clickHandler} sx={{width:120}}>
+          <Button
+            variant="contained"
+            color="info"
+            onClick={clickHandler}
+            sx={{ width: 120 }}
+          >
             Publish Edits
           </Button>
         </ButtonWrapper>
@@ -135,4 +141,4 @@ const Subtitles = () => {
   );
 };
 
-export default Subtitles;
+export default withAuth(Subtitles);

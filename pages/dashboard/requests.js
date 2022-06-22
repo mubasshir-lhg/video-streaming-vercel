@@ -4,6 +4,7 @@ import PageHeader from "../../components/PageHeader/PageHeader";
 import BoxContainer from "../../components/BoxContainer/BoxContainer";
 import RequestCard from "../../components/Cards/RequestCard/RequestCard";
 import { request } from "../../_mockup/Request";
+import withAuth from "../../HOC/ProtectedRoutes";
 
 const Requests = () => {
   const [requestData = setRequestData] = useState(request);
@@ -21,4 +22,4 @@ const Requests = () => {
   );
 };
 
-export default Requests;
+export default withAuth(Requests);

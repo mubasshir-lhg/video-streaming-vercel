@@ -44,7 +44,12 @@ const Chapter = () => {
           </Button>
         </Grid>
         <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
-          <Button variant="contained" color="purple" fullWidth onClick={saveChapter}>
+          <Button
+            variant="contained"
+            color="purple"
+            fullWidth
+            onClick={saveChapter}
+          >
             Save Chapters
           </Button>
         </Grid>

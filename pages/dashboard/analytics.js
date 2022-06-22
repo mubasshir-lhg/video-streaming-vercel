@@ -4,6 +4,7 @@ import { useTheme } from "@mui/styles";
 import BoxContainer from "../../components/BoxContainer/BoxContainer";
 import InfoContainer from "../../components/InfoContainer/InfoContainer";
 import { styled } from "@mui/system";
+import withAuth from "../../HOC/ProtectedRoutes";
 //icons
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
@@ -159,4 +160,4 @@ const Analytics = () => {
   );
 };
 
-export default Analytics;
+export default withAuth(Analytics);

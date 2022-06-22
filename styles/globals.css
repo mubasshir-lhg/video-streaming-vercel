@@ -51,3 +51,18 @@ a {
 }
 
 /*End of scrollbar */
+
+/* progress bar start */
+
+#nprogress .bar {
+  height:6px;
+}
+#nprogress .bar {
+  background: purple;
+}
+
+#nprogress .spinner-icon {
+  border-top-color: blue;
+  border-left-color: blue;
+}
+/* progress bar end */

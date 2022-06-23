@@ -4,25 +4,26 @@ import ThemeConfig from "../theme";
 import Layout from "../layout/Layout";
 import AuthLayout from "../layout/AuthLayout";
 import Axios from "axios"
+import { UserContext } from "../context/userContext";
+import { useState } from "react";
 
 Axios.defaults.baseURL="http://localhost:80/"
 
 function MyApp({ Component, pageProps, router }) {
-  if (router.pathname.startsWith("/auth")) {
-    return (
-      <ThemeConfig>
-        <AuthLayout>
-          <Component {...pageProps} />
-        </AuthLayout>
-      </ThemeConfig>
-    );
-  }
+  const[user,setUser] = useState(null);
   return (
+    <UserContext.Provider value={{user,setUser}} >
     <ThemeConfig>
-      <Layout>
+      {
+       router.pathname.startsWith("/auth")? <AuthLayout>
+        <Component {...pageProps} />
+      </AuthLayout>:<Layout>
         <Component {...pageProps} />
       </Layout>
+      }
+      
     </ThemeConfig>
+    </UserContext.Provider>
   );
 }
 

@@ -22,6 +22,7 @@ import { RequestModal } from "../Modal/RequestAVideo/RequestAVideo";
 import { UploadVideoModal } from "../Modal/UploadVideoModal/UploadVideoModal";
 import { NotificationData } from "../../_mockup/AppBar/Notification";
 import { Box, IconButton, Toolbar, useMediaQuery } from "@mui/material";
+import { logout } from "../../services/auth-services";
 
 const drawerWidth = 220;
 const AppBar = styled(MuiAppBar, {
@@ -68,8 +69,8 @@ const AppBarComp = ({ open, handleDrawer, isSmDown, setOpen, setChannel }) => {
     router.push("/home/");
   };
   const logoHandler = () => {
-    router.push("/home/");
     setChannel(false);
+    router.push("/home/");
   };
   const openPopup = Boolean(anchorEl);
   const openPopupMenu = (event) => {
@@ -100,9 +101,10 @@ const AppBarComp = ({ open, handleDrawer, isSmDown, setOpen, setChannel }) => {
     channel ? router.push(`/dashboard/${href}`) : router.push(`/home/${href}`);
     setActiveIndex(index);
   };
-  const logout = () => {
-    router.push(`/auth/login`);
+  const logoutHandler = () => {
+    logout()
     closePopupMenu();
+    setChannel(false)
   };
   const goToProfile = () => {
     router.push(`/dashboard/profile`);
@@ -131,7 +133,7 @@ const AppBarComp = ({ open, handleDrawer, isSmDown, setOpen, setChannel }) => {
     { onClickFunc: switchToChannel, child: "Your Channel" },
     { onClickFunc: switchToHome, child: "Home" },
     { onClickFunc: goToProfile, child: "Profile" },
-    { onClickFunc: logout, child: "Logout" },
+    { onClickFunc: logoutHandler, child: "Logout" },
   ];
   const menuOptions2 = [
     {

@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Grid, Box, TextField, Button } from "@mui/material";
 import BoxContainer from "../../components/BoxContainer/BoxContainer";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import logo from "../../assets/Images/logo/Teachmetoo Brandmark Full Color .png";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import { login } from "../../services/auth-services";
 
 const Label = ({ children }) => (
   <Box sx={{ typography: { xs: "subtitle1", md: "subtitle2" } }}>
@@ -13,8 +16,22 @@ const Label = ({ children }) => (
 );
 const LoginPage = () => {
   const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const loginHandler = () => {
-    router.push("/home/");
+    if (email && password) {
+      login({ email, password })
+        .then((res) => {
+          toast.success("login successful");
+          res && router.push("/home/");
+        })
+        .catch((err) => {
+          toast.error(err?.message);
+        });
+    } else {
+      toast.error("required name and email");
+    }
   };
   return (
     <Grid container justifyContent="center" mt={15}>
@@ -34,11 +51,21 @@ const LoginPage = () => {
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <Label>Email</Label>
-              <TextField name="title" type="text" size="small" />
+              <TextField
+                name="email"
+                type="text"
+                size="small"
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </Grid>
             <Grid item xs={12}>
               <Label>Password</Label>
-              <TextField name="password" type="password" size="small" />
+              <TextField
+                name="password"
+                type="password"
+                size="small"
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </Grid>
             <Grid item xs={12}>
               <Button
@@ -56,6 +83,7 @@ const LoginPage = () => {
           </Grid>
         </BoxContainer>
       </Grid>
+      <ToastContainer autoClose={1000} />
     </Grid>
   );
 };

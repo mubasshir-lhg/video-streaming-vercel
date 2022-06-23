@@ -1,9 +1,14 @@
-import React from "react";
+
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Grid, Box, TextField, Button } from "@mui/material";
 import BoxContainer from "../../components/BoxContainer/BoxContainer";
 import logo from "../../assets/Images/logo/Teachmetoo Brandmark Full Color .png";
+import { useRouter } from "next/router";
+
+import { ToastContainer, toast } from "react-toastify";
+import { register } from "../../services/auth-services";
 
 const Label = ({ children }) => (
   <Box sx={{ typography: { xs: "subtitle1", md: "subtitle2" } }}>
@@ -11,6 +16,40 @@ const Label = ({ children }) => (
   </Box>
 );
 const SignupPage = () => {
+  const router = useRouter();
+  const [state, setState] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const { firstName, lastName, email, password, confirmPassword } = state;
+  const changeHandler = (e) => {
+    const value = e.target.value;
+    const name = e.target.name;
+    setState({
+      ...state,
+      [name]: value,
+    });
+  };
+  const signupHandler = () => {
+    register({
+      firstName,
+      lastName,
+      email,
+      password,
+    })
+      .then((res) => {
+        toast.success("user registered successfully");
+        res && router.push("/home/");
+      })
+      .catch((err) => {
+        toast.error(err?.message);
+      });
+  };
+
   return (
     <Grid container justifyContent="center" mt={15}>
       <Grid item xs={12} sm={8} md={6} lg={4} xl={3}>
@@ -28,23 +67,62 @@ const SignupPage = () => {
           <Box sx={{ typography: "h4", textAlign: "center" }}>Signup</Box>
           <Grid container spacing={2}>
             <Grid item xs={12}>
-              <Label>Name</Label>
-              <TextField name="name" type="text" size="small" />
+              <Label>First Name</Label>
+              <TextField
+                name="firstName"
+                value={state.firstName}
+                type="text"
+                size="small"
+                onChange={changeHandler}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <Label>Last Name</Label>
+              <TextField
+                name="lastName"
+                value={state.lastName}
+                type="text"
+                size="small"
+                onChange={changeHandler}
+              />
             </Grid>
             <Grid item xs={12}>
               <Label>Email</Label>
-              <TextField name="title" type="text" size="small" />
+              <TextField
+                name="email"
+                value={state.email}
+                type="text"
+                size="small"
+                onChange={changeHandler}
+              />
             </Grid>
             <Grid item xs={12}>
               <Label>Password</Label>
-              <TextField name="password" type="password" size="small" />
+              <TextField
+                name="password"
+                value={state.password}
+                type="password"
+                size="small"
+                onChange={changeHandler}
+              />
             </Grid>
             <Grid item xs={12}>
               <Label>Confirm Password</Label>
-              <TextField name="confirm-password" type="password" size="small" />
+              <TextField
+                name="confirmPassword"
+                value={state.confirmPassword}
+                type="password"
+                size="small"
+                onChange={changeHandler}
+              />
             </Grid>
             <Grid item xs={12}>
-              <Button variant="contained" color="warning" fullWidth>
+              <Button
+                variant="contained"
+                color="warning"
+                fullWidth
+                onClick={signupHandler}
+              >
                 Signup
               </Button>
             </Grid>
@@ -54,6 +132,7 @@ const SignupPage = () => {
           </Grid>
         </BoxContainer>
       </Grid>
+      <ToastContainer />
     </Grid>
   );
 };

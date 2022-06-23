@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps, router }) {
         .then((res) => {
           console.log(res);
           if (res?.data) {
-            setUser(res?.data?.user);
+            setUser(res?.data);
             router.push("/home/")
           } else {
             setUser(null);

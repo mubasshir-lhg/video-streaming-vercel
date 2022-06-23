@@ -6,7 +6,7 @@ const withAuth = (ProtectedComponent) => {
     // checks whether we are on client / browser or server.
     if (typeof window !== "undefined") {
       const Router = useRouter();
-      const accessToken = false;
+      const accessToken = localStorage.getItem("jwt_access_token");
       if (!accessToken) {
         Router.replace("/unAuthorized");
         return null;

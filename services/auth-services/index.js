@@ -32,7 +32,7 @@ function login(body) {
 }
 
 function logout() {
-  setSession(null);
+  setSession();
 }
 
 function setSession(access_token) {

@@ -27,5 +27,19 @@ function mostViewedVideo(){
             });
     })
 }
+function last30Views(){
+    return new Promise((resolve,reject)=>{
+        axios
+            .get(video/thirtyviews)
+            .then((res)=>resolve(res))
+            .catch((err)=>{
+                if(err && err.response){
+                    reject(err.message);
+                }
+            });
+    })
+}
+function last30Likes(){}
+function last30Subscribe(){}
 
-export {latestVideoPerformance,mostViewedVideo};
+export {latestVideoPerformance,mostViewedVideo,last30Views,last30Likes,last30Subscribe};

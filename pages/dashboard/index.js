@@ -3,11 +3,12 @@ import { Box, Grid, Typography, Divider } from "@mui/material";
 import Video from "../../components/Video/Video";
 import { useTheme } from "@mui/styles";
 import { styled } from "@mui/system";
-import {millify} from "millify";
+import millify from "millify";
+import moment from "moment";
 import {toast,ToastContainer} from "react-toastify";
 import {channelSubscribers} from "../../services/analytics-sevices"
 import InfoContainer from "../../components/InfoContainer/InfoContainer";
-import {latestVideoPerformance,mostViewedVideo} from "../../services/dashboard-services"
+import {latestVideoPerformance,mostViewedVideo,last30Likes,last30Subscribe,last30Views} from "../../services/dashboard-services"
 import BoxContainer from "../../components/BoxContainer/BoxContainer";
 //icon
 import VisibilityIcon from "@mui/icons-material/Visibility";
@@ -43,7 +44,9 @@ const Dashboard = () => {
   const[latestVideo,setLatestVideo]=useState({})
   const[mostViewed,setMostViewed]=useState({})
   const[subscribers,setSubscribers]=useState(0)
-
+  const[LastThirtyDayViews,set30DayViews]=useState(0)
+  const[LastThirtyDayLikes,set30DayLikes]=useState(0)
+  const[LastThirtyDaySubscribes,set30DaySubscribes]=useState(0)
   const fetchDasboardData=()=>{
     latestVideoPerformance()
       .then((res)=>setLatestVideo(res?.data))
@@ -57,6 +60,9 @@ const Dashboard = () => {
     .then((res)=>setSubscribers(res?.data))
     .catch((err)=>toast.error(err))
 
+    last30Views()
+      .then((res)=>console.log(res?.last30dayviews))
+      .catch((err)=>toast.error(err))
   }
   useEffect(()=>{
     fetchDasboardData()
@@ -74,7 +80,7 @@ const Dashboard = () => {
           <StyledGrid>
             <Typography variant="h6">Latest Video performance</Typography>
             <Box sx={{ width: { xs: "100%", lg: "280px" } }}>
-              <Video src={latestVideo?.videoLink} width="100%" />
+              <Video src={latestVideo?.videoLink} width="100%" controls={true} />
             </Box>
             <Typography variant="body1">
               {latestVideo?.description}
@@ -89,9 +95,9 @@ const Dashboard = () => {
                 <StyledBox>Created At</StyledBox>
               </Grid>
               <Grid item xs={6} textAlign="center">
-                <StyledBox>{millify(latestVideo?.views)}</StyledBox>
-                <StyledBox>{millify(latestVideo?.likes)}</StyledBox>
-                <StyledBox>{latestVideo?.createdAt}</StyledBox>
+                <StyledBox>{millify(latestVideo?.views || 0)}</StyledBox>
+                <StyledBox>{millify(latestVideo?.likes || 0)}</StyledBox>
+                <StyledBox>{moment(latestVideo?.createdAt).format("Do MMM YYYY")}</StyledBox>
               </Grid>
             </Grid>
           </StyledGrid>
@@ -127,7 +133,7 @@ const Dashboard = () => {
           <Grid item xs={12} lg={4} pr={{ xs: 0, lg: 2 }}>
             <Typography variant="h6"> Most Viewed Video</Typography>
             <Box sx={{ width: { xs: "100%", lg: "280px" } }}>
-              <Video src={mostViewed?.videoLink} width="100%" />
+              <Video src={mostViewed?.videoLink} controls={true}  width="100%" />
             </Box>
             <Typography variant="body1">{mostViewed?.description}</Typography>
             <Grid
@@ -135,10 +141,10 @@ const Dashboard = () => {
               sx={{ typography: { xs: "body1", sm: "body2" }, mt: 2 }}
             >
               <Grid item xs={6}>
-                {millify(mostViewed?.likes)}
+                {millify(mostViewed?.likes || 0)}
               </Grid>
               <Grid item xs={6}>
-                {mostViewed?.createdAt}
+                {moment(mostViewed?.createdAt).format("Do MMM YYYY")}
               </Grid>
             </Grid>
           </Grid>

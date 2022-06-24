@@ -7,6 +7,7 @@ import InfoContainer from "../../components/InfoContainer/InfoContainer";
 import { styled } from "@mui/system";
 import withAuth from "../../HOC/ProtectedRoutes";
 import millify from "millify";
+import {toast,ToastContainer} from "react-toastify";
 //icons
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
@@ -54,21 +55,15 @@ const Analytics = () => {
   const fetchAnalyticsDetail=()=>{
     channelSubscribers()
       .then((res)=>setSubscribers(res?.data))
-      .catch((err)=>{
-        console.log(err)
-      })
+      .catch((err)=>toast.error(err))
     
       channelLikes()
       .then((res) => setTotalLikes(res?.data?.totalLikes))
-      .catch((err) => {
-        console.log('error',err)
-      });
+      .catch((err) =>toast.error(err))
     
       channelViews()
       .then((res) => setTotalViews(res?.data?.totalViews))
-      .catch((err) => {
-        console.log('error',err)
-      });
+      .catch((err) => toast.error(err))
   }
   useEffect(()=>{
     fetchAnalyticsDetail()
@@ -181,6 +176,7 @@ const Analytics = () => {
         ))}
       </LinksWrapper>
       {compToShow()}
+      <ToastContainer/>
     </Box>
   );
 };

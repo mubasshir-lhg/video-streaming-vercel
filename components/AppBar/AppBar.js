@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import { useRouter } from "next/router";
 
@@ -23,6 +23,8 @@ import { UploadVideoModal } from "../Modal/UploadVideoModal/UploadVideoModal";
 import { NotificationData } from "../../_mockup/AppBar/Notification";
 import { Box, IconButton, Toolbar, useMediaQuery } from "@mui/material";
 import { logout } from "../../services/auth-services";
+
+import { UserContext } from "../../context/userContext";
 
 const drawerWidth = 220;
 const AppBar = styled(MuiAppBar, {
@@ -51,7 +53,7 @@ const AppBarComp = ({ open, handleDrawer, isSmDown, setOpen, setChannel }) => {
   const [openUploadModal, setOpenUploadModal] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const isMdDown = useMediaQuery(breakpoints.down("md"));
-
+  const {user,setUser} = useContext(UserContext);
   const switchToChannel = () => {
     router.push("/dashboard/");
     closePopupMenu();
@@ -265,7 +267,7 @@ const AppBarComp = ({ open, handleDrawer, isSmDown, setOpen, setChannel }) => {
           >
             <Image
               alt="Dp"
-              src={dp}
+              src={user? user.profileUrl : dp}
               width={30}
               height={30}
               quality={100}

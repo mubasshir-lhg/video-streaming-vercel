@@ -1,5 +1,6 @@
 import React from "react";
 import { Typography, Box, Grid, Button } from "@mui/material";
+import Link from "next/link";
 import Video from "../Video";
 import Image from "next/image";
 
@@ -33,8 +34,10 @@ const VideoToPlay = ({ item }) => {
             className="bar-img"
           />
         </Grid>
-        <Grid item xs={7} sm={9} md={8} lg={9}>
-          <Typography variant="subtitle1">Heading Here</Typography>
+        <Grid item xs={7} sm={9} md={8} lg={9} sx={{ cursor: "pointer" }}>
+          <Typography variant="subtitle1">
+            <Link href="/home/channelProfile">John Doe</Link>
+          </Typography>
           <Typography variant="caption" component="div">
             267k views
           </Typography>

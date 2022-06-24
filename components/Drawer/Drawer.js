@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import Image from "next/image";
 import dp from "../../assets/Images/user1.jpg";
 import { useRouter } from "next/router";
 import { styled } from "@mui/material/styles";
 import { userRoutes,adminRoutes } from "../../routes/routes";
-
+import { UserContext } from "../../context/userContext";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import MuiDrawer from "@mui/material/Drawer";
 import {
@@ -71,6 +71,7 @@ const Drawer = styled(MuiDrawer, {
 const DrawerComp = ({ isSmDown, handleDrawer,open ,channel}) => {
   const router = useRouter();
   const [activeIndex, setActiveIndex] = useState(0);
+  const {user} = useContext(UserContext)
 
   const goToPage = (href, index) => {
     channel ? router.push(`/dashboard/${href}`) : router.push(`/home/${href}`);
@@ -92,7 +93,7 @@ const DrawerComp = ({ isSmDown, handleDrawer,open ,channel}) => {
         <Box sx={{ textAlign: "center", mt: 5 }}>
           <Image
             alt="Dp"
-            src={dp}
+            src={user?.profileUrl || dp}
             width={100}
             height={100}
             quality={100}

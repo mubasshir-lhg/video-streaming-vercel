@@ -6,6 +6,7 @@ import BoxContainer from "../../components/BoxContainer/BoxContainer";
 import InfoContainer from "../../components/InfoContainer/InfoContainer";
 import { styled } from "@mui/system";
 import withAuth from "../../HOC/ProtectedRoutes";
+import millify from "millify";
 //icons
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
@@ -92,7 +93,7 @@ const Analytics = () => {
                   background={gradients.purple}
                   icon={<VisibilityIcon />}
                   tag="Views"
-                  number={totalViews}
+                  number={millify(totalViews)}
                   shape={isSmDown ? "" : isMdDown ? "horizontal" : "vertical"}
                 />
               </Grid>
@@ -101,7 +102,7 @@ const Analytics = () => {
                   background={gradients.warning}
                   icon={<ThumbUpAltIcon />}
                   tag="Likes"
-                  number={totalLikes}
+                  number={millify(totalLikes)}
                   shape={isSmDown ? "" : isMdDown ? "horizontal" : "vertical"}
                 />
               </Grid>
@@ -109,7 +110,7 @@ const Analytics = () => {
                 <InfoContainer
                   icon={<SubscriptionsIcon />}
                   tag="Subscribers"
-                  number={subscribers}
+                  number={millify(subscribers)}
                   shape={isSmDown ? "" : isMdDown ? "horizontal" : "vertical"}
                 />
               </Grid>

@@ -1,5 +1,9 @@
 import axios from "axios";
 
+function getAccessToken() {
+  return window.localStorage.getItem("jwt_access_token");
+}
+
 function register(body) {
   return new Promise((resolve, reject) => {
     axios
@@ -46,4 +50,24 @@ function setSession(access_token) {
   }
 }
 
-export { register, login, logout };
+function loginWithToken(token) {
+  return new Promise((resolve, reject) => {
+      axios
+          .get("/auth/getUserFromToken", {
+              headers: {
+                  Authorization: token,
+              },
+          })
+          .then((res) => {
+              setSession(token);
+              resolve(res);
+          })
+          .catch((err) => {
+              if (err && err.response) {
+                  reject(err.response?.data);
+              }
+          });
+  });
+}
+
+export { register, login, logout, loginWithToken, getAccessToken };

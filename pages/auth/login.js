@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import { Grid, Box, TextField, Button } from "@mui/material";
 import BoxContainer from "../../components/BoxContainer/BoxContainer";
 import Link from "next/link";
@@ -8,22 +8,23 @@ import logo from "../../assets/Images/logo/Teachmetoo Brandmark Full Color .png"
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { login } from "../../services/auth-services";
-
+import { UserContext } from "../../context/userContext";
 const Label = ({ children }) => (
   <Box sx={{ typography: { xs: "subtitle1", md: "subtitle2" } }}>
     {children}
   </Box>
 );
 const LoginPage = () => {
+  const { user, setUser } = useContext(UserContext);
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const loginHandler = () => {
     if (email && password) {
       login({ email, password })
         .then((res) => {
           toast.success("login successful");
+          setUser(res?.data?.user);
           res && router.push("/home/");
         })
         .catch((err) => {

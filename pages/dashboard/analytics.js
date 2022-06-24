@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Box, Grid, Typography, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/styles";
+import {channelLikes,channelSubscribers,channelViews} from "../../services/analytics-sevices"
 import BoxContainer from "../../components/BoxContainer/BoxContainer";
 import InfoContainer from "../../components/InfoContainer/InfoContainer";
 import { styled } from "@mui/system";
 import withAuth from "../../HOC/ProtectedRoutes";
+import millify from "millify";
+import {toast,ToastContainer} from "react-toastify";
 //icons
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
@@ -17,7 +20,6 @@ import MuiTable from "../../components/Table/Table";
 import { datasets } from "../../components/Chart/data";
 import { rows, coloms, rows2, coloms2 } from "../../_mockup/Table";
 import MuiTable2 from "../../components/Table/Table2";
-
 const useStyles = makeStyles({
   box: {
     "& canvas": {
@@ -47,7 +49,25 @@ const Analytics = () => {
   const [chartData, setChartData] = useState(datasets);
   const isMdDown = useMediaQuery(breakpoints.down("md"));
   const isSmDown = useMediaQuery(breakpoints.down("sm"));
-
+  const[subscribers,setSubscribers] = useState(0)
+  const[totalLikes,setTotalLikes] = useState(0)
+  const[totalViews,setTotalViews] = useState(0)
+  const fetchAnalyticsDetail=()=>{
+    channelSubscribers()
+      .then((res)=>setSubscribers(res?.data))
+      .catch((err)=>toast.error(err))
+    
+      channelLikes()
+      .then((res) => setTotalLikes(res?.data?.totalLikes))
+      .catch((err) =>toast.error(err))
+    
+      channelViews()
+      .then((res) => setTotalViews(res?.data?.totalViews))
+      .catch((err) => toast.error(err))
+  }
+  useEffect(()=>{
+    fetchAnalyticsDetail()
+  },[])
   const handleClick = (ind) => {
     setActiveIndex(ind);
   };
@@ -59,7 +79,7 @@ const Analytics = () => {
           <BoxContainer>
             <Box sx={{ typography: "subtitle1" }}>
               <Typography variant="subtitle1">
-                Your Channel has gotten 3,492,332 views so for
+                Your Channel has gotten {totalViews} views so for
               </Typography>
             </Box>
             <Grid container spacing={2}>
@@ -68,7 +88,7 @@ const Analytics = () => {
                   background={gradients.purple}
                   icon={<VisibilityIcon />}
                   tag="Views"
-                  number="15K"
+                  number={millify(totalViews)}
                   shape={isSmDown ? "" : isMdDown ? "horizontal" : "vertical"}
                 />
               </Grid>
@@ -77,7 +97,7 @@ const Analytics = () => {
                   background={gradients.warning}
                   icon={<ThumbUpAltIcon />}
                   tag="Likes"
-                  number="15K"
+                  number={millify(totalLikes)}
                   shape={isSmDown ? "" : isMdDown ? "horizontal" : "vertical"}
                 />
               </Grid>
@@ -85,7 +105,7 @@ const Analytics = () => {
                 <InfoContainer
                   icon={<SubscriptionsIcon />}
                   tag="Subscribers"
-                  number="15K"
+                  number={millify(subscribers)}
                   shape={isSmDown ? "" : isMdDown ? "horizontal" : "vertical"}
                 />
               </Grid>
@@ -156,6 +176,7 @@ const Analytics = () => {
         ))}
       </LinksWrapper>
       {compToShow()}
+      <ToastContainer/>
     </Box>
   );
 };

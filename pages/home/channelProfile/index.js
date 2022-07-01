@@ -1,16 +1,19 @@
-import { Grid, Box, Button, Typography } from "@mui/material";
-import { styled } from "@mui/system";
 import React, { useState } from "react";
+import { styled } from "@mui/system";
+import { homedata } from "../../../_mockup/Home";
+import { Grid, Box, Button, Typography } from "@mui/material";
 import banner from "../../../assets/Images/banner.jpg";
 import Image from "next/image";
+import Video from "../../../components/Video/Video";
 import ChannelProfileCard from "../../../components/Cards/ChannelProfileCard/ChannelProfileCard";
+import HomeCard from "../../../components/Cards/HomeCard/HomeCard";
 
 const tabs = ["All", "Recent", "Popular"];
 const TabsWrapper = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "flex-start",
-  marginTop:"8px",
+  marginTop: "8px",
   gap: "50px",
   [theme.breakpoints.down("sm")]: {
     gap: "16px",
@@ -31,6 +34,7 @@ const ChannelProfile = () => {
   return (
     <Grid container>
       <Grid
+        item
         xs={12}
         sx={{
           "& span": { height: "100% !important", width: "100% !important" },
@@ -38,7 +42,7 @@ const ChannelProfile = () => {
       >
         <Image src={banner} alt="banner" height={220} />
       </Grid>
-      <Grid xs={12}>
+      <Grid item xs={12}>
         <Box
           sx={{
             bgcolor: "secondary.dark",
@@ -68,7 +72,31 @@ const ChannelProfile = () => {
           </TabsWrapper>
         </Box>
       </Grid>
-      <Grid xs={12}>Recent video</Grid>
+      <Grid item xs={12} container gap={4} my={4}>
+        <Grid item xs={4}>
+          <Video src="/video1.mp4" width="100%" my="0" />
+        </Grid>
+        <Grid item xs={5}>
+          <Typography variant="h5">Most View Video</Typography>
+          <Typography variant="caption">234k views . 3 months ago</Typography>
+          <Typography variant="subtitle2" my={2}>
+            Laborum mollit in aliqua reprehenderit irure nulla ut aute.Veniam
+            consequat non ad officia ut ut minim cupidatat nostrud non non
+            tempor voluptate.
+          </Typography>
+          <Typography variant="body2">
+            Veniam consequat non ad officia ut ut minim cupidatat nostrud non
+            non tempor voluptate.
+          </Typography>
+        </Grid>
+      </Grid>
+      <Grid item xs={12} container spacing={2}>
+        {homedata?.map((item, index) => (
+          <Grid item xs={2} key={index}>
+            <HomeCard channelProfile={true} item={item} />
+          </Grid>
+        ))}
+      </Grid>
     </Grid>
   );
 };

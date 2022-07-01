@@ -81,8 +81,6 @@ const Homepage = () => {
               onChange={handleChange}
               variant="scrollable"
               scrollButtons="auto"
-              allowScrollButtonsMobile
-              aria-label="scrollable force tabs example"
             >
               {tabs.map((data, index) => (
                 <Category

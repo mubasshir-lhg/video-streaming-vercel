@@ -69,8 +69,6 @@ const ChannelProfile = () => {
         </Box>
       </Grid>
       <Grid xs={12}>Recent video</Grid>
-      <Grid xs={12}>Upload Video</Grid>
-      <Grid xs={12}>Popular Video</Grid>
     </Grid>
   );
 };

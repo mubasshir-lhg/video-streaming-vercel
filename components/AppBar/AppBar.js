@@ -22,7 +22,6 @@ import { RequestModal } from "../Modal/RequestAVideo/RequestAVideo";
 import { UploadVideoModal } from "../Modal/UploadVideoModal/UploadVideoModal";
 import { NotificationData } from "../../_mockup/AppBar/Notification";
 import { Box, IconButton, Toolbar, useMediaQuery } from "@mui/material";
-import { logout } from "../../services/auth-services";
 
 import { UserContext } from "../../context/userContext";
 
@@ -104,9 +103,9 @@ const AppBarComp = ({ open, handleDrawer, isSmDown, setOpen, setChannel }) => {
     setActiveIndex(index);
   };
   const logoutHandler = () => {
-    logout()
     closePopupMenu();
     setChannel(false)
+    router.push('auth/login')
   };
   const goToProfile = () => {
     router.push(`/dashboard/profile`);

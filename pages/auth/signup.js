@@ -1,14 +1,12 @@
 
 import React, { useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
+import { useRouter } from "next/router";
+import { ToastContainer, toast } from "react-toastify";
 import { Grid, Box, TextField, Button } from "@mui/material";
 import BoxContainer from "../../components/BoxContainer/BoxContainer";
 import logo from "../../assets/Images/logo/Teachmetoo Brandmark Full Color .png";
-import { useRouter } from "next/router";
-
-import { ToastContainer, toast } from "react-toastify";
-import { register } from "../../services/auth-services";
+import Image from "next/image";
+import Link from "next/link";
 
 const Label = ({ children }) => (
   <Box sx={{ typography: { xs: "subtitle1", md: "subtitle2" } }}>
@@ -25,7 +23,6 @@ const SignupPage = () => {
     confirmPassword: "",
   });
 
-  const { firstName, lastName, email, password, confirmPassword } = state;
   const changeHandler = (e) => {
     const value = e.target.value;
     const name = e.target.name;
@@ -35,19 +32,8 @@ const SignupPage = () => {
     });
   };
   const signupHandler = () => {
-    register({
-      firstName,
-      lastName,
-      email,
-      password,
-    })
-      .then((res) => {
-        toast.success("user registered successfully");
-        res && router.push("/home/");
-      })
-      .catch((err) => {
-        toast.error(err?.message);
-      });
+    toast.success("user registered successfully");
+    router.push('/home')
   };
 
   return (

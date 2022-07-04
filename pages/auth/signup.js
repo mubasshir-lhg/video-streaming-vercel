@@ -16,8 +16,8 @@ const Label = ({ children }) => (
 const SignupPage = () => {
   const router = useRouter();
   const [state, setState] = useState({
-    firstName: "",
-    lastName: "",
+    name: "",
+    channelName: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -53,20 +53,20 @@ const SignupPage = () => {
           <Box sx={{ typography: "h4", textAlign: "center" }}>Signup</Box>
           <Grid container spacing={2}>
             <Grid item xs={12}>
-              <Label>First Name</Label>
+              <Label>Name</Label>
               <TextField
-                name="firstName"
-                value={state.firstName}
+                name="name"
+                value={state.name}
                 type="text"
                 size="small"
                 onChange={changeHandler}
               />
             </Grid>
             <Grid item xs={12}>
-              <Label>Last Name</Label>
+              <Label>Channel Name</Label>
               <TextField
-                name="lastName"
-                value={state.lastName}
+                name="channelName"
+                value={state.channelName}
                 type="text"
                 size="small"
                 onChange={changeHandler}

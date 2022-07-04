@@ -55,7 +55,7 @@ const ChannelProfile = () => {
       default: // all videos
         return (
           <>
-            <Grid item xs={12} container gap={4} my={4}>
+            <Grid item xs={12} container gap={4} mb={2}>
               <Grid item xs={4}>
                 <Video src="/video1.mp4" width="100%" my="0" />
               </Grid>
@@ -109,10 +109,15 @@ const ChannelProfile = () => {
           >
             <FlexBox>
               <ChannelProfileCard />
-              <IconButton onClick={() => setOpenRequestModal(true)}>
-                <VideoCallOutlinedIcon fontSize="large" />
-              </IconButton>
-              <Button variant="contained" color="warning">
+              <Button
+                variant="contained"
+                color="info"
+                onClick={() => setOpenRequestModal(true)}
+                sx={{ ml: "auto" }}
+              >
+                <VideoCallOutlinedIcon />
+              </Button>
+              <Button variant="contained" color="warning" sx={{ ml: 1 }}>
                 SUBSCRIBE
               </Button>
             </FlexBox>

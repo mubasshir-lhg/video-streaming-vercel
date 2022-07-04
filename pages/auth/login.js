@@ -70,6 +70,16 @@ const LoginPage = () => {
                 Login
               </Button>
             </Grid>
+            <Grid item xs={12}>
+              <Button
+                variant="contained"
+                color="info"
+                fullWidth
+                onClick={loginHandler}
+              >
+                Login With Google
+              </Button>
+            </Grid>
             <Grid item xs={12} textAlign="right">
               <Link href="/auth/signup">don&apos;t have account? Signup</Link>
             </Grid>

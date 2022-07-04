@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { styled } from "@mui/system";
 import { homedata } from "../../../_mockup/Home";
-import { Grid, Box, Button, Typography } from "@mui/material";
+import { Grid, Box, Button, Typography, IconButton } from "@mui/material";
 import banner from "../../../assets/Images/banner.jpg";
 import Image from "next/image";
 import Video from "../../../components/Video/Video";
 import ChannelProfileCard from "../../../components/Cards/ChannelProfileCard/ChannelProfileCard";
 import HomeCard from "../../../components/Cards/HomeCard/HomeCard";
+import VideoCallOutlinedIcon from "@mui/icons-material/VideoCallOutlined";
+import { RequestModal } from "../../../components/Modal/RequestAVideo/RequestAVideo";
 
 const tabs = ["All", "Recent", "Popular"];
 const TabsWrapper = styled(Box)(({ theme }) => ({
@@ -27,9 +29,13 @@ const FlexBox = styled(Box)({
 });
 const ChannelProfile = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [openRequestModal, setOpenRequestModal] = useState(false);
 
   const handleClick = (index) => {
     setActiveIndex(index);
+  };
+  const handleCloseModal = () => {
+    setOpenRequestModal(false);
   };
   return (
     <Grid container>
@@ -52,6 +58,9 @@ const ChannelProfile = () => {
         >
           <FlexBox>
             <ChannelProfileCard />
+            <IconButton onClick={() => setOpenRequestModal(true)}>
+              <VideoCallOutlinedIcon fontSize='large'/>
+            </IconButton>
             <Button variant="contained" color="warning">
               SUBSCRIBE
             </Button>
@@ -97,6 +106,7 @@ const ChannelProfile = () => {
           </Grid>
         ))}
       </Grid>
+      <RequestModal open={openRequestModal} handleClose={handleCloseModal} />
     </Grid>
   );
 };

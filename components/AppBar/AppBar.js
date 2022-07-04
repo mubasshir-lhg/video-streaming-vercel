@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import { useRouter } from "next/router";
 
@@ -48,22 +48,21 @@ const AppBarComp = ({ open, handleDrawer, isSmDown, setOpen, setChannel }) => {
   const { breakpoints } = useTheme();
   const [menuOption, setMenuOption] = useState([]);
   const [navbar, setNavbar] = useState(false);
-  const [openRequestModal, setOpenRequestModal] = useState(false);
   const [openUploadModal, setOpenUploadModal] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const isMdDown = useMediaQuery(breakpoints.down("md"));
-  const {user,setUser} = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const switchToChannel = () => {
     router.push("/dashboard/");
     closePopupMenu();
   };
-  useEffect(()=>{
-    if(router.pathname.startsWith("/dashboard")){
+  useEffect(() => {
+    if (router.pathname.startsWith("/dashboard")) {
       setChannel(true);
-    }else{
+    } else {
       setChannel(false);
     }
-  },[setChannel,router.pathname])
+  }, [setChannel, router.pathname]);
   const switchToHome = () => {
     setChannel(false);
     closePopupMenu();
@@ -81,7 +80,6 @@ const AppBarComp = ({ open, handleDrawer, isSmDown, setOpen, setChannel }) => {
     setAnchorEl(null);
   };
   const handleCloseModal = () => {
-    setOpenRequestModal(false);
     setOpenUploadModal(false);
   };
   const getSearchValue = (searchVal) => {
@@ -104,8 +102,8 @@ const AppBarComp = ({ open, handleDrawer, isSmDown, setOpen, setChannel }) => {
   };
   const logoutHandler = () => {
     closePopupMenu();
-    setChannel(false)
-    router.push('auth/login')
+    setChannel(false);
+    router.push("auth/login");
   };
   const goToProfile = () => {
     router.push(`/dashboard/profile`);
@@ -137,18 +135,6 @@ const AppBarComp = ({ open, handleDrawer, isSmDown, setOpen, setChannel }) => {
     { onClickFunc: logoutHandler, child: "Logout" },
   ];
   const menuOptions2 = [
-    {
-      onClickFunc: () => {
-        setOpenRequestModal(true);
-        closePopupMenu();
-      },
-      child: (
-        <>
-          <VideoCallOutlinedIcon sx={{ pr: 1 }} />
-          Request Video
-        </>
-      ),
-    },
     {
       onClickFunc: closePopupMenu,
       child: (
@@ -236,9 +222,6 @@ const AppBarComp = ({ open, handleDrawer, isSmDown, setOpen, setChannel }) => {
             </IconButton>
           ) : (
             <>
-              <IconButton onClick={() => setOpenRequestModal(true)}>
-                <VideoCallOutlinedIcon />
-              </IconButton>
               <IconButton>
                 <MicNoneOutlinedIcon />
               </IconButton>
@@ -266,7 +249,7 @@ const AppBarComp = ({ open, handleDrawer, isSmDown, setOpen, setChannel }) => {
           >
             <Image
               alt="Dp"
-              src={user? user.profileUrl : dp}
+              src={user ? user.profileUrl : dp}
               width={30}
               height={30}
               quality={100}
@@ -282,8 +265,6 @@ const AppBarComp = ({ open, handleDrawer, isSmDown, setOpen, setChannel }) => {
           />
         </>
       </Toolbar>
-
-      <RequestModal open={openRequestModal} handleClose={handleCloseModal} />
       <UploadVideoModal
         open={openUploadModal}
         handleClose={handleCloseModal}

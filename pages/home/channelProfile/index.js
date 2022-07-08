@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { styled } from "@mui/system";
 import { homedata } from "../../../_mockup/Home";
-import { Grid, Box, Button, Typography, IconButton } from "@mui/material";
+import { Grid, Box, Button, Typography } from "@mui/material";
 import { RequestModal } from "../../../components/Modal/RequestAVideo/RequestAVideo";
 import Image from "next/image";
 import Video from "../../../components/Video/Video";
@@ -41,13 +41,13 @@ const ChannelProfile = () => {
     switch (activeIndex) {
       case 1: //recent video
         return homedata?.map((item, index) => (
-          <Grid item xs={2} key={index}>
+          <Grid item xs={12} sm={6} md={4} lg={3} xl={2} key={index}>
             <HomeCard channelProfile={true} item={item} />
           </Grid>
         ));
       case 2: // popula videos
         return homedata?.map((item, index) => (
-          <Grid item xs={2} key={index}>
+          <Grid item xs={12} sm={6} md={4} lg={3} xl={2} key={index}>
             <HomeCard channelProfile={true} item={item} />
           </Grid>
         ));
@@ -56,10 +56,10 @@ const ChannelProfile = () => {
         return (
           <>
             <Grid item xs={12} container gap={4} mb={2}>
-              <Grid item xs={4}>
+              <Grid item xs={12} md={5} xl={4}>
                 <Video src="/video1.mp4" width="100%" my="0" />
               </Grid>
-              <Grid item xs={5}>
+              <Grid item xs={12} md={6} xl={5}>
                 <Typography variant="h5">Most View Video</Typography>
                 <Typography variant="caption">
                   234k views . 3 months ago
@@ -76,7 +76,7 @@ const ChannelProfile = () => {
               </Grid>
             </Grid>
             {homedata?.map((item, index) => (
-              <Grid item xs={2} key={index}>
+              <Grid item xs={12} sm={6} md={4} lg={3} xl={2} key={index}>
                 <HomeCard channelProfile={true} item={item} />
               </Grid>
             ))}

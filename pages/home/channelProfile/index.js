@@ -9,6 +9,7 @@ import banner from "../../../assets/Images/banner.jpg";
 import HomeCard from "../../../components/Cards/HomeCard/HomeCard";
 import VideoCallOutlinedIcon from "@mui/icons-material/VideoCallOutlined";
 import ChannelProfileCard from "../../../components/Cards/ChannelProfileCard/ChannelProfileCard";
+import { useRouter } from "next/router";
 
 const tabs = ["All", "Recent", "Popular"];
 const TabsWrapper = styled(Box)(({ theme }) => ({
@@ -28,6 +29,7 @@ const FlexBox = styled(Box)({
   justifyContent: "space-between",
 });
 const ChannelProfile = () => {
+  const router=useRouter()
   const [activeIndex, setActiveIndex] = useState(0);
   const [openRequestModal, setOpenRequestModal] = useState(false);
 
@@ -37,18 +39,21 @@ const ChannelProfile = () => {
   const handleCloseModal = () => {
     setOpenRequestModal(false);
   };
+  const goToPage=()=>{
+    router.push('/home/playVideo')
+  }
   const compToShow = () => {
     switch (activeIndex) {
       case 1: //recent video
         return homedata?.map((item, index) => (
           <Grid item xs={12} sm={6} md={4} lg={3} xl={2} key={index}>
-            <HomeCard channelProfile={true} item={item} />
+            <HomeCard channelProfile={true} item={item} onClick={goToPage}/>
           </Grid>
         ));
       case 2: // popula videos
         return homedata?.map((item, index) => (
           <Grid item xs={12} sm={6} md={4} lg={3} xl={2} key={index}>
-            <HomeCard channelProfile={true} item={item} />
+            <HomeCard channelProfile={true} item={item} onClick={goToPage}/>
           </Grid>
         ));
 
@@ -77,7 +82,7 @@ const ChannelProfile = () => {
             </Grid>
             {homedata?.map((item, index) => (
               <Grid item xs={12} sm={6} md={4} lg={3} xl={2} key={index}>
-                <HomeCard channelProfile={true} item={item} />
+                <HomeCard channelProfile={true} item={item} onClick={goToPage}/>
               </Grid>
             ))}
           </>

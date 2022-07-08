@@ -3,7 +3,7 @@ import { Grid, Button, Typography } from "@mui/material";
 import { useRouter } from "next/router";
 import { RelatedVideosData } from "../../../_mockup/RalatedVideos";
 import SearchVideoResult from "../../../components/Video/searchVideoResult/searchVideoResult";
-import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const History = () => {
   const router = useRouter();
@@ -29,9 +29,24 @@ const History = () => {
           </Grid>
         ))}
       </Grid>
-      <Grid item xs={4} sx={{ backgroundColor: "primary.main" }}>
-        <Button variant="outlined" color='error' startIcon={<DeleteIcon />}>
+      <Grid
+        item
+        xs={4}
+        sx={{
+          backgroundColor: "primary.main",
+          display: "flex",
+          flexDirection: "column",
+          gap: "10px",
+        }}
+      >
+        <Button variant="outlined" color="error" startIcon={<DeleteIcon />}>
           Clear all watch history
+        </Button>
+        <Button variant="outlined" color="error" startIcon={<DeleteIcon />}>
+          Clear last 1 hour watch history
+        </Button>
+        <Button variant="outlined" color="error" startIcon={<DeleteIcon />}>
+          Clear last 24 hours watch history
         </Button>
       </Grid>
     </Grid>

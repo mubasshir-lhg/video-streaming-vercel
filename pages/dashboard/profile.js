@@ -74,11 +74,11 @@ const Profile = () => {
         </Grid>
         <Grid item xs={12} sm={6}>
           <Label>Email</Label>
-          <TextField name="email" disabled />
+          <TextField name="email" disabled/>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Label>Contact</Label>
-          <TextField name="contact" type="text" />
+          <Label>Channel Name</Label>
+          <TextField name="channelName" type="text" />
         </Grid>
         <Grid item xs={12} sm={6}>
           <Label>Current Password</Label>
@@ -93,12 +93,12 @@ const Profile = () => {
           <TextField name="confirmPassword" type="password" />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Button variant="outlined" color="purple" fullWidth>
+          <Button variant="outlined" color="purple" fullWidth size="large">
             Cancel
           </Button>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Button variant="contained" color="purple" fullWidth>
+          <Button variant="contained" color="purple" fullWidth size="large">
             Update
           </Button>
         </Grid>

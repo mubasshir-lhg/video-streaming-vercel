@@ -17,7 +17,7 @@ const History = () => {
       <Grid xs={12} px={2}>
         <Typography variant="subtitle1">Watch history</Typography>
       </Grid>
-      <Grid item xs={8}>
+      <Grid item xs={12} sm={8} order={{xs:2,sm:1}}>
         {data?.map((item, index) => (
           <Grid item xs={12} key={index} sx={{ mt: 1, pr: 2 }}>
             <SearchVideoResult
@@ -31,12 +31,15 @@ const History = () => {
       </Grid>
       <Grid
         item
-        xs={4}
+        xs={12}
+        sm={4}
+        order={{xs:1,sm:2}}
         sx={{
           backgroundColor: "primary.main",
           display: "flex",
           flexDirection: "column",
           gap: "10px",
+          p:2,
         }}
       >
         <Button variant="outlined" color="error" startIcon={<DeleteIcon />}>

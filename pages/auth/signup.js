@@ -1,14 +1,12 @@
 
 import React, { useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
+import { useRouter } from "next/router";
+import { ToastContainer, toast } from "react-toastify";
 import { Grid, Box, TextField, Button } from "@mui/material";
 import BoxContainer from "../../components/BoxContainer/BoxContainer";
 import logo from "../../assets/Images/logo/Teachmetoo Brandmark Full Color .png";
-import { useRouter } from "next/router";
-
-import { ToastContainer, toast } from "react-toastify";
-import { register } from "../../services/auth-services";
+import Image from "next/image";
+import Link from "next/link";
 
 const Label = ({ children }) => (
   <Box sx={{ typography: { xs: "subtitle1", md: "subtitle2" } }}>
@@ -18,14 +16,13 @@ const Label = ({ children }) => (
 const SignupPage = () => {
   const router = useRouter();
   const [state, setState] = useState({
-    firstName: "",
-    lastName: "",
+    name: "",
+    channelName: "",
     email: "",
     password: "",
     confirmPassword: "",
   });
 
-  const { firstName, lastName, email, password, confirmPassword } = state;
   const changeHandler = (e) => {
     const value = e.target.value;
     const name = e.target.name;
@@ -35,19 +32,8 @@ const SignupPage = () => {
     });
   };
   const signupHandler = () => {
-    register({
-      firstName,
-      lastName,
-      email,
-      password,
-    })
-      .then((res) => {
-        toast.success("user registered successfully");
-        res && router.push("/home/");
-      })
-      .catch((err) => {
-        toast.error(err?.message);
-      });
+    toast.success("user registered successfully");
+    router.push('/home')
   };
 
   return (
@@ -67,20 +53,20 @@ const SignupPage = () => {
           <Box sx={{ typography: "h4", textAlign: "center" }}>Signup</Box>
           <Grid container spacing={2}>
             <Grid item xs={12}>
-              <Label>First Name</Label>
+              <Label>Name</Label>
               <TextField
-                name="firstName"
-                value={state.firstName}
+                name="name"
+                value={state.name}
                 type="text"
                 size="small"
                 onChange={changeHandler}
               />
             </Grid>
             <Grid item xs={12}>
-              <Label>Last Name</Label>
+              <Label>Channel Name</Label>
               <TextField
-                name="lastName"
-                value={state.lastName}
+                name="channelName"
+                value={state.channelName}
                 type="text"
                 size="small"
                 onChange={changeHandler}

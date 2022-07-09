@@ -1,35 +1,27 @@
-import React, { useState,useContext } from "react";
-import { Grid, Box, TextField, Button } from "@mui/material";
-import BoxContainer from "../../components/BoxContainer/BoxContainer";
-import Link from "next/link";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
-import Image from "next/image";
-import logo from "../../assets/Images/logo/Teachmetoo Brandmark Full Color .png";
-import axios from "axios";
+import { Grid, Box, TextField, Button } from "@mui/material";
 import { ToastContainer, toast } from "react-toastify";
-import { login } from "../../services/auth-services";
-import { UserContext } from "../../context/userContext";
+import logo from "../../assets/Images/logo/Teachmetoo Brandmark Full Color .png";
+import BoxContainer from "../../components/BoxContainer/BoxContainer";
+import Image from "next/image";
+import Link from "next/link";
+
 const Label = ({ children }) => (
   <Box sx={{ typography: { xs: "subtitle1", md: "subtitle2" } }}>
     {children}
   </Box>
 );
+
 const LoginPage = () => {
-  const { user, setUser } = useContext(UserContext);
-  const router = useRouter();
+  const router=useRouter()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const loginHandler = () => {
     if (email && password) {
-      login({ email, password })
-        .then((res) => {
-          toast.success("login successful");
-          setUser(res?.data?.user);
-          res && router.push("/home/");
-        })
-        .catch((err) => {
-          toast.error(err?.message);
-        });
+      toast.success("login successful");
+      router.push('/home')
     } else {
       toast.error("required name and email");
     }
@@ -76,6 +68,16 @@ const LoginPage = () => {
                 onClick={loginHandler}
               >
                 Login
+              </Button>
+            </Grid>
+            <Grid item xs={12}>
+              <Button
+                variant="contained"
+                color="info"
+                fullWidth
+                onClick={loginHandler}
+              >
+                Login With Google
               </Button>
             </Grid>
             <Grid item xs={12} textAlign="right">

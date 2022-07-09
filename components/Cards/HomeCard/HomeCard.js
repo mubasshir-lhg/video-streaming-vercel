@@ -15,7 +15,7 @@ const InfoWrapper = styled(Box)({
   gap: 15,
 });
 
-const HomeCard = ({ item, onClick }) => {
+const HomeCard = ({ item, onClick,channelProfile }) => {
   const {
     videoSrc,
     authorImg,
@@ -29,14 +29,14 @@ const HomeCard = ({ item, onClick }) => {
     <Container onClick={onClick} mt={1}>
       <VideoWithTime src={videoSrc} duration={duration} />
       <InfoWrapper>
-        <Avatar src={authorImg} alt="img" />
+       {!channelProfile && <Avatar src={authorImg} alt="img" />}
         <Box>
-          <Typography variant="subtitle1">
+          <Typography variant={!channelProfile?"subtitle1":"body1"}>
             {title.length > 50 ? `${title.substring(0, 50)}...` : title}
           </Typography>
-          <Typography variant="caption" component="div" mt={1}>
+         {!channelProfile && <Typography variant="caption" component="div" mt={1}>
             {authorName}
-          </Typography>
+          </Typography>}
           <Typography variant="caption">
             {views} views . {uploadTime}
           </Typography>

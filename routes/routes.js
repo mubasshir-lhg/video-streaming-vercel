@@ -16,9 +16,9 @@ export const userRoutes = [
     Icon: HomeIcon,
   },
   {
-    id: "video",
-    label: "Video ",
-    link: "video",
+    id: "yourVideos",
+    label: "Your Videos ",
+    link: "channelProfile",
     Icon: FlipCameraAndroidIcon,
   },
   {

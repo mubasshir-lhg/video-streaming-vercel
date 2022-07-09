@@ -85,9 +85,9 @@ const PURPLE = {
   contrastText: '#fff'
 };
 const YELLOW = {
-  light: '#FDF09E',
-  main: '#FFCA18',
-  contrastText: '#000'
+  light: '#f5de4a',
+  main: '#d5a401',
+  contrastText: '#fff'
 };
 
 const GRADIENTS = {

@@ -61,14 +61,6 @@ const History = () => {
         >
           Clear all watch history
         </Button>
-        <Button
-          variant="outlined"
-          color="error"
-          startIcon={<DeleteIcon />}
-          onClick={handleOpen}
-        >
-          Clear all Comment history
-        </Button>
       </Grid>
       <ConfirmationModal
         open={open}

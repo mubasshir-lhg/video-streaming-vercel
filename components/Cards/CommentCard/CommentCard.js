@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import List from "@mui/material/List";
-import ListItemButton from "@mui/material/ListItemButton";
-import Collapse from "@mui/material/Collapse";
+import Image from "next/image";
+import FlagIcon from "@mui/icons-material/Flag";
+import PopupMenu from "../../PopupMenu/PopupMenu";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
-import ThumbUpIcon from "@mui/icons-material/ThumbUp";
-import FlagIcon from "@mui/icons-material/Flag";
 import {
   Typography,
   Box,
@@ -14,15 +13,30 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { useTheme } from "@mui/system";
-import Image from "next/image";
 
 const CommentCard = ({ item }) => {
-  const [open, setOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
   const { breakpoints } = useTheme();
   const isMdDown = useMediaQuery(breakpoints.down("md"));
-  const handleClick = () => {
-    setOpen(!open);
+  const openPopup = Boolean(anchorEl);
+  const openPopupMenu = (event) => {
+    setAnchorEl(event.currentTarget);
   };
+  const closePopupMenu = () => {
+    setAnchorEl(null);
+  };
+  const handleClick = (e) => {
+    openPopupMenu(e);
+  };
+  const changeCommentStatus = () => {
+    closePopupMenu();
+    console.log("commentID==>", id);
+  };
+  const menuOptions = [
+    { onClickFunc: changeCommentStatus, child: "publish" },
+    { onClickFunc: changeCommentStatus, child: "pending" },
+    { onClickFunc: changeCommentStatus, child: "mark as spam" },
+  ];
 
   return (
     <Box py={2} px={4} sx={{ "&:hover": { backgroundColor: "primary.light" } }}>
@@ -46,7 +60,7 @@ const CommentCard = ({ item }) => {
           </Box>
           {item.comment}
         </Grid>
-        <Grid item xs={2} sm={1} sx={{ml:'auto'}}>
+        <Grid item xs={2} sm={1} sx={{ ml: "auto" }}>
           <IconButton>
             <ThumbUpIcon />
           </IconButton>
@@ -57,23 +71,17 @@ const CommentCard = ({ item }) => {
           </IconButton>
         </Grid>
         <Grid item xs={2} sm={1}>
-          <IconButton onClick={handleClick}>
-            {open ? <ExpandLess /> : <ExpandMore />}
+          <IconButton onClick={(e) => handleClick(e)}>
+            <ExpandMore />
           </IconButton>
         </Grid>
       </Grid>
-      <Collapse in={open} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItemButton sx={{ pt: 2 }}>
-            <Grid container>
-              <Grid item xs={1}></Grid>
-              <Grid item xs={8}>
-                <Typography>{item.moreDetail}</Typography>
-              </Grid>
-            </Grid>
-          </ListItemButton>
-        </List>
-      </Collapse>
+      <PopupMenu
+        anchorEl={anchorEl}
+        open={openPopup}
+        onClose={closePopupMenu}
+        options={menuOptions}
+      />
     </Box>
   );
 };

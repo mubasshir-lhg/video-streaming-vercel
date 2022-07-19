@@ -1,10 +1,9 @@
-
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { ToastContainer, toast } from "react-toastify";
 import { Grid, Box, TextField, Button } from "@mui/material";
 import BoxContainer from "../../components/BoxContainer/BoxContainer";
-import logo from "../../assets/Images/logo/Teachmetoo Brandmark Full Color .png";
+import logo from "../../assets/Images/logo/logo.png";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -33,7 +32,7 @@ const SignupPage = () => {
   };
   const signupHandler = () => {
     toast.success("user registered successfully");
-    router.push('/home')
+    router.push("/home");
   };
 
   return (

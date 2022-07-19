@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { Grid, Box, TextField, Button } from "@mui/material";
 import { ToastContainer, toast } from "react-toastify";
-import logo from "../../assets/Images/logo/Teachmetoo Brandmark Full Color .png";
+import logo from "../../assets/Images/logo/logo.png";
 import BoxContainer from "../../components/BoxContainer/BoxContainer";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,14 +14,14 @@ const Label = ({ children }) => (
 );
 
 const LoginPage = () => {
-  const router=useRouter()
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const loginHandler = () => {
     if (email && password) {
       toast.success("login successful");
-      router.push('/home')
+      router.push("/home");
     } else {
       toast.error("required name and email");
     }

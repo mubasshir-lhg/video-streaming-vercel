@@ -1,11 +1,11 @@
 import React, { useEffect, useContext } from "react";
-import { IconButton } from "@mui/material";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
 import MicNoneOutlinedIcon from "@mui/icons-material/MicNoneOutlined";
 import MicOffOutlinedIcon from "@mui/icons-material/MicOffOutlined";
 import styles from "../../styles/Home.module.css";
+import { IconButton } from "@mui/material";
 import { PlayContext } from "../../context/userContext";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -18,6 +18,7 @@ const SpeechToText = () => {
     isMicrophoneAvailable,
     browserSupportsSpeechRecognition,
   } = useSpeechRecognition();
+
   useEffect(() => {
     let timer;
     if (transcript) {
@@ -37,7 +38,6 @@ const SpeechToText = () => {
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser does not support speech recognition.</span>;
   }
-
   if (transcript === "play") {
     setIsPlaying(true);
   } else if (transcript === "pause") {

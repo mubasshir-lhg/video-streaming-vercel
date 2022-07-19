@@ -3,7 +3,6 @@ import Image from "next/image";
 import FlagIcon from "@mui/icons-material/Flag";
 import PopupMenu from "../../PopupMenu/PopupMenu";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
-import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import {
   Typography,
@@ -30,7 +29,6 @@ const CommentCard = ({ item }) => {
   };
   const changeCommentStatus = () => {
     closePopupMenu();
-    console.log("commentID==>", id);
   };
   const menuOptions = [
     { onClickFunc: changeCommentStatus, child: "publish" },

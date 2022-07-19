@@ -1,46 +1,57 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
+import { IconButton } from "@mui/material";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
-import { IconButton } from "@mui/material";
-import styles from "../../styles/Home.module.css";
 import MicNoneOutlinedIcon from "@mui/icons-material/MicNoneOutlined";
 import MicOffOutlinedIcon from "@mui/icons-material/MicOffOutlined";
+import styles from "../../styles/Home.module.css";
+import { PlayContext } from "../../context/userContext";
+import { ToastContainer, toast } from "react-toastify";
 
-const SpeechToText = ({ setPlayVideo }) => {
-  const commands = [
-    {
-      command: "clear",
-      callback: ({ resetTranscript }) => resetTranscript(),
-    },
-  ];
+const SpeechToText = () => {
+  const { setIsPlaying } = useContext(PlayContext);
   const {
     transcript,
     listening,
     resetTranscript,
+    isMicrophoneAvailable,
     browserSupportsSpeechRecognition,
-  } = useSpeechRecognition({ commands });
-  const startListening = () =>
-    SpeechRecognition.startListening({ continuous: true });
+  } = useSpeechRecognition();
+  useEffect(() => {
+    let timer;
+    if (transcript) {
+      toast.info(transcript);
+      timer = setTimeout(() => {
+        resetTranscript();
+      }, 3000);
+    }
+    return () => clearTimeout(timer);
+  }, [listening, transcript, resetTranscript]);
+  useEffect(() => {
+    if (!isMicrophoneAvailable) {
+      toast.error("permission denied for microphone");
+    }
+  }, [isMicrophoneAvailable]);
+
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser does not support speech recognition.</span>;
   }
 
   if (transcript === "play") {
-    setPlayVideo(true);
-    resetTranscript();
+    setIsPlaying(true);
   } else if (transcript === "pause") {
-    setPlayVideo(false);
-    resetTranscript();
+    setIsPlaying(false);
   }
-
+  const startListening = () =>
+    SpeechRecognition.startListening({ continuous: true });
   const stopListeningMic = () => {
     SpeechRecognition.stopListening();
     resetTranscript();
   };
   return (
     <>
-      {listening ? (
+      {listening && isMicrophoneAvailable ? (
         <IconButton onClick={stopListeningMic} className={styles.bgAnimation}>
           <MicNoneOutlinedIcon />
         </IconButton>
@@ -49,6 +60,7 @@ const SpeechToText = ({ setPlayVideo }) => {
           <MicOffOutlinedIcon />
         </IconButton>
       )}
+      <ToastContainer position="top-center" autoClose={1000} />
     </>
   );
 };

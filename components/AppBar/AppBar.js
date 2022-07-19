@@ -10,8 +10,8 @@ import dp from "../../assets/Images/user1.jpg";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchField from "../SearchField/SearchField";
 import logo from "../../assets/Images/logo/logo.png";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
 import SpeechToText from "../SpeechToText/speechToText";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 import VideocamOutlinedIcon from "@mui/icons-material/VideocamOutlined";
 import NotificationCard from "../Cards/NotificationCard/NotificationCard";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
@@ -208,7 +208,7 @@ const AppBarComp = ({ open, handleDrawer, isSmDown, setOpen, setChannel }) => {
               objectFit="cover"
             />
           </Box>
-          <Box sx={{ flexGrow: 1,mr:2 }}>
+          <Box sx={{ flexGrow: 1, mr: 2 }}>
             <SearchField getSearchValue={getSearchValue} />
           </Box>
           {isSmDown ? (

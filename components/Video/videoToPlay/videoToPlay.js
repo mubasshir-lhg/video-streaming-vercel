@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Typography, Box, Grid, Button } from "@mui/material";
 import Link from "next/link";
-import Video from "../Video";
 import Image from "next/image";
+import VideoWithVoiceControl from "./VideoWithVoiceControl";
+import { PlayContext } from "../../../context/userContext";
 
 const VideoToPlay = ({ item }) => {
   const { videoSrc, title } = item;
+  const { isPlaying } = useContext(PlayContext);
   return (
     <>
       <Box sx={{ borderBottom: "1px solid #fff" }}>
-        <Video src={videoSrc} width="100%" height="100%" controls={true} />
+        <VideoWithVoiceControl
+          src={videoSrc}
+          width="100%"
+          height="100%"
+          controls={true}
+          isPlaying={isPlaying}
+        />
         <Typography variant="body1">Chapter 02</Typography>
         <Typography variant="subtitle1" my={1}>
           {title}

@@ -2,27 +2,23 @@ import React, { useState, useEffect, useContext } from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import { useRouter } from "next/router";
 
-import logo from "../../assets/Images/logo/Teachmetoo Brandmark Full Color .png";
-import MenuIcon from "@mui/icons-material/Menu";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
-import Badge from "@mui/material/Badge";
 import Image from "next/image";
+import Badge from "@mui/material/Badge";
+import MuiAppBar from "@mui/material/AppBar";
+import PopupMenu from "../PopupMenu/PopupMenu";
 import dp from "../../assets/Images/user1.jpg";
-
-import VideoCallOutlinedIcon from "@mui/icons-material/VideoCallOutlined";
+import MenuIcon from "@mui/icons-material/Menu";
+import SearchField from "../SearchField/SearchField";
+import logo from "../../assets/Images/logo/logo.png";
+import SpeechToText from "../SpeechToText/speechToText";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 import VideocamOutlinedIcon from "@mui/icons-material/VideocamOutlined";
-import MicNoneOutlinedIcon from "@mui/icons-material/MicNoneOutlined";
+import NotificationCard from "../Cards/NotificationCard/NotificationCard";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
 
-import NotificationCard from "../Cards/NotificationCard/NotificationCard";
-import SearchField from "../SearchField/SearchField";
-import PopupMenu from "../PopupMenu/PopupMenu";
-import MuiAppBar from "@mui/material/AppBar";
-import { RequestModal } from "../Modal/RequestAVideo/RequestAVideo";
 import { UploadVideoModal } from "../Modal/UploadVideoModal/UploadVideoModal";
 import { NotificationData } from "../../_mockup/AppBar/Notification";
 import { Box, IconButton, Toolbar, useMediaQuery } from "@mui/material";
-
 import { UserContext } from "../../context/userContext";
 
 const drawerWidth = 220;
@@ -43,6 +39,7 @@ const AppBar = styled(MuiAppBar, {
     }),
   }),
 }));
+
 const AppBarComp = ({ open, handleDrawer, isSmDown, setOpen, setChannel }) => {
   const router = useRouter();
   const { breakpoints } = useTheme();
@@ -50,8 +47,10 @@ const AppBarComp = ({ open, handleDrawer, isSmDown, setOpen, setChannel }) => {
   const [navbar, setNavbar] = useState(false);
   const [openUploadModal, setOpenUploadModal] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
+  const [playVideo, setPlayVideo] = useState(false);
   const isMdDown = useMediaQuery(breakpoints.down("md"));
   const { user, setUser } = useContext(UserContext);
+
   const switchToChannel = () => {
     router.push("/dashboard/");
     closePopupMenu();
@@ -96,10 +95,6 @@ const AppBarComp = ({ open, handleDrawer, isSmDown, setOpen, setChannel }) => {
     router.push("/home/uploadVideo/splitChapters");
     handleCloseModal();
   };
-  const goToPage = (href, index) => {
-    channel ? router.push(`/dashboard/${href}`) : router.push(`/home/${href}`);
-    setActiveIndex(index);
-  };
   const logoutHandler = () => {
     closePopupMenu();
     setChannel(false);
@@ -139,7 +134,7 @@ const AppBarComp = ({ open, handleDrawer, isSmDown, setOpen, setChannel }) => {
       onClickFunc: closePopupMenu,
       child: (
         <>
-          <MicNoneOutlinedIcon sx={{ pr: 1 }} />
+          <SpeechToText />
           Voice
         </>
       ),
@@ -213,7 +208,7 @@ const AppBarComp = ({ open, handleDrawer, isSmDown, setOpen, setChannel }) => {
               objectFit="cover"
             />
           </Box>
-          <Box sx={{ flexGrow: 1 }}>
+          <Box sx={{ flexGrow: 1, mr: 2 }}>
             <SearchField getSearchValue={getSearchValue} />
           </Box>
           {isSmDown ? (
@@ -222,9 +217,7 @@ const AppBarComp = ({ open, handleDrawer, isSmDown, setOpen, setChannel }) => {
             </IconButton>
           ) : (
             <>
-              <IconButton>
-                <MicNoneOutlinedIcon />
-              </IconButton>
+              <SpeechToText />
               <IconButton onClick={() => setOpenUploadModal(true)}>
                 <VideocamOutlinedIcon />
               </IconButton>

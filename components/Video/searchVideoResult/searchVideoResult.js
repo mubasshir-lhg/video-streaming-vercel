@@ -22,6 +22,7 @@ const SearchVideoResult = ({ item, onClick, hideAvatar, hideDescription }) => {
       container
       spacing={{ xs: 0.5, sm: 1, lg: 2, xl: 4 }}
       onClick={onClick}
+      sx={{cursor:'pointer'}}
     >
       <Grid item xs={6} lg={3}>
         <VideoWithTime src={videoSrc} duration={duration} />

@@ -5,7 +5,7 @@ import { styled } from "@mui/system";
 const StyledInfoVertical = styled(Box)(({ theme, background }) => ({
   borderRadius: theme.shape.borderRadiusMd,
   minWidth: "152px",
-  padding: "40px 20px",
+  padding: "40px 18px",
   background: background || theme.palette.gradients.info,
   color: "#fff",
   marginTop: "10px",

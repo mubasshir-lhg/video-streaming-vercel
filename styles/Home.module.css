@@ -1,0 +1,16 @@
+.bgAnimation {
+  background-color: rgba(145, 158, 171, 0.08);
+  animation: bgOpacity 1.5s infinite;
+}
+
+@keyframes bgOpacity {
+  0% {
+    opacity: 0.5;
+  }
+  50%{
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}

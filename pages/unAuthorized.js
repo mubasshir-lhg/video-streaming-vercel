@@ -1,6 +1,6 @@
 import React from "react";
-import { Typography, Box, Button } from "@mui/material";
 import Link from "next/link";
+import { Typography, Box, Button } from "@mui/material";
 
 const NotAuthorize = () => {
   return (

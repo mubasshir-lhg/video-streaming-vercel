@@ -17,18 +17,26 @@ const SpeechToText = () => {
     resetTranscript,
     isMicrophoneAvailable,
     browserSupportsSpeechRecognition,
+    finalTranscript,
   } = useSpeechRecognition();
 
   useEffect(() => {
     let timer;
-    if (transcript) {
-      toast.info(transcript);
+    if (finalTranscript) {
+      toast.info(
+        finalTranscript === "horse" ||
+          finalTranscript === "house" ||
+          finalTranscript === "Boss" ||
+          finalTranscript === "pouch"
+          ? "pause"
+          : finalTranscript
+      );
       timer = setTimeout(() => {
         resetTranscript();
       }, 3000);
     }
     return () => clearTimeout(timer);
-  }, [listening, transcript, resetTranscript]);
+  }, [listening, finalTranscript, resetTranscript]);
   useEffect(() => {
     if (!isMicrophoneAvailable) {
       toast.error("permission denied for microphone");
@@ -38,9 +46,9 @@ const SpeechToText = () => {
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser does not support speech recognition.</span>;
   }
-  if (transcript === "play") {
+  if (finalTranscript === "play") {
     setIsPlaying(true);
-  } else if (transcript === "pause") {
+  } else if (finalTranscript === "pause") {
     setIsPlaying(false);
   }
   const startListening = () =>
@@ -51,15 +59,17 @@ const SpeechToText = () => {
   };
   return (
     <>
-      {listening && isMicrophoneAvailable ? (
-        <IconButton onClick={stopListeningMic} className={styles.bgAnimation}>
-          <MicNoneOutlinedIcon />
-        </IconButton>
-      ) : (
-        <IconButton onClick={startListening}>
-          <MicOffOutlinedIcon />
-        </IconButton>
-      )}
+      <>
+        {listening && isMicrophoneAvailable ? (
+          <IconButton onClick={stopListeningMic} className={styles.bgAnimation}>
+            <MicNoneOutlinedIcon />
+          </IconButton>
+        ) : (
+          <IconButton onClick={startListening}>
+            <MicOffOutlinedIcon />
+          </IconButton>
+        )}
+      </>
       <ToastContainer position="top-center" autoClose={1000} />
     </>
   );

@@ -131,15 +131,6 @@ const AppBarComp = ({ open, handleDrawer, isSmDown, setOpen, setChannel }) => {
   ];
   const menuOptions2 = [
     {
-      onClickFunc: closePopupMenu,
-      child: (
-        <>
-          <SpeechToText />
-          Voice
-        </>
-      ),
-    },
-    {
       onClickFunc: () => {
         setOpenUploadModal(true);
         closePopupMenu();
@@ -211,13 +202,13 @@ const AppBarComp = ({ open, handleDrawer, isSmDown, setOpen, setChannel }) => {
           <Box sx={{ flexGrow: 1, mr: 2 }}>
             <SearchField getSearchValue={getSearchValue} />
           </Box>
+          <SpeechToText />
           {isSmDown ? (
             <IconButton onClick={(e) => updateMenuOptions(e, menuOptions2)}>
               <MoreVertIcon />
             </IconButton>
           ) : (
             <>
-              <SpeechToText />
               <IconButton onClick={() => setOpenUploadModal(true)}>
                 <VideocamOutlinedIcon />
               </IconButton>

@@ -17,38 +17,39 @@ const SpeechToText = () => {
     resetTranscript,
     isMicrophoneAvailable,
     browserSupportsSpeechRecognition,
-    finalTranscript,
   } = useSpeechRecognition();
-
   useEffect(() => {
     let timer;
-    if (finalTranscript) {
+    if (transcript) {
       toast.info(
-        finalTranscript === "horse" ||
-          finalTranscript === "house" ||
-          finalTranscript === "Boss" ||
-          finalTranscript === "pouch"
+        transcript === "horse" ||
+          transcript === "house" ||
+          transcript === "Boss" ||
+          transcript === "pouch"||
+          transcript === "pause"
           ? "pause"
-          : finalTranscript
+          : transcript === "play" && transcript
       );
       timer = setTimeout(() => {
         resetTranscript();
       }, 3000);
     }
     return () => clearTimeout(timer);
-  }, [listening, finalTranscript, resetTranscript]);
+  }, [listening, transcript, resetTranscript]);
   useEffect(() => {
     if (!isMicrophoneAvailable) {
       toast.error("permission denied for microphone");
+    } else {
+      startListening();
     }
   }, [isMicrophoneAvailable]);
 
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser does not support speech recognition.</span>;
   }
-  if (finalTranscript === "play") {
+  if (transcript === "play") {
     setIsPlaying(true);
-  } else if (finalTranscript === "pause") {
+  } else if (transcript === "pause") {
     setIsPlaying(false);
   }
   const startListening = () =>

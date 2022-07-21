@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Box } from "@mui/material";
 import { useTheme } from "@mui/styles";
-
 const VideoWithVoiceControl = ({
   src,
   controls,
@@ -13,22 +12,22 @@ const VideoWithVoiceControl = ({
 }) => {
   const { shape, customShadows } = useTheme();
   const videoRef = useRef();
-
   useEffect(() => {
-    videoRef.current?.load();
     if (isPlaying) {
       videoRef.current?.play();
     } else {
-      videoRef.current?.pause();
+      videoRef.current.pause();
     }
-  }, [src,isPlaying]);
+  }, [isPlaying]);
+  useEffect(() => {
+    videoRef.current?.load();
+  }, [src]);
   return (
     <Box sx={{ width: width || 240, my: my || 2, mx: mx || 0 }}>
       <video
         ref={videoRef}
         width="100%"
         loop
-        muted="muted"
         controls={controls || false}
         style={{
           borderRadius: borderRadius || shape.borderRadiusMd,

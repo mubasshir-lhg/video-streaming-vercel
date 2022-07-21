@@ -25,7 +25,7 @@ const SpeechToText = () => {
         transcript === "horse" ||
           transcript === "house" ||
           transcript === "Boss" ||
-          transcript === "pouch"||
+          transcript === "pouch" ||
           transcript === "pause"
           ? "pause"
           : transcript === "play" && transcript
@@ -39,8 +39,6 @@ const SpeechToText = () => {
   useEffect(() => {
     if (!isMicrophoneAvailable) {
       toast.error("permission denied for microphone");
-    } else {
-      startListening();
     }
   }, [isMicrophoneAvailable]);
 

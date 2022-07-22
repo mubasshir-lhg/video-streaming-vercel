@@ -7,8 +7,9 @@ import { useRouter } from "next/router";
 
 const SplitChapters = () => {
   const router = useRouter();
+  const { query } = useRouter();
   const [open, setOpen] = useState(false);
-
+  console.log('if file is uploaded',JSON.parse(query.data))
   const handleClose = () => {
     setOpen(false);
   };

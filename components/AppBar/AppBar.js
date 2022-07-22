@@ -19,7 +19,7 @@ import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined
 import { UploadVideoModal } from "../Modal/UploadVideoModal/UploadVideoModal";
 import { NotificationData } from "../../_mockup/AppBar/Notification";
 import { Box, IconButton, Toolbar, useMediaQuery } from "@mui/material";
-import { UserContext } from "../../context/userContext";
+import { UserContext ,DrawerContext} from "../../context/userContext";
 
 const drawerWidth = 220;
 const AppBar = styled(MuiAppBar, {
@@ -50,6 +50,7 @@ const AppBarComp = ({ open, handleDrawer, isSmDown, setOpen, setChannel }) => {
   const [playVideo, setPlayVideo] = useState(false);
   const isMdDown = useMediaQuery(breakpoints.down("md"));
   const { user, setUser } = useContext(UserContext);
+  const { setActiveRoute } = useContext(DrawerContext);
 
   const switchToChannel = () => {
     router.push("/dashboard/");
@@ -70,6 +71,7 @@ const AppBarComp = ({ open, handleDrawer, isSmDown, setOpen, setChannel }) => {
   const logoHandler = () => {
     setChannel(false);
     router.push("/home/");
+    setActiveRoute(0)
   };
   const openPopup = Boolean(anchorEl);
   const openPopupMenu = (event) => {

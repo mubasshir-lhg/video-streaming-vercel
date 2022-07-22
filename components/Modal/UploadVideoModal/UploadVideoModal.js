@@ -45,11 +45,14 @@ export const UploadVideoModal = ({ handleClose, open }) => {
   const router = useRouter();
   const onDrop = useCallback(
     (acceptedFiles) => {
-      if (acceptedFiles);
+      const url = URL.createObjectURL(
+        new Blob([acceptedFiles[0], { type: " video/mp4" }])
+      );
+      if (url);
       {
         router.push({
           pathname: "/home/uploadVideo/splitChapters",
-          query: { data: JSON.stringify(acceptedFiles)},
+          query: { data: JSON.stringify(url) },
         });
       }
       handleClose();

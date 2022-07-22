@@ -55,6 +55,7 @@ const AppBarComp = ({ open, handleDrawer, isSmDown, setOpen, setChannel }) => {
   const switchToChannel = () => {
     router.push("/dashboard/");
     closePopupMenu();
+    setActiveRoute(0)
   };
   useEffect(() => {
     if (router.pathname.startsWith("/dashboard")) {
@@ -65,6 +66,7 @@ const AppBarComp = ({ open, handleDrawer, isSmDown, setOpen, setChannel }) => {
   }, [setChannel, router.pathname]);
   const switchToHome = () => {
     setChannel(false);
+    setActiveRoute(0)
     closePopupMenu();
     router.push("/home/");
   };

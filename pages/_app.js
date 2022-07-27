@@ -16,9 +16,8 @@ Axios.defaults.baseURL = "http://localhost:80/";
 
 function MyApp({ Component, pageProps, router }) {
   const [user, setUser] = useState(null);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const [activeRoute, setActiveRoute] = useState(0);
-  useEffect(() => {}, []);
 
   return (
     <UserContext.Provider value={{ user, setUser }}>

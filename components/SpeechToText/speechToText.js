@@ -1,16 +1,13 @@
-import React, { useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
-import MicNoneOutlinedIcon from "@mui/icons-material/MicNoneOutlined";
-import MicOffOutlinedIcon from "@mui/icons-material/MicOffOutlined";
-import styles from "../../styles/Home.module.css";
-import { IconButton } from "@mui/material";
 import { PlayContext } from "../../context/userContext";
 import { ToastContainer, toast } from "react-toastify";
 
 const SpeechToText = () => {
   const { setIsPlaying } = useContext(PlayContext);
+  const [message, setMessage] = useState("");
   const {
     transcript,
     listening,
@@ -20,35 +17,62 @@ const SpeechToText = () => {
   } = useSpeechRecognition();
   useEffect(() => {
     let timer;
-    if (transcript) {
-      toast.info(
-        transcript === "horse" ||
-          transcript === "house" ||
-          transcript === "Boss" ||
-          transcript === "pouch" ||
-          transcript === "pause"
-          ? "pause"
-          : transcript === "play" && transcript
-      );
-      timer = setTimeout(() => {
-        resetTranscript();
-      }, 3000);
+    switch (transcript) {
+      case "play":
+        setMessage("play");
+        break;
+      case "horse":
+        setMessage("pause");
+        break;
+      case "house":
+        setMessage("pause");
+        break;
+      case "Boss":
+        setMessage("pause");
+        break;
+      case "pouch":
+        setMessage("pause");
+        break;
+      case "pause":
+        setMessage("pause");
+        break;
+      default:
+        setMessage("");
+        break;
     }
+
+    timer = setTimeout(() => {
+      resetTranscript();
+    }, 2000);
+
     return () => clearTimeout(timer);
-  }, [listening, transcript, resetTranscript]);
+  }, [listening, transcript, resetTranscript, message]);
+
   useEffect(() => {
     if (!isMicrophoneAvailable) {
       toast.error("permission denied for microphone");
     }
   }, [isMicrophoneAvailable]);
 
+  useEffect(() => {
+    startListening();
+  }, []);
+  useEffect(() => {
+    if (message === "play") {
+      setIsPlaying(true);
+      toast.info(message);
+    } else if (message === "pause") {
+      setIsPlaying(false);
+      toast.info(message);
+    }
+  }, [message, setIsPlaying]);
+  useEffect(() => {
+    return () => {
+      stopListeningMic();
+    };
+  }, []);
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser does not support speech recognition.</span>;
-  }
-  if (transcript === "play") {
-    setIsPlaying(true);
-  } else if (transcript === "pause") {
-    setIsPlaying(false);
   }
   const startListening = () =>
     SpeechRecognition.startListening({ continuous: true });
@@ -56,21 +80,6 @@ const SpeechToText = () => {
     SpeechRecognition.stopListening();
     resetTranscript();
   };
-  return (
-    <>
-      <>
-        {listening && isMicrophoneAvailable ? (
-          <IconButton onClick={stopListeningMic} className={styles.bgAnimation}>
-            <MicNoneOutlinedIcon />
-          </IconButton>
-        ) : (
-          <IconButton onClick={startListening}>
-            <MicOffOutlinedIcon />
-          </IconButton>
-        )}
-      </>
-      <ToastContainer position="top-center" autoClose={1000} />
-    </>
-  );
+  return <ToastContainer position="top-center" autoClose={1000} />;
 };
 export default SpeechToText;

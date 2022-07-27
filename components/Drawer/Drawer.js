@@ -1,12 +1,13 @@
-import React, { useState,useContext } from "react";
+import React, { useState, useContext } from "react";
 import Image from "next/image";
 import dp from "../../assets/Images/user1.jpg";
 import { useRouter } from "next/router";
 import { styled } from "@mui/material/styles";
-import { userRoutes,adminRoutes } from "../../routes/routes";
+import { userRoutes, adminRoutes } from "../../routes/routes";
 import { UserContext } from "../../context/userContext";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import MuiDrawer from "@mui/material/Drawer";
+import { DrawerContext } from "../../context/userContext";
 import {
   ListItemButton,
   ListItemIcon,
@@ -68,14 +69,14 @@ const Drawer = styled(MuiDrawer, {
     "& .MuiDrawer-paper": closedMixin(theme),
   }),
 }));
-const DrawerComp = ({ isSmDown, handleDrawer,open ,channel}) => {
+const DrawerComp = ({ isSmDown, handleDrawer, open, channel }) => {
   const router = useRouter();
-  const [activeIndex, setActiveIndex] = useState(0);
-  const {user} = useContext(UserContext)
+  const { user } = useContext(UserContext);
+  const { activeRoute, setActiveRoute } = useContext(DrawerContext);
 
   const goToPage = (href, index) => {
     channel ? router.push(`/dashboard/${href}`) : router.push(`/home/${href}`);
-    setActiveIndex(index);
+    setActiveRoute(index);
   };
   return (
     <Drawer
@@ -113,7 +114,7 @@ const DrawerComp = ({ isSmDown, handleDrawer,open ,channel}) => {
               justifyContent: "center",
               px: 2.5,
               mt: 2,
-              backgroundColor: activeIndex === index && "primary.main",
+              backgroundColor: activeRoute === index && "primary.main",
             }}
             onClick={() => goToPage(item.link, index)}
           >
@@ -122,7 +123,7 @@ const DrawerComp = ({ isSmDown, handleDrawer,open ,channel}) => {
                 minWidth: 0,
                 mr: open ? 3 : "auto",
                 justifyContent: "center",
-                color: activeIndex === index && "purple.main",
+                color: activeRoute === index && "purple.main",
               }}
             >
               <item.Icon />

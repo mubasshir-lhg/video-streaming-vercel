@@ -1,6 +1,7 @@
 import React from "react";
 
-const UserContext = React.createContext({ user: {}, setUser: () => {} });
-const PlayContext = React.createContext({ isPlaying:null, setIsPlaying: () => {} });
+const UserContext = React.createContext();
+const PlayContext = React.createContext();
+const DrawerContext = React.createContext();
 
-export { UserContext ,PlayContext};
+export { UserContext ,PlayContext,DrawerContext};

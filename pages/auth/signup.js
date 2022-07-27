@@ -111,6 +111,16 @@ const SignupPage = () => {
                 Signup
               </Button>
             </Grid>
+            <Grid item xs={12}>
+              <Button
+                variant="contained"
+                color="info"
+                fullWidth
+                onClick={signupHandler}
+              >
+                Signup With Google
+              </Button>
+            </Grid>
             <Grid item xs={12} textAlign="right">
               <Link href="/auth/login">already have account? login</Link>
             </Grid>

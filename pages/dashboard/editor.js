@@ -64,7 +64,7 @@ const Editor = () => {
             sx={{ display: "flex", justifyContent: "flex-end" }}
           >
             <Box mr={1}>Views :</Box>
-            <BasicSelect options={options} onClick={doSomething} width="60%" />
+            <BasicSelect options={options} onClick={doSomething} width="60%" placeholder='Filter'/>
           </Grid>
         </Grid>
         <Box>

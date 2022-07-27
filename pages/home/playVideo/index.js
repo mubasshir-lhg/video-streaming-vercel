@@ -13,6 +13,7 @@ import { styled } from "@mui/system";
 import ChapterVideo from "../../../components/Video/chapterVideo/chapterVideo";
 import RelatedVideos from "../../../components/Video/relatedVideos/relatedVideos";
 import RelatedVideosSkeleton from "../../../components/Skeleton/RelatedVideoSkeleton/RelatedVideoSkeleton";
+import SpeechToText from "../../../components/SpeechToText/speechToText";
 
 const ChapterWrapper = styled(Box)(({ theme }) => ({
   borderRadius: "12px",
@@ -107,6 +108,7 @@ const SingleVideo = () => {
               ))}
         </Box>
       </Grid>
+      <SpeechToText/>
     </Grid>
   );
 };

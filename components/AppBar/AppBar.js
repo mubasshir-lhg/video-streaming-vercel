@@ -10,8 +10,8 @@ import dp from "../../assets/Images/user1.jpg";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchField from "../SearchField/SearchField";
 import logo from "../../assets/Images/logo/logo.png";
-import SpeechToText from "../SpeechToText/speechToText";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import MicNoneOutlinedIcon from "@mui/icons-material/MicNoneOutlined";
 import VideocamOutlinedIcon from "@mui/icons-material/VideocamOutlined";
 import NotificationCard from "../Cards/NotificationCard/NotificationCard";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
@@ -19,7 +19,7 @@ import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined
 import { UploadVideoModal } from "../Modal/UploadVideoModal/UploadVideoModal";
 import { NotificationData } from "../../_mockup/AppBar/Notification";
 import { Box, IconButton, Toolbar, useMediaQuery } from "@mui/material";
-import { UserContext ,DrawerContext} from "../../context/userContext";
+import { UserContext, DrawerContext } from "../../context/userContext";
 
 const drawerWidth = 220;
 const AppBar = styled(MuiAppBar, {
@@ -55,7 +55,7 @@ const AppBarComp = ({ open, handleDrawer, isSmDown, setOpen, setChannel }) => {
   const switchToChannel = () => {
     router.push("/dashboard/");
     closePopupMenu();
-    setActiveRoute(0)
+    setActiveRoute(0);
   };
   useEffect(() => {
     if (router.pathname.startsWith("/dashboard")) {
@@ -66,14 +66,14 @@ const AppBarComp = ({ open, handleDrawer, isSmDown, setOpen, setChannel }) => {
   }, [setChannel, router.pathname]);
   const switchToHome = () => {
     setChannel(false);
-    setActiveRoute(0)
+    setActiveRoute(0);
     closePopupMenu();
     router.push("/home/");
   };
   const logoHandler = () => {
     setChannel(false);
     router.push("/home/");
-    setActiveRoute(0)
+    setActiveRoute(0);
   };
   const openPopup = Boolean(anchorEl);
   const openPopupMenu = (event) => {
@@ -206,7 +206,9 @@ const AppBarComp = ({ open, handleDrawer, isSmDown, setOpen, setChannel }) => {
           <Box sx={{ flexGrow: 1, mr: 2 }}>
             <SearchField getSearchValue={getSearchValue} />
           </Box>
-          <SpeechToText />
+          <IconButton>
+            <MicNoneOutlinedIcon />
+          </IconButton>
           {isSmDown ? (
             <IconButton onClick={(e) => updateMenuOptions(e, menuOptions2)}>
               <MoreVertIcon />

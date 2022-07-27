@@ -25,7 +25,7 @@ const History = () => {
   };
   return (
     <Grid container spacing={2} mt={2}>
-      <Grid xs={12} px={2}>
+      <Grid item xs={12} px={2}>
         <Typography variant="subtitle1">Watch history</Typography>
       </Grid>
       <Grid item xs={12} sm={8} order={{ xs: 2, sm: 1 }}>

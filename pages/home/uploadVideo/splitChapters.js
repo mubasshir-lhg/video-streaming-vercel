@@ -9,7 +9,7 @@ const SplitChapters = () => {
   const router = useRouter();
   const { query } = useRouter();
   const [open, setOpen] = useState(false);
-  const uploadedVideo=JSON.parse(query.data)
+  const uploadedVideo = JSON.parse(query?.data);
   const handleClose = () => {
     setOpen(false);
   };
@@ -25,7 +25,12 @@ const SplitChapters = () => {
     <Box mt={2}>
       <Grid container spacing={{ xs: 1, md: 4 }} justifyContent="center">
         <Grid item xs={12} md={10} lg={9}>
-          <Video src={`${uploadedVideo}`} width="100%" height="100%" controls={true} />
+          <Video
+            src={`${uploadedVideo || "video1.mp4"}`}
+            width="100%"
+            height="100%"
+            controls={true}
+          />
         </Grid>
         <Grid
           item

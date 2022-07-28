@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Button, Grid, Box } from "@mui/material";
 import Video from "../../../components/Video/Video";
 import SplitChapterCard from "../../../components/Cards/SplitChapterCard/SplitChapterCard";
@@ -9,7 +9,14 @@ const SplitChapters = () => {
   const router = useRouter();
   const { query } = useRouter();
   const [open, setOpen] = useState(false);
-  const uploadedVideo = JSON.parse(query?.data);
+  const [uploadedVideo,setUploadedVideo]=useState('')
+  useEffect(()=>{
+    if(query?.data){
+      setUploadedVideo(JSON.parse(query?.data))
+    }else{
+      setUploadedVideo('/video1.mp4')
+    }
+  },[query])
   const handleClose = () => {
     setOpen(false);
   };
@@ -26,7 +33,7 @@ const SplitChapters = () => {
       <Grid container spacing={{ xs: 1, md: 4 }} justifyContent="center">
         <Grid item xs={12} md={10} lg={9}>
           <Video
-            src={`${uploadedVideo || "video1.mp4"}`}
+            src={`${uploadedVideo}`}
             width="100%"
             height="100%"
             controls={true}
